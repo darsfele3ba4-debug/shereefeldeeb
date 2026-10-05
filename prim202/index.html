@@ -312,25 +312,6 @@
             border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
         }
 
-        /* Result Share (WhatsApp) */
-        .share-box {
-            margin-top: 25px; background: #f0fdf4; border: 2px solid #bbf7d0;
-            border-radius: 16px; padding: 20px; text-align: center;
-        }
-        .share-box h4 { color: #166534; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
-        .share-name-input {
-            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
-            border: 2px solid #86efac; font-size: 1.05rem; text-align: center;
-            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
-            color: var(--dark);
-        }
-        .share-name-input:focus { outline: none; border-color: #16a34a; }
-        .btn-share {
-            background: linear-gradient(to bottom, #25d366, #1da851);
-            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
-        }
-        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
-
         /* Modal Overlay */
         .overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -362,18 +343,6 @@
         }
         .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
         .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
-
-        /* WhatsApp */
-        .whatsapp-float {
-            position: fixed; bottom: 25px; left: 25px;
-            background: #25d366; color: white;
-            width: 65px; height: 65px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
-            z-index: 100; transition: all 0.3s;
-        }
-        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
-        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
 
         /* Confetti effect */
         .confetti {
@@ -444,15 +413,7 @@
     <!-- الفوتر -->
     <footer class="footer-main" id="main-footer">
         <p>جميع الحقوق محفوظة &copy; | الأستاذ / شريف الديب</p>
-        <p class="designer">للتواصل: 01007863933</p>
     </footer>
-
-    <!-- زر الواتساب -->
-    <a href="https://wa.me/201007863933" class="whatsapp-float" target="_blank" title="تواصل معنا">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
-        </svg>
-    </a>
 
 <script>
     const LESSON_NAME = "المعرب والمبني من الأفعال";
@@ -1633,43 +1594,9 @@
                 <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
                 <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
                 ${summaryHTML}
-                <div class="share-box">
-                    <h4>📲 أرسل نتيجتك إلى الأستاذ شريف الديب</h4>
-                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
-                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
-                    <div>
-                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
-                            إرسال النتيجة عبر واتساب
-                        </button>
-                    </div>
-                </div>
                 <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
             </div>
         `;
-    }
-
-    function sendResultToTeacher(score, total) {
-        const nameInput = document.getElementById('student-name-input');
-        const warning = document.getElementById('share-warning');
-        const name = nameInput.value.trim();
-        if (!name) {
-            warning.style.display = 'block';
-            nameInput.classList.add('shake');
-            nameInput.focus();
-            setTimeout(() => nameInput.classList.remove('shake'), 500);
-            return;
-        }
-        warning.style.display = 'none';
-        const gameTitle = currentGame ? currentGame.title : '';
-        const message =
-            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
-            `👤 اسم الطالب: ${name}\n` +
-            `🎮 اللعبة: ${gameTitle}\n` +
-            `✅ النتيجة: ${score} من ${total}\n` +
-            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
-        const url = `https://wa.me/201007863933?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
     }
 
     function startGame(gameData) {
