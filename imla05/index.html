@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>الهمزة المتوسطة على الواو - الصف السادس الابتدائي - شريف الديب</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;      
+            --primary-light: #14b8a6; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #effcf9;
+            background-image: radial-gradient(#a7dcd4 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(2.5rem, 10vw, 4.5rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.1;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(20, 184, 166, 0.3); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #0f766e; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #14b8a6; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #0f766e;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #0f766e);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(204,251,241,0.9));
+            color: #0f766e;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23fff7ed" width="100%" height="100%"/><circle fill="%23fed7aa" cx="20%" cy="30%" r="50"/><circle fill="%23fed7aa" cx="80%" cy="60%" r="70"/><circle fill="%23fed7aa" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #fffbeb; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #431407, #9a3412, #ea580c);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #fdba74; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(234,88,12,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #fde047, #f59e0b, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #fb923c, #ea580c);
+            border-bottom: 3px solid #7c2d12; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(253, 224, 71, 0.15); color: #fde047;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        .lesson-name { font-size: clamp(1.4rem, 5vw, 2rem) !important; color: #fde047 !important; font-weight: 900 !important; margin-top: 4px; }
+        .extra-line { font-size: .9em; color: #ccfbf1; }
+        @media (max-width: 600px) {
+            .teacher-photo { width: 170px !important; height: 170px !important; }
+            .header-main { padding: 20px 14px 70px 14px; }
+            #home-screen { padding: 14px; }
+            .grid-menu { grid-template-columns: 1fr; gap: 16px; }
+            .game-container { padding: 0 12px 30px 12px; }
+            .game-nav { padding: 10px 12px; gap: 8px; }
+            .bubble { font-size: 0.78rem; padding: 8px 3px; }
+            .target-bird { white-space: normal; max-width: 78vw; font-size: 0.95rem; padding: 8px 14px; }
+            .tf-grid .btn { min-width: 130px !important; font-size: 1.6rem !important; padding: 22px !important; }
+            .modal { padding: 26px; }
+            #feedback-title { font-size: 1.8rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img class="teacher-photo" src="../teacher.jpg" alt="الأستاذ شريف الديب" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fde047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">شريف الديب</h1>
+                    <h2>الصَّفُّ السَّادِسُ الابْتِدَائِيُّ - الوحدة الثالثة: العلم والخيال والمستقبل</h2>
+                    <h2 class="lesson-name">الهمزة المتوسطة على الواو</h2>
+                    <p style="margin-top: 10px;">القواعد الإملائية<br><span class="extra-line">من درس: من وراء الكاميرا؟</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#effcf9" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 20</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | الأستاذ / شريف الديب</p>
+    </footer>
+
+<script>
+    const LESSON_NAME = "الهمزة المتوسطة على الواو";
+    const QUESTIONS_PER_PLAY = 20;
+    const allGamesData = [
+ {
+  "id": "g1",
+  "title": "أفهم القاعدة",
+  "type": "mcq",
+  "desc": "أسئلة على قاعدة: الهمزة المتوسطة على الواو",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>",
+  "questions": [
+   {
+    "q": "من حالات كتابة الهمزة المتوسطة على الواو:",
+    "options": [
+     "مضمومة وقبلها مفتوح أو ساكن",
+     "مكسورة",
+     "ساكنة وقبلها مفتوح",
+     "مفتوحة وقبلها مفتوح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "من حالات كتابة الهمزة المتوسطة على الواو أيضًا:",
+    "options": [
+     "مفتوحة وقبلها مكسور",
+     "مكسورة وقبلها ساكن",
+     "ساكنة وقبلها مكسور",
+     "مفتوحة وقبلها حرف مضموم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الحالة الثالثة لكتابة الهمزة المتوسطة على الواو:",
+    "options": [
+     "ساكنة وقبلها حرف مضموم",
+     "ساكنة وقبلها مكسور",
+     "مكسورة",
+     "ساكنة وقبلها مفتوح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الحركة التي تناسبها الواو:",
+    "options": [
+     "الفتحة",
+     "الضمة",
+     "الكسرة",
+     "السكون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ترتيب الحركات من حيث القوة:",
+    "options": [
+     "الفتحة ثم الضمة",
+     "السكون ثم الفتحة",
+     "الضمة ثم الكسرة",
+     "الكسرة ثم الضمة ثم الفتحة ثم السكون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الضمة في القوة تأتي:",
+    "options": [
+     "قبل الكسرة",
+     "بعد الكسرة وقبل الفتحة",
+     "بعد الفتحة",
+     "بعد السكون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «يؤم»:",
+    "options": [
+     "مفتوحة وقبلها مضموم",
+     "ساكنة وقبلها مضموم",
+     "مكسورة",
+     "مضمومة وقبلها حرف مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «تفاؤل»:",
+    "options": [
+     "مضمومة وقبلها حرف ساكن",
+     "ساكنة وقبلها مضموم",
+     "مفتوحة وقبلها مضموم",
+     "مكسورة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «سؤال»:",
+    "options": [
+     "مكسورة",
+     "ساكنة وقبلها مضموم",
+     "مضمومة وقبلها مفتوح",
+     "مفتوحة وقبلها حرف مضموم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «مؤتمر»:",
+    "options": [
+     "مضمومة وقبلها ساكن",
+     "مفتوحة وقبلها مضموم",
+     "مكسورة",
+     "ساكنة وقبلها حرف مضموم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «بؤرة»:",
+    "options": [
+     "مضمومة وقبلها مفتوح",
+     "ساكنة وقبلها حرف مضموم",
+     "مكسورة",
+     "مفتوحة وقبلها مضموم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «تشاؤم»:",
+    "options": [
+     "مكسورة",
+     "ساكنة وقبلها مضموم",
+     "مفتوحة وقبلها مضموم",
+     "مضمومة وقبلها حرف ساكن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «يؤثر»:",
+    "options": [
+     "مضمومة وقبلها مفتوح",
+     "مفتوحة وقبلها حرف مضموم",
+     "ساكنة وقبلها مضموم",
+     "مكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «مؤتمن»:",
+    "options": [
+     "مفتوحة وقبلها مضموم",
+     "مضمومة وقبلها ساكن",
+     "ساكنة وقبلها حرف مضموم",
+     "مكسورة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «المؤذن»:",
+    "options": [
+     "مكسورة",
+     "مضمومة وقبلها ساكن",
+     "ساكنة وقبلها مضموم",
+     "مفتوحة وقبلها حرف مضموم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «فؤاد»:",
+    "options": [
+     "ساكنة وقبلها مضموم",
+     "مفتوحة وقبلها حرف مضموم",
+     "مكسورة",
+     "مضمومة وقبلها مفتوح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «رؤية»:",
+    "options": [
+     "ساكنة وقبلها حرف مضموم",
+     "مضمومة وقبلها مفتوح",
+     "مفتوحة وقبلها مضموم",
+     "مكسورة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «المسؤولية»:",
+    "options": [
+     "مكسورة",
+     "مضمومة وقبلها حرف ساكن",
+     "ساكنة وقبلها مضموم",
+     "مفتوحة وقبلها مضموم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «هؤلاء»:",
+    "options": [
+     "مضمومة وقبلها حرف ساكن",
+     "مكسورة",
+     "مفتوحة وقبلها مضموم",
+     "ساكنة وقبلها مضموم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «مؤقتة»:",
+    "options": [
+     "ساكنة وقبلها مضموم",
+     "مفتوحة وقبلها حرف مضموم",
+     "مكسورة",
+     "مضمومة وقبلها مفتوح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «تؤجل»:",
+    "options": [
+     "مفتوحة وقبلها حرف مضموم",
+     "مكسورة",
+     "ساكنة وقبلها مضموم",
+     "مضمومة وقبلها ساكن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «يؤذي»:",
+    "options": [
+     "مفتوحة وقبلها مضموم",
+     "ساكنة وقبلها حرف مضموم",
+     "مكسورة",
+     "مضمومة وقبلها مفتوح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة التي همزتها مضمومة وقبلها مفتوح:",
+    "options": [
+     "مؤتمر",
+     "تفاؤل",
+     "سؤال",
+     "يؤم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة التي همزتها مضمومة وقبلها ساكن:",
+    "options": [
+     "تفاؤل",
+     "يؤم",
+     "سؤال",
+     "مؤتمر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة التي همزتها مفتوحة وقبلها مضموم:",
+    "options": [
+     "سؤال",
+     "مؤتمر",
+     "تفاؤل",
+     "يؤم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة التي همزتها ساكنة وقبلها مضموم:",
+    "options": [
+     "سؤال",
+     "يؤم",
+     "تفاؤل",
+     "مؤتمر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة المختلفة في سبب الكتابة: (سؤال - فؤاد - يؤثر - مؤتمر)",
+    "options": [
+     "فؤاد",
+     "يؤثر",
+     "سؤال",
+     "مؤتمر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة المختلفة في سبب الكتابة: (مؤتمر - بؤرة - رؤية - تفاؤل)",
+    "options": [
+     "مؤتمر",
+     "رؤية",
+     "تفاؤل",
+     "بؤرة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكلمة المختلفة في سبب الكتابة: (تفاؤل - تشاؤم - المسؤولية - المؤذن)",
+    "options": [
+     "تشاؤم",
+     "المؤذن",
+     "المسؤولية",
+     "تفاؤل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "حركة الهمزة في «سؤال»:",
+    "options": [
+     "السكون",
+     "الكسرة",
+     "الفتحة",
+     "الضمة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "حركة ما قبل الهمزة في «سؤال»:",
+    "options": [
+     "الفتحة",
+     "السكون",
+     "الكسرة",
+     "الضمة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "حركة الهمزة في «مؤتمر»:",
+    "options": [
+     "الكسرة",
+     "الضمة",
+     "السكون",
+     "الفتحة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "حركة الهمزة في «تفاؤل»:",
+    "options": [
+     "الضمة",
+     "السكون",
+     "الكسرة",
+     "الفتحة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "حركة ما قبل الهمزة في «تفاؤل»:",
+    "options": [
+     "السكون",
+     "الكسرة",
+     "الضمة",
+     "الفتحة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «سؤال» الهمزة مفتوحة وما قبلها مضموم، فأقوى الحركتين:",
+    "options": [
+     "الضمة فتكتب على الواو",
+     "الكسرة",
+     "الفتحة",
+     "السكون"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «مؤتمر» الهمزة ساكنة وما قبلها مضموم، فأقوى الحركتين:",
+    "options": [
+     "الكسرة",
+     "الضمة فتكتب على الواو",
+     "الفتحة",
+     "السكون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «يؤم» الهمزة مضمومة وما قبلها مفتوح، فأقوى الحركتين:",
+    "options": [
+     "الضمة فتكتب على الواو",
+     "السكون",
+     "الكسرة",
+     "الفتحة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لو كانت همزة «سؤال» مسبوقة بكسر لكتبت على:",
+    "options": [
+     "الألف",
+     "السطر",
+     "النبرة",
+     "الواو"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكلمة التي همزتها على الواو:",
+    "options": [
+     "فئران",
+     "مئذنة",
+     "رأس",
+     "مؤتمر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة التي همزتها ليست على الواو:",
+    "options": [
+     "مؤتمر",
+     "قائمة",
+     "سؤال",
+     "تفاؤل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "دمج (بُ ءْ رَ ة) يعطي:",
+    "options": [
+     "بأرة",
+     "بءرة",
+     "بؤرة",
+     "بئرة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "دمج (تَ شَ ا ءُ م) يعطي:",
+    "options": [
+     "تشاؤم",
+     "تشائم",
+     "تشاءم",
+     "تشاأم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "دمج (سُ ءَ ا ل) يعطي:",
+    "options": [
+     "سئال",
+     "سءال",
+     "سؤال",
+     "سأال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "دمج (يُ ءَ ثِّ ر) يعطي:",
+    "options": [
+     "يأثر",
+     "يؤثر",
+     "يءثر",
+     "يئثر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "اختر الصحيح: «أنت شخص (مؤتمن - مأتمن)»",
+    "options": [
+     "مأتمن",
+     "مئتمن",
+     "مؤتمن",
+     "مءتمن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "اختر الصحيح: «صوت (المؤذن - المأذن) عذب»",
+    "options": [
+     "المؤذن",
+     "المأذن",
+     "المءذن",
+     "المئذن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "اختر الصحيح: «حضر العلماء (المؤتمر - المأتمر)»",
+    "options": [
+     "المأتمر",
+     "المؤتمر",
+     "المئتمر",
+     "المءتمر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "اختر الصحيح: «ما أجمل (التفاؤل - التفاءل)!»",
+    "options": [
+     "التفاؤل",
+     "التفائل",
+     "التفاءل",
+     "التفاأل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الحرف الذي قبل الهمزة في «مؤتمر»:",
+    "options": [
+     "ميم مكسورة",
+     "تاء ساكنة",
+     "ميم مضمومة",
+     "ميم مفتوحة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مثال من النص لهمزة على الواو:",
+    "options": [
+     "العلماء",
+     "الكاميرا",
+     "المسؤولية",
+     "الأوراق"
+    ],
+    "ans": 2
+   }
+  ]
+ },
+ {
+  "id": "g2",
+  "title": "الفقاعات المتساقطة",
+  "type": "bubbles",
+  "desc": "اضغط على الكلمة المكتوبة كتابة صحيحة",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"8\" cy=\"8\" r=\"5\"></circle><circle cx=\"17\" cy=\"15\" r=\"4\"></circle><circle cx=\"7\" cy=\"18\" r=\"2.5\"></circle></svg>",
+  "questions": [
+   {
+    "q": "الكتابة الصحيحة لـ (يَءُمُّ):",
+    "options": [
+     "يؤم",
+     "يئم",
+     "يأم",
+     "يءم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (تَفاءُل):",
+    "options": [
+     "تفاأل",
+     "تفاءل",
+     "تفاؤل",
+     "تفائل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (سُءَال):",
+    "options": [
+     "سؤال",
+     "سئال",
+     "سءال",
+     "سأال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مُءْتَمَر):",
+    "options": [
+     "مؤتمر",
+     "مأتمر",
+     "مئتمر",
+     "مءتمر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (بُءْرة):",
+    "options": [
+     "بأرة",
+     "بءرة",
+     "بئرة",
+     "بؤرة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (تَشاءُم):",
+    "options": [
+     "تشاأم",
+     "تشائم",
+     "تشاءم",
+     "تشاؤم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (يُءَثِّر):",
+    "options": [
+     "يؤثر",
+     "يئثر",
+     "يأثر",
+     "يءثر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مُءْتَمَن):",
+    "options": [
+     "مءتمن",
+     "مأتمن",
+     "مئتمن",
+     "مؤتمن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (المُءَذِّن):",
+    "options": [
+     "المءذن",
+     "المئذن",
+     "المؤذن",
+     "المأذن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (فُءَاد):",
+    "options": [
+     "فئاد",
+     "فؤاد",
+     "فأاد",
+     "فءاد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (رُءْية):",
+    "options": [
+     "رءية",
+     "رأية",
+     "رئية",
+     "رؤية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (المَسْءُولية):",
+    "options": [
+     "المسأولية",
+     "المسؤولية",
+     "المسئولية",
+     "المسءولية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مَسْءُول):",
+    "options": [
+     "مسئول",
+     "مسؤول",
+     "مسأول",
+     "مسءول"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (هاءُلاء):",
+    "options": [
+     "هءلاء",
+     "هأولاء",
+     "هؤلاء",
+     "هئلاء"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مُءَقَّتة):",
+    "options": [
+     "مئقتة",
+     "مأقتة",
+     "مؤقتة",
+     "مءقتة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (تُءَجِّل):",
+    "options": [
+     "تئجل",
+     "تؤجل",
+     "تأجل",
+     "تءجل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (يُءْذي):",
+    "options": [
+     "يئذي",
+     "يؤذي",
+     "يءذي",
+     "يأذي"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (يُءَدّي):",
+    "options": [
+     "يؤدي",
+     "يأدي",
+     "يءدي",
+     "يئدي"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (يُءَلِّف):",
+    "options": [
+     "يألف",
+     "يؤلف",
+     "يءلف",
+     "يئلف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مُءْمِن):",
+    "options": [
+     "مأمن",
+     "مئمن",
+     "مؤمن",
+     "مءمن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مُءَثِّرة):",
+    "options": [
+     "مأثرة",
+     "مئثرة",
+     "مؤثرة",
+     "مءثرة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (تُءَكِّد):",
+    "options": [
+     "تءكد",
+     "تأكد",
+     "تئكد",
+     "تؤكد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (نُءَخِّر):",
+    "options": [
+     "نئخر",
+     "نؤخر",
+     "نأخر",
+     "نءخر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (أُءْمِن):",
+    "options": [
+     "أئمن",
+     "أؤمن",
+     "أءمن",
+     "أأمن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مُءَشِّر):",
+    "options": [
+     "مؤشر",
+     "مأشر",
+     "مءشر",
+     "مئشر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (تَساءُل):",
+    "options": [
+     "تساءل",
+     "تسائل",
+     "تساأل",
+     "تساؤل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «يؤم»:",
+    "options": [
+     "مضمومة بعد فتح",
+     "مكسورة",
+     "ساكنة بعد ضم",
+     "مفتوحة بعد ضم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «تفاؤل»:",
+    "options": [
+     "مكسورة",
+     "مضمومة بعد سكون",
+     "مفتوحة بعد ضم",
+     "ساكنة بعد ضم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «سؤال»:",
+    "options": [
+     "مضمومة بعد فتح",
+     "مفتوحة بعد ضم",
+     "ساكنة بعد ضم",
+     "مكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «مؤتمر»:",
+    "options": [
+     "مفتوحة بعد ضم",
+     "مضمومة بعد سكون",
+     "مكسورة",
+     "ساكنة بعد ضم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «بؤرة»:",
+    "options": [
+     "مضمومة بعد فتح",
+     "مفتوحة بعد ضم",
+     "مكسورة",
+     "ساكنة بعد ضم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «تشاؤم»:",
+    "options": [
+     "مضمومة بعد سكون",
+     "مكسورة",
+     "مفتوحة بعد ضم",
+     "ساكنة بعد ضم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «يؤثر»:",
+    "options": [
+     "مكسورة",
+     "مضمومة بعد فتح",
+     "مفتوحة بعد ضم",
+     "ساكنة بعد ضم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "همزة «المؤذن»:",
+    "options": [
+     "مفتوحة بعد ضم",
+     "مكسورة",
+     "مضمومة بعد سكون",
+     "ساكنة بعد ضم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «رؤية»:",
+    "options": [
+     "ساكنة بعد ضم",
+     "مفتوحة بعد ضم",
+     "مكسورة",
+     "مضمومة بعد فتح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «مسؤول»:",
+    "options": [
+     "مفتوحة بعد ضم",
+     "ساكنة بعد ضم",
+     "مضمومة بعد سكون",
+     "مكسورة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "همزة «فؤاد»:",
+    "options": [
+     "مكسورة",
+     "مضمومة بعد فتح",
+     "ساكنة بعد ضم",
+     "مفتوحة بعد ضم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «يؤذي»:",
+    "options": [
+     "مفتوحة بعد ضم",
+     "ساكنة بعد ضم",
+     "مكسورة",
+     "مضمومة بعد سكون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "دمج (بُ ءْ رَ ة):",
+    "options": [
+     "بؤرة",
+     "بأرة",
+     "بئرة",
+     "بءرة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "دمج (تَ شَ ا ءُ م):",
+    "options": [
+     "تشاؤم",
+     "تشاءم",
+     "تشاأم",
+     "تشائم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "دمج (سُ ءَ ا ل):",
+    "options": [
+     "سؤال",
+     "سأال",
+     "سءال",
+     "سئال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "دمج (يُ ءَ ثِّ ر):",
+    "options": [
+     "يءثر",
+     "يأثر",
+     "يئثر",
+     "يؤثر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "دمج (يَ ءُ مّ):",
+    "options": [
+     "يءم",
+     "يأم",
+     "يئم",
+     "يؤم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "دمج (مُ ءْ تَ مَ ر):",
+    "options": [
+     "مأتمر",
+     "مءتمر",
+     "مئتمر",
+     "مؤتمر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صورة همزة «تفاؤل»:",
+    "options": [
+     "على السطر",
+     "على النبرة",
+     "على الواو",
+     "على الألف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صورة همزة «مؤتمر»:",
+    "options": [
+     "على النبرة",
+     "على السطر",
+     "على الواو",
+     "على الألف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صورة همزة «سؤال»:",
+    "options": [
+     "على السطر",
+     "على النبرة",
+     "على الألف",
+     "على الواو"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صورة همزة «هؤلاء»:",
+    "options": [
+     "على النبرة",
+     "على الواو",
+     "على السطر",
+     "على الألف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صورة همزة «المسؤولية»:",
+    "options": [
+     "على النبرة",
+     "على السطر",
+     "على الألف",
+     "على الواو"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صورة همزة «رؤية»:",
+    "options": [
+     "على السطر",
+     "على الواو",
+     "على النبرة",
+     "على الألف"
+    ],
+    "ans": 1
+   }
+  ]
+ },
+ {
+  "id": "g3",
+  "title": "التنشين والاصطياد",
+  "type": "shooting",
+  "desc": "اصطد الكلمة الصحيحة إملائيًّا لتكمل الجملة",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+  "questions": [
+   {
+    "q": "أنت شخص ............",
+    "options": [
+     "مؤتمن",
+     "مءتمن",
+     "مئتمن",
+     "مأتمن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "صوت ............ عذب",
+    "options": [
+     "المؤذن",
+     "المئذن",
+     "المءذن",
+     "المأذن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "حضر العلماء ............",
+    "options": [
+     "المءتمر",
+     "المأتمر",
+     "المئتمر",
+     "المؤتمر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما أجمل ............!",
+    "options": [
+     "التفاأل",
+     "التفاؤل",
+     "التفائل",
+     "التفاءل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "طرحت ............ على معلمي",
+    "options": [
+     "سءالًا",
+     "سؤالًا",
+     "سئالًا",
+     "سأالًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الإمام ............ المصلين في الصلاة",
+    "options": [
+     "يءم",
+     "يئم",
+     "يأم",
+     "يؤم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ بعيد عن الناجحين",
+    "options": [
+     "التشائم",
+     "التشاأم",
+     "التشاءم",
+     "التشاؤم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة الطيبة ............ في القلوب",
+    "options": [
+     "تءثر",
+     "تؤثر",
+     "تئثر",
+     "تأثر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الشمس ............ الضوء في المجموعة الشمسية",
+    "options": [
+     "بئرة",
+     "بأرة",
+     "بءرة",
+     "بؤرة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مصر في قلبي و............",
+    "options": [
+     "فؤادي",
+     "فأادي",
+     "فءادي",
+     "فئادي"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أشتاق إلى ............ جدتي في القرية",
+    "options": [
+     "رئية",
+     "رأية",
+     "رءية",
+     "رؤية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الإنسان الصالح لا ............ الحيوانات",
+    "options": [
+     "يؤذي",
+     "يءذي",
+     "يئذي",
+     "يأذي"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "صديقي ............ أشعارًا جميلة",
+    "options": [
+     "يألف",
+     "يءلف",
+     "يؤلف",
+     "يئلف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الطالب المجتهد ............ واجباته",
+    "options": [
+     "يءدي",
+     "يأدي",
+     "يؤدي",
+     "يئدي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ أصدقائي منذ الطفولة",
+    "options": [
+     "هؤلاء",
+     "هئلاء",
+     "هأولاء",
+     "هءلاء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لا ............ عمل اليوم إلى الغد",
+    "options": [
+     "تؤجل",
+     "تئجل",
+     "تءجل",
+     "تأجل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "العلم ............ على تقدم الأمم",
+    "options": [
+     "مئشر",
+     "مأشر",
+     "مءشر",
+     "مؤشر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "كن مسؤولًا تتحمل ............ أفعالك",
+    "options": [
+     "مسأولية",
+     "مسؤولية",
+     "مسئولية",
+     "مسءولية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الشخص ............ يتحمل نتائج أفعاله",
+    "options": [
+     "المسءول",
+     "المسؤول",
+     "المسأول",
+     "المسئول"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "القرار الخاطئ يعطي راحة ............",
+    "options": [
+     "مؤقتة",
+     "مأقتة",
+     "مءقتة",
+     "مئقتة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "للكلمات قوة ............ في النفوس",
+    "options": [
+     "مئثرة",
+     "مءثرة",
+     "مؤثرة",
+     "مأثرة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ أن المستقبل أفضل",
+    "options": [
+     "أءمن",
+     "أئمن",
+     "أأمن",
+     "أؤمن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ التجارب صحة الفكرة",
+    "options": [
+     "تؤكد",
+     "تءكد",
+     "تأكد",
+     "تئكد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "التأجيل يجعلنا ............ العمل",
+    "options": [
+     "نئخر",
+     "نءخر",
+     "نؤخر",
+     "نأخر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ صادق يحب الخير للناس",
+    "options": [
+     "المؤمن",
+     "المءمن",
+     "المئمن",
+     "المأمن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "............ كيف تبدو الحياة في المستقبل؟",
+    "options": [
+     "تسائل",
+     "تساؤل",
+     "تساأل",
+     "تساءل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لا تترك ............ يقود حياتك",
+    "options": [
+     "التشائم",
+     "التشاأم",
+     "التشاءم",
+     "التشاؤم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الناجح يحيا ............",
+    "options": [
+     "بالتفاأل",
+     "بالتفاؤل",
+     "بالتفاءل",
+     "بالتفائل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "شارك الصحفي في ............ عن التكنولوجيا",
+    "options": [
+     "مئتمر",
+     "مءتمر",
+     "مؤتمر",
+     "مأتمر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الأمين ............ على الأسرار",
+    "options": [
+     "مئتمن",
+     "مؤتمن",
+     "مأتمن",
+     "مءتمن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أجاب التلميذ عن ............ المعلم",
+    "options": [
+     "سأال",
+     "سءال",
+     "سئال",
+     "سؤال"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "يرفع ............ الأذان",
+    "options": [
+     "المأذن",
+     "المئذن",
+     "المؤذن",
+     "المءذن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "القراءة ............ في شخصية الإنسان",
+    "options": [
+     "تءثر",
+     "تئثر",
+     "تأثر الشخصية",
+     "تؤثر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "النجاح ............ في الحياة",
+    "options": [
+     "مسءولية",
+     "مسأولية",
+     "مسئولية",
+     "مسؤولية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "العين أداة ............",
+    "options": [
+     "الرءية",
+     "الرؤية",
+     "الرئية",
+     "الرأية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "المسؤولية ............ النجاح",
+    "options": [
+     "تؤدي إلى",
+     "تأدي إلى",
+     "تءدي إلى",
+     "تئدي إلى"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كان العالم ............ في الضوء",
+    "options": [
+     "يألف كتبًا",
+     "يءلف كتبًا",
+     "يؤلف كتبًا",
+     "يئلف كتبًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ العاملون مخلصون",
+    "options": [
+     "هئلاء",
+     "هؤلاء",
+     "هأولاء",
+     "هءلاء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لا ............ أحدًا بكلامك",
+    "options": [
+     "تئذ",
+     "تؤذ",
+     "تءذ",
+     "تأذ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "............ الجهاز تحرك إلى الخطر",
+    "options": [
+     "مءشر",
+     "مأشر",
+     "مؤشر",
+     "مئشر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الشجاع لا يعرف ............",
+    "options": [
+     "التشاءم",
+     "التشاؤم",
+     "التشاأم",
+     "التشائم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سأل الطالب ............ مهمًّا",
+    "options": [
+     "سأالًا",
+     "سؤالًا",
+     "سئالًا",
+     "سءالًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "قلبي و............ مع وطني",
+    "options": [
+     "فأادي",
+     "فئادي",
+     "فءادي",
+     "فؤادي"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الإنسان ............ بربه يطمئن قلبه",
+    "options": [
+     "المءمن",
+     "المأمن",
+     "المئمن",
+     "المؤمن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ في القرار هي الأساس",
+    "options": [
+     "المسأولية",
+     "المسءولية",
+     "المسؤولية",
+     "المسئولية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الوعد ............ يجب الوفاء به",
+    "options": [
+     "مسئولية",
+     "مسؤولية",
+     "مسءولية",
+     "مسأولية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "كان ابن الهيثم ............ عن علمه",
+    "options": [
+     "مسؤولًا",
+     "مسأولًا",
+     "مسءولًا",
+     "مسئولًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "............ التلاميذ يحبون القراءة",
+    "options": [
+     "هؤلاء",
+     "هءلاء",
+     "هئلاء",
+     "هأولاء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "النظر الجيد يساعد على ............ الأشياء",
+    "options": [
+     "رءية",
+     "رؤية",
+     "رئية",
+     "رأية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "اختلفت ............ الفريقين في المباراة",
+    "options": [
+     "رؤى",
+     "رئى",
+     "رأى",
+     "رءى"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g4",
+  "title": "صح أم خطأ",
+  "type": "true_false",
+  "desc": "هل العبارة صحيحة أم خاطئة؟",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+  "questions": [
+   {
+    "q": "الهمزة في «يؤم» مضمومة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «تفاؤل» مضمومة وقبلها حرف ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «سؤال» مفتوحة وقبلها حرف مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «مؤتمر» ساكنة وقبلها حرف مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «سؤال» مكسورة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «أنت شخص مؤتمن».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «صوت المأذن عذب».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «حضر العلماء المؤتمر».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «ما أجمل التفاءل!».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «شارك الصحفي في مؤتمر عن تأثير التكنولوجيا».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الواو إذا كانت مضمومة وقبلها مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الواو إذا كانت مضمومة وقبلها ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الواو إذا كانت مفتوحة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الواو إذا كانت ساكنة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الواو إذا كانت مكسورة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الضمة أقوى من الكسرة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الضمة أقوى من الفتحة والسكون.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «بؤرة» ساكنة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «تشاؤم» مضمومة وقبلها ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «يؤثر» مفتوحة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «مؤتمن» مفتوحة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «المؤذن» ساكنة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «فؤاد» مفتوحة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «رؤية» ساكنة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «المسؤولية» مضمومة وقبلها ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «هؤلاء» مكسورة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة «سأال».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة «بؤرة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة «تشاءم» بمعنى التشاؤم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة «يؤثر».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة «المأذن».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة «رؤية».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة «مسؤول».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة «مأقتة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "دمج (بُ ءْ رَ ة) يعطي «بؤرة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "دمج (سُ ءَ ا ل) يعطي «سئال».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "دمج (يُ ءَ ثِّ ر) يعطي «يؤثر».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "دمج (تَ شَ ا ءُ م) يعطي «تشائم».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «يؤم» مضمومة وقبلها مفتوح فكتبت على الواو.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «مؤتمر» ساكنة وقبلها مضموم فكتبت على الواو.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «تؤجل» مفتوحة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «يؤذي» ساكنة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «مؤقتة» مضمومة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة «المسؤولية».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة «هأولاء».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة «فؤادي».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة «يأدي واجبه».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة «أؤمن».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «تساؤل» مضمومة وقبلها ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكتابة الصحيحة «مؤثرة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g5",
+  "title": "تحدي العباقرة",
+  "type": "genius",
+  "desc": "سبب كتابة الهمزة على الواو ودمج الحروف",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path><path d=\"M10 21h4\"></path></svg>",
+  "questions": [
+   {
+    "q": "سبب كتابة الهمزة على الواو في «يؤم»:",
+    "options": [
+     "مضمومة وقبلها حرف مفتوح",
+     "ساكنة وقبلها مضموم",
+     "مكسورة",
+     "مفتوحة وقبلها مضموم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «تفاؤل»:",
+    "options": [
+     "ساكنة وقبلها مفتوح",
+     "مفتوحة وقبلها مفتوح",
+     "مضمومة وقبلها حرف ساكن",
+     "مكسورة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «سؤال»:",
+    "options": [
+     "ساكنة وقبلها مفتوح",
+     "مفتوحة وقبلها حرف مضموم",
+     "مكسورة",
+     "مضمومة وقبلها مفتوح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سبب كتابة الهمزة على الواو في «مؤتمر»:",
+    "options": [
+     "مضمومة وقبلها مكسور",
+     "مفتوحة وقبلها مفتوح",
+     "ساكنة وقبلها حرف مضموم",
+     "مكسورة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "دمج الحروف (بُ ءْ رَ ة) يعطي:",
+    "options": [
+     "بأرة",
+     "بؤرة",
+     "بئرة",
+     "بءرة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "دمج الحروف (تَ شَ ا ءُ م) يعطي:",
+    "options": [
+     "تشاأم",
+     "تشائم",
+     "تشاؤم",
+     "تشاءم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "دمج الحروف (سُ ءَ ا ل) يعطي:",
+    "options": [
+     "سءال",
+     "سؤال",
+     "سئال",
+     "سأال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "دمج الحروف (يُ ءَ ثِّ ر) يعطي:",
+    "options": [
+     "يءثر",
+     "يئثر",
+     "يؤثر",
+     "يأثر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "اختر الصحيح: أنت شخص ............",
+    "options": [
+     "مؤتمن",
+     "مءتمن",
+     "مئتمن",
+     "مأتمن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "اختر الصحيح: صوت ............ عذب",
+    "options": [
+     "المءذن",
+     "المؤذن",
+     "المئذن",
+     "المأذن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "اختر الصحيح: حضر العلماء ............",
+    "options": [
+     "المؤتمر",
+     "المأتمر",
+     "المئتمر",
+     "المءتمر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "اختر الصحيح: ما أجمل ............!",
+    "options": [
+     "التفاؤل",
+     "التفاأل",
+     "التفاءل",
+     "التفائل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "اختر الصحيح: شارك الصحفي في ............",
+    "options": [
+     "مأتمر",
+     "مؤتمر",
+     "مءتمر",
+     "مئتمر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "اختر الصحيح: عن ............ التكنولوجيا الحديثة",
+    "options": [
+     "تئثير",
+     "تأثير",
+     "تءثير",
+     "تؤثير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة المكتوبة صحيحة:",
+    "options": [
+     "يؤم",
+     "يأم",
+     "يئم",
+     "يءم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة المكتوبة صحيحة:",
+    "options": [
+     "بئرة",
+     "بأرة",
+     "بءرة",
+     "بؤرة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة المكتوبة صحيحة:",
+    "options": [
+     "يأثر",
+     "يءثر",
+     "يؤثر",
+     "يئثر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الواو إذا كانت مضمومة وقبلها حرف:",
+    "options": [
+     "لا يهم",
+     "مكسور دائمًا",
+     "مكسور",
+     "مفتوح أو ساكن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الواو إذا كانت مفتوحة وقبلها حرف:",
+    "options": [
+     "ساكن",
+     "مضموم",
+     "مفتوح",
+     "مكسور"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الواو إذا كانت ساكنة وقبلها حرف:",
+    "options": [
+     "مضموم",
+     "مفتوح",
+     "ساكن",
+     "مكسور"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة التي همزتها ساكنة وقبلها مضموم:",
+    "options": [
+     "مؤتمر",
+     "تفاؤل",
+     "يؤم",
+     "سؤال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة التي همزتها مفتوحة وقبلها مضموم:",
+    "options": [
+     "مؤتمر",
+     "يؤم",
+     "سؤال",
+     "تفاؤل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ترتيب الحركات من حيث القوة:",
+    "options": [
+     "الفتحة أقوى",
+     "الضمة ثم الكسرة",
+     "السكون أقوى",
+     "الكسرة ثم الضمة ثم الفتحة ثم السكون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا الهمزة في «تشاؤم» على الواو؟",
+    "options": [
+     "لأنها مفتوحة",
+     "لأن قبلها مكسور",
+     "لأنها مضمومة والضمة أقوى من السكون قبلها",
+     "لأنها مكسورة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا كتبت همزة «سؤال» على الواو مع أنها مفتوحة؟",
+    "options": [
+     "لأنها مكسورة",
+     "لأنها مضمومة",
+     "لأن قبلها كسرة",
+     "لأن قبلها ضمة والضمة أقوى من الفتحة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا كتبت همزة «تفاؤل» على الواو مع أن قبلها ساكنًا؟",
+    "options": [
+     "لأنها مضمومة والضمة أقوى من السكون",
+     "لأنها مفتوحة",
+     "لأن قبلها مضموم",
+     "لأنها مكسورة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «مؤتمر» على الواو مع أنها ساكنة؟",
+    "options": [
+     "لأنها مفتوحة",
+     "لأن قبلها ضمة والضمة أقوى من السكون",
+     "لأنها مضمومة",
+     "لأنها مكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ما وجه الشبه بين «سؤال» و«فؤاد» و«يؤثر»؟",
+    "options": [
+     "الهمزة مضمومة وقبلها ساكن",
+     "الهمزة ساكنة",
+     "الهمزة مفتوحة وقبلها مضموم",
+     "الهمزة مكسورة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما وجه الشبه بين «مؤتمر» و«بؤرة» و«رؤية»؟",
+    "options": [
+     "الهمزة مفتوحة",
+     "الهمزة ساكنة وقبلها مضموم",
+     "الهمزة مضمومة",
+     "الهمزة مكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ما وجه الشبه بين «تفاؤل» و«تشاؤم» و«المسؤولية»؟",
+    "options": [
+     "الهمزة مضمومة وقبلها ساكن",
+     "الهمزة ساكنة",
+     "الهمزة مكسورة",
+     "الهمزة مفتوحة وقبلها مضموم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «المتفائل» على النبرة بينما «التفاؤل» على الواو؟",
+    "options": [
+     "لأن الأولى في أول الكلمة",
+     "لا سبب",
+     "لأن الثانية مكسورة",
+     "لأن الأولى مكسورة والثانية مضمومة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا كتبت همزة «سأل» على الألف بينما «سؤال» على الواو؟",
+    "options": [
+     "لأن سؤال اسم",
+     "لأن همزة سأل مكسورة",
+     "لأن قبل همزة سؤال ضمة",
+     "لا سبب"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "كم همزة على الواو في «طرح المؤذن سؤالًا عن المؤتمر»؟",
+    "options": [
+     "واحدة",
+     "ثلاث",
+     "لا توجد",
+     "اثنتان"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة التي كتبت همزتها خطأ:",
+    "options": [
+     "مؤتمر",
+     "سؤال",
+     "مأتمر",
+     "تفاؤل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكلمة التي كتبت همزتها خطأ:",
+    "options": [
+     "سئال",
+     "فؤاد",
+     "سؤال",
+     "يؤثر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة التي كتبت همزتها خطأ:",
+    "options": [
+     "المأذن",
+     "بؤرة",
+     "المؤذن",
+     "رؤية"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة التي كتبت همزتها صحيحة:",
+    "options": [
+     "تشاأم",
+     "تشاؤم",
+     "تشاءم",
+     "تشائم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة التي كتبت همزتها صحيحة:",
+    "options": [
+     "مأتمن",
+     "مئتمن",
+     "مؤتمن",
+     "مءتمن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "عند تصويب «التفاءل» إلى «التفاؤل» طبقنا قاعدة:",
+    "options": [
+     "المفتوحة بعد فتح",
+     "المضمومة بعد ساكن تكتب على الواو",
+     "الساكنة بعد فتح",
+     "المكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "عند تصويب «المأذن» إلى «المؤذن» طبقنا قاعدة:",
+    "options": [
+     "الساكنة بعد فتح",
+     "المضمومة بعد ساكن",
+     "المكسورة",
+     "المفتوحة بعد ضم تكتب على الواو"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «يؤم» مضمومة وقبلها:",
+    "options": [
+     "حرف مكسور",
+     "حرف ساكن",
+     "حرف مضموم",
+     "حرف مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي الكلمات تتبع حالة «سؤال» نفسها؟",
+    "options": [
+     "المؤذن",
+     "تفاؤل",
+     "مؤتمر",
+     "يؤم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أي الكلمات تتبع حالة «مؤتمر» نفسها؟",
+    "options": [
+     "تشاؤم",
+     "يؤم",
+     "سؤال",
+     "رؤية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي الكلمات تتبع حالة «تفاؤل» نفسها؟",
+    "options": [
+     "المؤذن",
+     "بؤرة",
+     "هؤلاء",
+     "سؤال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «يؤدي الطالب واجباته» صورة الهمزة وسببها:",
+    "options": [
+     "على السطر",
+     "على الواو لأنها مفتوحة بعد ضم",
+     "على النبرة",
+     "على الألف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «لا تؤجل عملك» صورة الهمزة وسببها:",
+    "options": [
+     "على الواو لأنها مفتوحة بعد ضم",
+     "على السطر",
+     "على الألف لأنها مفتوحة",
+     "على النبرة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «أؤمن بالمستقبل» صورة الهمزة الثانية وسببها:",
+    "options": [
+     "على الألف",
+     "على السطر",
+     "على النبرة",
+     "على الواو لأنها ساكنة بعد ضم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي الكلمات همزتها على الواو والسبب أنها ساكنة بعد ضم؟",
+    "options": [
+     "يؤذي",
+     "سؤال",
+     "تفاؤل",
+     "يؤدي"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أي الكلمات همزتها على الواو والسبب أنها مفتوحة بعد ضم؟",
+    "options": [
+     "تشاؤم",
+     "مؤقتة",
+     "مؤتمر",
+     "رؤية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي الكلمات همزتها على الواو والسبب أنها مضمومة بعد ساكن؟",
+    "options": [
+     "المؤذن",
+     "بؤرة",
+     "المسؤولية",
+     "يؤثر"
+    ],
+    "ans": 2
+   }
+  ]
+ }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+                <p style="margin-top:8px;font-size:.9rem;color:#0f766e;">${QUESTIONS_PER_PLAY} سؤالًا عشوائيًّا في كل مرة</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة لقائمة الألعاب</button>
+            </div>
+        `;
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_PLAY);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #059669)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.55 + Math.random() * 0.45; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

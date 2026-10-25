@@ -1,29 +1,53 @@
-# ألعاب اللغة العربية - الأستاذ / شريف الديب
+# ألعاب اللغة العربية التفاعلية - الأستاذ شريف الديب
 
-## الصف السادس الابتدائي (الفصل الدراسي الأول)
-- 12 درسًا في 3 وحدات، كل درس 5 ألعاب، كل لعبة 50 سؤالًا يظهر منها 20 عشوائيًّا في كل مرة (الإجمالي 3000 سؤال).
-- الصفحة الرئيسية `index.html` تعرض كل الدروس مع زر للدخول وزر لنسخ الرابط، وتضم أيضًا دروس الصف الثاني الإعدادي.
-- صفحات الدروس لا تحتوي على أي رابط للرجوع للصفحة الرئيسية أو للانتقال لدرس آخر.
+الصف السادس الابتدائي - الفصل الدراسي الأول.
 
-## طريقة الرفع
-1. ارفع **محتويات** هذا المجلد إلى جذر المستودع `shereefeldeeb` (index.html و teacher.jpg والمجلدات l01 حتى l12). لا تحذف المجلدين `prim201` و`prim202` الموجودين بالفعل.
-2. Settings ← Pages ← Deploy from a branch ← main / (root).
-3. الموقع: https://darsfele3ba4-debug.github.io/shereefeldeeb/
+كل درس فيه 5 ألعاب، وكل لعبة فيها 50 سؤالًا من الكتاب المدرسي، ويظهر منها 20 سؤالًا عشوائيًّا في كل مرة.
+
+الصفحة الرئيسية: https://darsfele3ba4-debug.github.io/shereefeldeeb/
 
 ## روابط الدروس
-| الوحدة | الدرس | العنوان | الرابط |
-|---|---|---|---|
-| الوحدة الأولى | الدرس الأول: الاستماع | سمر تطور نفسها | https://darsfele3ba4-debug.github.io/shereefeldeeb/l01/ |
-| الوحدة الأولى | الدرس الثاني: القراءة | كنز لا يقدر بثمن | https://darsfele3ba4-debug.github.io/shereefeldeeb/l02/ |
-| الوحدة الأولى | الدرس الثالث: القراءة | اصنع قرارك | https://darsfele3ba4-debug.github.io/shereefeldeeb/l03/ |
-| الوحدة الأولى | الدرس الرابع: النص الشعري | إلى الشباب | https://darsfele3ba4-debug.github.io/shereefeldeeb/l04/ |
-| الوحدة الثانية | الدرس الأول: الاستماع | من هم الناجحون؟ | https://darsfele3ba4-debug.github.io/shereefeldeeb/l05/ |
-| الوحدة الثانية | الدرس الثاني: القراءة | قوة الكلمات | https://darsfele3ba4-debug.github.io/shereefeldeeb/l06/ |
-| الوحدة الثانية | الدرس الثالث: القراءة | سر القوة والنجاح | https://darsfele3ba4-debug.github.io/shereefeldeeb/l07/ |
-| الوحدة الثانية | الدرس الرابع: النص الشعري | بناة المجد | https://darsfele3ba4-debug.github.io/shereefeldeeb/l08/ |
-| الوحدة الثالثة | الدرس الأول: الاستماع | من الخيال إلى الواقع | https://darsfele3ba4-debug.github.io/shereefeldeeb/l09/ |
-| الوحدة الثالثة | الدرس الثاني: القراءة | من وراء الكاميرا؟ | https://darsfele3ba4-debug.github.io/shereefeldeeb/l10/ |
-| الوحدة الثالثة | الدرس الثالث: القراءة | رحلة إلى المستقبل | https://darsfele3ba4-debug.github.io/shereefeldeeb/l11/ |
-| الوحدة الثالثة | الدرس الرابع: النص الشعري | سعادة الأوطان | https://darsfele3ba4-debug.github.io/shereefeldeeb/l12/ |
-| الصف الثاني الإعدادي | القواعد النحوية | المعرب والمبني من الأسماء والحروف | https://darsfele3ba4-debug.github.io/shereefeldeeb/prim201/ |
-| الصف الثاني الإعدادي | القواعد النحوية | المعرب والمبني من الأفعال | https://darsfele3ba4-debug.github.io/shereefeldeeb/prim202/ |
+
+
+### الوحدة الأولى: أطور ذاتي
+
+- الدرس الأول: الاستماع: سمر تطور نفسها — https://darsfele3ba4-debug.github.io/shereefeldeeb/l01/
+- الدرس الثاني: القراءة: كنز لا يقدر بثمن — https://darsfele3ba4-debug.github.io/shereefeldeeb/l02/
+- القواعد النحوية: الاسم النكرة والاسم المعرفة — https://darsfele3ba4-debug.github.io/shereefeldeeb/nahw01/
+- القواعد الإملائية: الهمزة المتوسطة على الألف — https://darsfele3ba4-debug.github.io/shereefeldeeb/imla01/
+- الدرس الثالث: القراءة: اصنع قرارك — https://darsfele3ba4-debug.github.io/shereefeldeeb/l03/
+- القواعد النحوية: أنواع المعارف — https://darsfele3ba4-debug.github.io/shereefeldeeb/nahw02/
+- القواعد الإملائية: تطبيقات على الهمزة المتوسطة على الألف — https://darsfele3ba4-debug.github.io/shereefeldeeb/imla02/
+- الدرس الرابع: النص الشعري: إلى الشباب — https://darsfele3ba4-debug.github.io/shereefeldeeb/l04/
+
+### الوحدة الثانية: أنا مسؤول
+
+- الدرس الأول: الاستماع: من هم الناجحون؟ — https://darsfele3ba4-debug.github.io/shereefeldeeb/l05/
+- الدرس الثاني: القراءة: قوة الكلمات — https://darsfele3ba4-debug.github.io/shereefeldeeb/l06/
+- القواعد النحوية: الأسماء الخمسة وعلاماتها الإعرابية — https://darsfele3ba4-debug.github.io/shereefeldeeb/nahw03/
+- القواعد الإملائية: الهمزة المتوسطة على الياء (النبرة) — https://darsfele3ba4-debug.github.io/shereefeldeeb/imla03/
+- الدرس الثالث: القراءة: سر القوة والنجاح — https://darsfele3ba4-debug.github.io/shereefeldeeb/l07/
+- القواعد النحوية: أنواع الخبر — https://darsfele3ba4-debug.github.io/shereefeldeeb/nahw04/
+- القواعد الإملائية: تطبيقات على الهمزة المتوسطة على الياء (النبرة) — https://darsfele3ba4-debug.github.io/shereefeldeeb/imla04/
+- الدرس الرابع: النص الشعري: بناة المجد — https://darsfele3ba4-debug.github.io/shereefeldeeb/l08/
+
+### الوحدة الثالثة: العلم والخيال والمستقبل
+
+- الدرس الأول: الاستماع: من الخيال إلى الواقع — https://darsfele3ba4-debug.github.io/shereefeldeeb/l09/
+- الدرس الثاني: القراءة: من وراء الكاميرا؟ — https://darsfele3ba4-debug.github.io/shereefeldeeb/l10/
+- القواعد النحوية: كان وأخواتها وأنواع خبرها — https://darsfele3ba4-debug.github.io/shereefeldeeb/nahw05/
+- القواعد الإملائية: الهمزة المتوسطة على الواو — https://darsfele3ba4-debug.github.io/shereefeldeeb/imla05/
+- الدرس الثالث: القراءة: رحلة إلى المستقبل — https://darsfele3ba4-debug.github.io/shereefeldeeb/l11/
+- القواعد النحوية: إن وأخواتها وأنواع خبرها — https://darsfele3ba4-debug.github.io/shereefeldeeb/nahw06/
+- القواعد الإملائية: تطبيقات على الهمزة المتوسطة على الواو — https://darsfele3ba4-debug.github.io/shereefeldeeb/imla06/
+- الدرس الرابع: النص الشعري: سعادة الأوطان — https://darsfele3ba4-debug.github.io/shereefeldeeb/l12/
+
+### الصف الثاني الإعدادي
+
+- المعرب والمبني من الأسماء والحروف — https://darsfele3ba4-debug.github.io/shereefeldeeb/prim201/
+- المعرب والمبني من الأفعال — https://darsfele3ba4-debug.github.io/shereefeldeeb/prim202/
+
+## طريقة الرفع
+
+ارفع محتويات هذا المجلد كما هي إلى جذر المستودع (darsfele3ba4-debug/shereefeldeeb).
+لا تحذف المجلدين prim201 و prim202 الموجودين بالفعل في المستودع؛ الصفحة الرئيسية تحتوي على روابط لهما.

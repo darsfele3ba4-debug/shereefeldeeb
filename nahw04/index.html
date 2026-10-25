@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>أنواع الخبر - الصف السادس الابتدائي - شريف الديب</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;      
+            --primary-light: #14b8a6; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #effcf9;
+            background-image: radial-gradient(#a7dcd4 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(2.5rem, 10vw, 4.5rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.1;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(20, 184, 166, 0.3); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #0f766e; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #14b8a6; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #0f766e;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #0f766e);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(204,251,241,0.9));
+            color: #0f766e;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23fff7ed" width="100%" height="100%"/><circle fill="%23fed7aa" cx="20%" cy="30%" r="50"/><circle fill="%23fed7aa" cx="80%" cy="60%" r="70"/><circle fill="%23fed7aa" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #fffbeb; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #431407, #9a3412, #ea580c);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #fdba74; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(234,88,12,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #fde047, #f59e0b, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #fb923c, #ea580c);
+            border-bottom: 3px solid #7c2d12; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(253, 224, 71, 0.15); color: #fde047;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        .lesson-name { font-size: clamp(1.4rem, 5vw, 2rem) !important; color: #fde047 !important; font-weight: 900 !important; margin-top: 4px; }
+        .extra-line { font-size: .9em; color: #ccfbf1; }
+        @media (max-width: 600px) {
+            .teacher-photo { width: 170px !important; height: 170px !important; }
+            .header-main { padding: 20px 14px 70px 14px; }
+            #home-screen { padding: 14px; }
+            .grid-menu { grid-template-columns: 1fr; gap: 16px; }
+            .game-container { padding: 0 12px 30px 12px; }
+            .game-nav { padding: 10px 12px; gap: 8px; }
+            .bubble { font-size: 0.78rem; padding: 8px 3px; }
+            .target-bird { white-space: normal; max-width: 78vw; font-size: 0.95rem; padding: 8px 14px; }
+            .tf-grid .btn { min-width: 130px !important; font-size: 1.6rem !important; padding: 22px !important; }
+            .modal { padding: 26px; }
+            #feedback-title { font-size: 1.8rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img class="teacher-photo" src="../teacher.jpg" alt="الأستاذ شريف الديب" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fde047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">شريف الديب</h1>
+                    <h2>الصَّفُّ السَّادِسُ الابْتِدَائِيُّ - الوحدة الثانية: أنا مسؤول</h2>
+                    <h2 class="lesson-name">أنواع الخبر</h2>
+                    <p style="margin-top: 10px;">القواعد النحوية<br><span class="extra-line">من درس: سر القوة والنجاح</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#effcf9" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 20</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | الأستاذ / شريف الديب</p>
+    </footer>
+
+<script>
+    const LESSON_NAME = "أنواع الخبر";
+    const QUESTIONS_PER_PLAY = 20;
+    const allGamesData = [
+ {
+  "id": "g1",
+  "title": "أفهم القاعدة",
+  "type": "mcq",
+  "desc": "أسئلة على قاعدة: أنواع الخبر",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>",
+  "questions": [
+   {
+    "q": "الجملة الاسمية تتكون من:",
+    "options": [
+     "المبتدأ والخبر",
+     "الجار والمجرور",
+     "الفعل والفاعل",
+     "الفعل والمفعول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أنواع الخبر في الجملة الاسمية:",
+    "options": [
+     "مفرد - جملة - شبه جملة",
+     "ماض - مضارع - أمر",
+     "نكرة - معرفة - علم",
+     "فعل - فاعل - مفعول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر المفرد:",
+    "options": [
+     "جملة فعلية",
+     "ما ليس جملة ولا شبه جملة",
+     "جار ومجرور",
+     "ظرف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر الجملة نوعان:",
+    "options": [
+     "ظرف وجار ومجرور",
+     "مفرد ومثنى",
+     "نكرة ومعرفة",
+     "جملة اسمية وجملة فعلية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الخبر شبه الجملة نوعان:",
+    "options": [
+     "ظرف وجار ومجرور",
+     "نكرة ومعرفة",
+     "اسمية وفعلية",
+     "مفرد وجمع"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الذي يجب أن تشتمل عليه جملة الخبر؟",
+    "options": [
+     "اسم إشارة",
+     "ضمير يربطها بالمبتدأ",
+     "حرف جر",
+     "ظرف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الضمير الذي يربط جملة الخبر بالمبتدأ يسمى:",
+    "options": [
+     "المفعول",
+     "الفاعل",
+     "النعت",
+     "الرابط"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرابط يعود على:",
+    "options": [
+     "الفعل",
+     "المبتدأ ويطابقه في النوع والعدد",
+     "المفعول به",
+     "الخبر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الرابط قد يكون:",
+    "options": [
+     "ضميرًا بارزًا أو مستترًا",
+     "ظرفًا",
+     "فعلًا",
+     "حرفًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «العمل أساسه النجاح» الرابط:",
+    "options": [
+     "أساس",
+     "الهاء في (أساسه)",
+     "العمل",
+     "النجاح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «التخطيط يوفر الوقت» الرابط:",
+    "options": [
+     "الضمير المستتر في (يوفر)",
+     "يوفر",
+     "الوقت",
+     "التخطيط"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «المتحف قريب»:",
+    "options": [
+     "قريب (جملة)",
+     "لا يوجد",
+     "قريب (مفرد)",
+     "المتحف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الخبر في «الصديقان متعاونان»:",
+    "options": [
+     "متعاونان (مفرد)",
+     "الصديقان",
+     "جملة",
+     "شبه جملة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «الفلاحون نشيطون»:",
+    "options": [
+     "نشيطون (مفرد)",
+     "ظرف",
+     "جملة فعلية",
+     "الفلاحون"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «العمل أساسه النجاح»:",
+    "options": [
+     "أساسه النجاح (جملة اسمية)",
+     "أساس (مفرد)",
+     "النجاح (مفرد)",
+     "العمل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «التخطيط يوفر الوقت»:",
+    "options": [
+     "الوقت (مفرد)",
+     "التخطيط",
+     "يوفر فقط",
+     "يوفر الوقت (جملة فعلية)"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الخبر في «الاجتماع غدًا»:",
+    "options": [
+     "غدًا (ظرف زمان)",
+     "جار ومجرور",
+     "جملة",
+     "الاجتماع"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «الكتب داخل الحقيبة»:",
+    "options": [
+     "الحقيبة (مفرد)",
+     "جار ومجرور",
+     "داخل الحقيبة (ظرف مكان)",
+     "جملة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الخبر في «الزهرة في الحديقة»:",
+    "options": [
+     "ظرف",
+     "في الحديقة (جار ومجرور)",
+     "الحديقة",
+     "جملة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا سمي الخبر في «المتحف قريب» مفردًا؟",
+    "options": [
+     "لأنه كلمة واحدة ليست جملة ولا شبه جملة",
+     "لأنه ظرف",
+     "لأنه مثنى",
+     "لأنه فعل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا سمي الخبر في «الصديقان متعاونان» مفردًا مع أنه مثنى؟",
+    "options": [
+     "لأنه كلمة واحدة مفردة العدد",
+     "لأن المفرد هنا ما ليس جملة ولا شبه جملة",
+     "لأنه جمع",
+     "خطأ في التسمية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع الخبر في «الشجرة ثمارها ناضجة»:",
+    "options": [
+     "شبه جملة",
+     "مفرد",
+     "جملة فعلية",
+     "جملة اسمية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "نوع الخبر في «المسؤول يدرس قراراته»:",
+    "options": [
+     "شبه جملة",
+     "جملة فعلية",
+     "مفرد",
+     "جملة اسمية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع الخبر في «جدول الأعمال مزدحم»:",
+    "options": [
+     "مفرد",
+     "ظرف",
+     "شبه جملة",
+     "جملة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع الخبر في «اللافتة على الحائط»:",
+    "options": [
+     "مفرد",
+     "شبه جملة جار ومجرور",
+     "ظرف",
+     "جملة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع الخبر في «الالتزام فوائده عظيمة»:",
+    "options": [
+     "جملة اسمية",
+     "شبه جملة",
+     "جملة فعلية",
+     "مفرد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع الخبر في «الاجتماع صباحًا»:",
+    "options": [
+     "شبه جملة ظرف",
+     "مفرد",
+     "جار ومجرور",
+     "جملة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الفاكهة طعمها لذيذ» المبتدأ الثاني:",
+    "options": [
+     "لذيذ",
+     "طعم",
+     "ها",
+     "الفاكهة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «الفاكهة طعمها لذيذ» خبر المبتدأ الثاني:",
+    "options": [
+     "لذيذ",
+     "ها",
+     "طعم",
+     "الفاكهة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الحاسوب فوائده كثيرة» الرابط:",
+    "options": [
+     "الحاسوب",
+     "فوائد",
+     "كثيرة",
+     "الهاء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «العلماء خدماتهم جليلة» الرابط:",
+    "options": [
+     "خدمات",
+     "هم",
+     "جليلة",
+     "العلماء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «القمر سطع نوره» الفعل والفاعل:",
+    "options": [
+     "سطع - القمر",
+     "سطع - نوره",
+     "القمر - سطع",
+     "نور - القمر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «التلميذ تحسنت درجاته» الفعل والفاعل:",
+    "options": [
+     "تحسنت - درجاته",
+     "تحسن - التاء",
+     "التلميذ - تحسنت",
+     "درجات - التلميذ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «لقاء الأصدقاء مساءً» نوع الخبر:",
+    "options": [
+     "ظرف مكان",
+     "شبه جملة ظرف زمان",
+     "جار ومجرور",
+     "مفرد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «الوقت من ذهب» نوع الخبر:",
+    "options": [
+     "مفرد",
+     "جملة",
+     "شبه جملة جار ومجرور",
+     "ظرف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «المعلمة بين الصفوف» نوع الخبر:",
+    "options": [
+     "ظرف زمان",
+     "جار ومجرور",
+     "جملة",
+     "شبه جملة ظرف مكان"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «الطعام على المائدة» نوع الخبر:",
+    "options": [
+     "مفرد",
+     "ظرف",
+     "جملة",
+     "شبه جملة جار ومجرور"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أكمل بخبر جملة فعلية: «احترام الوقت ............»",
+    "options": [
+     "فائدته كبيرة",
+     "في حياتنا",
+     "مهم",
+     "يحقق النجاح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أكمل بخبر جار ومجرور: «المقالة ............»",
+    "options": [
+     "في المجلة",
+     "تفيدنا",
+     "مفيدة",
+     "فكرتها جيدة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بخبر جملة اسمية: «النجاح ............»",
+    "options": [
+     "في العمل",
+     "يأتي بالجد",
+     "مهم",
+     "طريقه العمل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تحويل «الحديقة كثيرة الأزهار» إلى خبر جملة اسمية:",
+    "options": [
+     "الحديقة تزهر",
+     "الأزهار كثيرة",
+     "الحديقة أزهارها كثيرة",
+     "الحديقة كثيرة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تحويل «الجو حرارته شديدة» إلى خبر مفرد:",
+    "options": [
+     "الجو شديد الحرارة",
+     "الحرارة شديدة",
+     "الجو يحر",
+     "الحرارة الجو شديدة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تحويل «الطائر جميل الشكل» إلى خبر جملة اسمية:",
+    "options": [
+     "الشكل جميل",
+     "الطائر شكله جميل",
+     "الطائر يجمل",
+     "الطائر جميل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تحويل «الأب قلبه رحيم» إلى خبر مفرد:",
+    "options": [
+     "رحيم الأب قلبه",
+     "الأب يرحم",
+     "الأب رحيم القلب",
+     "القلب رحيم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "إعراب «أبوك» في «أبوك خبراته كثيرة»:",
+    "options": [
+     "مبتدأ ثان",
+     "خبر",
+     "مبتدأ أول مرفوع بالواو",
+     "فاعل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "إعراب «خبراته» في «أبوك خبراته كثيرة»:",
+    "options": [
+     "مبتدأ أول",
+     "خبر",
+     "فاعل",
+     "مبتدأ ثان مرفوع بالضمة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "إعراب «كثيرة» في «أبوك خبراته كثيرة»:",
+    "options": [
+     "مبتدأ",
+     "مفعول به",
+     "فاعل",
+     "خبر المبتدأ الثاني مرفوع"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "جملة «خبراته كثيرة» في محل:",
+    "options": [
+     "لا محل لها",
+     "رفع خبر المبتدأ الأول",
+     "نصب",
+     "جر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جملة «يطور الذات» في «التعلم يطور الذات» في محل:",
+    "options": [
+     "جر",
+     "نصب مفعول",
+     "رفع خبر",
+     "لا محل لها"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «الاختباران في الكتاب» شبه الجملة «في الكتاب» في محل:",
+    "options": [
+     "نصب",
+     "لا محل له",
+     "رفع خبر",
+     "جر"
+    ],
+    "ans": 2
+   }
+  ]
+ },
+ {
+  "id": "g2",
+  "title": "الفقاعات المتساقطة",
+  "type": "bubbles",
+  "desc": "حدد نوع الخبر بسرعة",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"8\" cy=\"8\" r=\"5\"></circle><circle cx=\"17\" cy=\"15\" r=\"4\"></circle><circle cx=\"7\" cy=\"18\" r=\"2.5\"></circle></svg>",
+  "questions": [
+   {
+    "q": "«المتحف قريب»:",
+    "options": [
+     "جملة اسمية",
+     "جملة فعلية",
+     "مفرد",
+     "شبه جملة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الصديقان متعاونان»:",
+    "options": [
+     "جملة فعلية",
+     "مفرد",
+     "شبه جملة",
+     "جملة اسمية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الفلاحون نشيطون»:",
+    "options": [
+     "جملة فعلية",
+     "جملة اسمية",
+     "شبه جملة",
+     "مفرد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«العمل أساسه النجاح»:",
+    "options": [
+     "شبه جملة",
+     "جملة فعلية",
+     "مفرد",
+     "جملة اسمية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«التخطيط يوفر الوقت»:",
+    "options": [
+     "جملة اسمية",
+     "مفرد",
+     "جملة فعلية",
+     "شبه جملة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الاجتماع غدًا»:",
+    "options": [
+     "مفرد",
+     "ظرف",
+     "جملة",
+     "جار ومجرور"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الكتب داخل الحقيبة»:",
+    "options": [
+     "جار ومجرور",
+     "مفرد",
+     "ظرف",
+     "جملة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الزهرة في الحديقة»:",
+    "options": [
+     "جار ومجرور",
+     "مفرد",
+     "جملة",
+     "ظرف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الشجرة ثمارها ناضجة»:",
+    "options": [
+     "مفرد",
+     "جملة اسمية",
+     "جملة فعلية",
+     "ظرف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«المسؤول يدرس قراراته»:",
+    "options": [
+     "ظرف",
+     "جملة فعلية",
+     "جملة اسمية",
+     "مفرد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«جدول الأعمال مزدحم»:",
+    "options": [
+     "مفرد",
+     "جار ومجرور",
+     "جملة",
+     "ظرف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«اللافتة على الحائط»:",
+    "options": [
+     "ظرف",
+     "مفرد",
+     "جار ومجرور",
+     "جملة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الالتزام فوائده عظيمة»:",
+    "options": [
+     "مفرد",
+     "جملة اسمية",
+     "ظرف",
+     "جملة فعلية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الاجتماع صباحًا»:",
+    "options": [
+     "مفرد",
+     "جار ومجرور",
+     "جملة",
+     "ظرف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الفاكهة طعمها لذيذ»:",
+    "options": [
+     "جملة فعلية",
+     "جملة اسمية",
+     "مفرد",
+     "ظرف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الحاسوب فوائده كثيرة»:",
+    "options": [
+     "ظرف",
+     "مفرد",
+     "جملة اسمية",
+     "جملة فعلية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«القمر سطع نوره»:",
+    "options": [
+     "مفرد",
+     "ظرف",
+     "جملة اسمية",
+     "جملة فعلية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الإنجاز يمنح الثقة»:",
+    "options": [
+     "مفرد",
+     "جملة فعلية",
+     "ظرف",
+     "جملة اسمية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«التلميذ تحسنت درجاته»:",
+    "options": [
+     "مفرد",
+     "جملة اسمية",
+     "جملة فعلية",
+     "ظرف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«لقاء الأصدقاء مساءً»:",
+    "options": [
+     "جملة",
+     "مفرد",
+     "جار ومجرور",
+     "ظرف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الوقت من ذهب»:",
+    "options": [
+     "ظرف",
+     "مفرد",
+     "جملة",
+     "جار ومجرور"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«المعلمة بين الصفوف»:",
+    "options": [
+     "جملة",
+     "مفرد",
+     "جار ومجرور",
+     "ظرف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الرحلة صباحًا»:",
+    "options": [
+     "ظرف",
+     "مفرد",
+     "جار ومجرور",
+     "جملة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الطعام على المائدة»:",
+    "options": [
+     "جملة",
+     "ظرف",
+     "مفرد",
+     "جار ومجرور"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«القراران صحيحان»:",
+    "options": [
+     "جار ومجرور",
+     "جملة",
+     "ظرف",
+     "مفرد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«المسؤول يختار كلماته»:",
+    "options": [
+     "جملة فعلية",
+     "جملة اسمية",
+     "مفرد",
+     "ظرف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الطائر فوق الشجرة»:",
+    "options": [
+     "جملة",
+     "مفرد",
+     "جار ومجرور",
+     "ظرف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«المدرسة نظامها رائع»:",
+    "options": [
+     "جملة فعلية",
+     "مفرد",
+     "جملة اسمية",
+     "ظرف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«النيل جميل المنظر»:",
+    "options": [
+     "جملة اسمية",
+     "ظرف",
+     "جملة فعلية",
+     "مفرد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«النيل منظره جميل»:",
+    "options": [
+     "جملة اسمية",
+     "مفرد",
+     "جملة فعلية",
+     "ظرف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الحديقة كثيرة الأزهار»:",
+    "options": [
+     "جار ومجرور",
+     "ظرف",
+     "مفرد",
+     "جملة اسمية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الحديقة أزهارها كثيرة»:",
+    "options": [
+     "جار ومجرور",
+     "جملة اسمية",
+     "مفرد",
+     "ظرف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الجو شديد الحرارة»:",
+    "options": [
+     "جملة",
+     "ظرف",
+     "جار ومجرور",
+     "مفرد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الأب قلبه رحيم»:",
+    "options": [
+     "جملة فعلية",
+     "ظرف",
+     "جملة اسمية",
+     "مفرد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الرياضة عديدة الفوائد»:",
+    "options": [
+     "مفرد",
+     "جملة اسمية",
+     "ظرف",
+     "جار ومجرور"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«التعلم يطور الذات»:",
+    "options": [
+     "جملة فعلية",
+     "جملة اسمية",
+     "مفرد",
+     "ظرف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الاختباران في الكتاب»:",
+    "options": [
+     "ظرف",
+     "جملة",
+     "مفرد",
+     "جار ومجرور"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الكتاب فوق الرف»:",
+    "options": [
+     "جار ومجرور",
+     "مفرد",
+     "جملة",
+     "ظرف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«أبوك خبراته كثيرة»:",
+    "options": [
+     "ظرف",
+     "جملة فعلية",
+     "مفرد",
+     "جملة اسمية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الأمل يصنع المستقبل»:",
+    "options": [
+     "ظرف",
+     "مفرد",
+     "جملة اسمية",
+     "جملة فعلية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرابط في «طعمها»:",
+    "options": [
+     "طعم",
+     "لذيذ",
+     "ها",
+     "الفاكهة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الرابط في «فوائده»:",
+    "options": [
+     "فوائد",
+     "كثيرة",
+     "الهاء",
+     "الحاسوب"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الرابط في «خدماتهم»:",
+    "options": [
+     "العلماء",
+     "خدمات",
+     "جليلة",
+     "هم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرابط في «تعاونهما»:",
+    "options": [
+     "تعاون",
+     "الصديقان",
+     "رائع",
+     "هما"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرابط في «عملهن»:",
+    "options": [
+     "هن",
+     "عمل",
+     "متقن",
+     "البنات"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الرابط في «أساسه»:",
+    "options": [
+     "الهاء",
+     "أساس",
+     "النجاح",
+     "العمل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "رابط «يوفر الوقت»:",
+    "options": [
+     "هو المستتر",
+     "يوفر",
+     "التخطيط",
+     "الوقت"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "رابط «سطع نوره»:",
+    "options": [
+     "الهاء في نوره",
+     "سطع",
+     "نور",
+     "القمر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "رابط «تحسنت درجاته»:",
+    "options": [
+     "الهاء في درجاته",
+     "درجات",
+     "تحسنت",
+     "التلميذ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "رابط «ثمارها ناضجة»:",
+    "options": [
+     "ناضجة",
+     "ثمار",
+     "الشجرة",
+     "ها"
+    ],
+    "ans": 3
+   }
+  ]
+ },
+ {
+  "id": "g3",
+  "title": "التنشين والاصطياد",
+  "type": "shooting",
+  "desc": "طبّق أنواع الخبر في جمل الكتاب",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+  "questions": [
+   {
+    "q": "أنواع الخبر في الجملة الاسمية:",
+    "options": [
+     "مفرد - جملة - شبه جملة",
+     "فعل - فاعل - مفعول",
+     "ماض - مضارع - أمر",
+     "نكرة - معرفة - علم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر المفرد هو:",
+    "options": [
+     "الجار والمجرور",
+     "ما ليس جملة ولا شبه جملة",
+     "الجملة الفعلية",
+     "الظرف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر شبه الجملة:",
+    "options": [
+     "جملة فعلية",
+     "جملة اسمية",
+     "كلمة واحدة فقط",
+     "ظرف أو جار ومجرور"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الخبر الجملة يجب أن يشتمل على:",
+    "options": [
+     "ضمير يربطه بالمبتدأ",
+     "اسم إشارة دائمًا",
+     "حرف جر",
+     "ظرف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الضمير الذي يربط جملة الخبر بالمبتدأ يسمى:",
+    "options": [
+     "الرابط",
+     "الظرف",
+     "المفعول",
+     "الفاعل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع الخبر في «المتحف قريب»:",
+    "options": [
+     "جملة فعلية",
+     "مفرد",
+     "شبه جملة",
+     "جملة اسمية"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع الخبر في «الصديقان متعاونان»:",
+    "options": [
+     "مفرد",
+     "شبه جملة",
+     "جملة اسمية",
+     "جملة فعلية"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع الخبر في «الفلاحون نشيطون»:",
+    "options": [
+     "جملة اسمية",
+     "مفرد",
+     "جملة فعلية",
+     "شبه جملة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع الخبر في «العمل أساسه النجاح»:",
+    "options": [
+     "جملة فعلية",
+     "جملة اسمية",
+     "شبه جملة",
+     "مفرد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع الخبر في «التخطيط يوفر الوقت»:",
+    "options": [
+     "شبه جملة",
+     "مفرد",
+     "جملة فعلية",
+     "جملة اسمية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "نوع الخبر في «الاجتماع غدًا»:",
+    "options": [
+     "جار ومجرور",
+     "مفرد",
+     "شبه جملة ظرف",
+     "جملة فعلية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "نوع الخبر في «الكتب داخل الحقيبة»:",
+    "options": [
+     "جملة اسمية",
+     "جار ومجرور",
+     "شبه جملة ظرف",
+     "مفرد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "نوع الخبر في «الزهرة في الحديقة»:",
+    "options": [
+     "شبه جملة جار ومجرور",
+     "مفرد",
+     "جملة فعلية",
+     "ظرف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع الخبر في «الشجرة ثمارها ناضجة»:",
+    "options": [
+     "شبه جملة",
+     "جملة فعلية",
+     "مفرد",
+     "جملة اسمية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "نوع الخبر في «المسؤول يدرس قراراته»:",
+    "options": [
+     "شبه جملة",
+     "جملة اسمية",
+     "جملة فعلية",
+     "مفرد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "نوع الخبر في «جدول الأعمال مزدحم»:",
+    "options": [
+     "جملة فعلية",
+     "مفرد",
+     "جملة اسمية",
+     "شبه جملة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع الخبر في «اللافتة على الحائط»:",
+    "options": [
+     "شبه جملة",
+     "مفرد",
+     "جملة فعلية",
+     "جملة اسمية"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع الخبر في «الالتزام فوائده عظيمة»:",
+    "options": [
+     "مفرد",
+     "جملة اسمية",
+     "جملة فعلية",
+     "شبه جملة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع الخبر في «الاجتماع صباحًا»:",
+    "options": [
+     "شبه جملة ظرف زمان",
+     "جار ومجرور",
+     "مفرد",
+     "جملة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الرابط في «الفاكهة طعمها لذيذ»:",
+    "options": [
+     "الفاكهة",
+     "لذيذ",
+     "طعم",
+     "ها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرابط في «الحاسوب فوائده كثيرة»:",
+    "options": [
+     "كثيرة",
+     "فوائد",
+     "الحاسوب",
+     "الهاء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرابط في «العلماء خدماتهم جليلة»:",
+    "options": [
+     "جليلة",
+     "هم",
+     "العلماء",
+     "خدمات"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الرابط في «الصديقان تعاونهما رائع»:",
+    "options": [
+     "الصديقان",
+     "رائع",
+     "هما",
+     "تعاون"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الرابط في «البنات عملهن متقن»:",
+    "options": [
+     "متقن",
+     "هن",
+     "البنات",
+     "عمل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "المبتدأ الثاني في «الفاكهة طعمها لذيذ»:",
+    "options": [
+     "لذيذ",
+     "الفاكهة",
+     "ها",
+     "طعم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرابط في «العمل أساسه النجاح»:",
+    "options": [
+     "النجاح",
+     "العمل",
+     "أساس",
+     "الهاء في أساسه"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرابط في «التخطيط يوفر الوقت»:",
+    "options": [
+     "الوقت",
+     "التخطيط",
+     "يوفر",
+     "ضمير مستتر تقديره هو"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الفعل في خبر «القمر سطع نوره»:",
+    "options": [
+     "سطع",
+     "نوره",
+     "القمر",
+     "الهاء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الفاعل في «الإنجاز يمنح الثقة لصاحبه»:",
+    "options": [
+     "ضمير مستتر هو",
+     "صاحبه",
+     "الإنجاز",
+     "الثقة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الفاعل في «التلميذ تحسنت درجاته»:",
+    "options": [
+     "تحسنت",
+     "التلميذ",
+     "درجاته",
+     "الهاء"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الخبر في «لقاء الأصدقاء مساءً»:",
+    "options": [
+     "الأصدقاء",
+     "لقاء",
+     "لا يوجد",
+     "مساءً"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الخبر في «الوقت من ذهب»:",
+    "options": [
+     "الوقت",
+     "ذهب",
+     "من",
+     "من ذهب"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الخبر في «المعلمة بين الصفوف»:",
+    "options": [
+     "الصفوف",
+     "بين الصفوف",
+     "المعلمة",
+     "بين"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع «بين الصفوف» في «المعلمة بين الصفوف»:",
+    "options": [
+     "شبه جملة ظرف مكان",
+     "جار ومجرور",
+     "مفرد",
+     "جملة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع «صباحًا» في «الرحلة صباحًا»:",
+    "options": [
+     "جار ومجرور",
+     "مفرد",
+     "ظرف مكان",
+     "شبه جملة ظرف زمان"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "نوع «على المائدة» في «الطعام على المائدة»:",
+    "options": [
+     "شبه جملة جار ومجرور",
+     "جملة",
+     "ظرف",
+     "مفرد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بخبر جملة فعلية: «احترام الوقت ............»",
+    "options": [
+     "يحقق النجاح",
+     "في حياتنا",
+     "نجاحه كبير",
+     "مهم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بخبر شبه جملة جار ومجرور: «المقالة ............»",
+    "options": [
+     "مفيدة",
+     "في المجلة",
+     "فكرتها جيدة",
+     "تفيدنا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أكمل بخبر جملة اسمية: «النجاح ............»",
+    "options": [
+     "في العمل",
+     "مهم",
+     "يأتي بالجد",
+     "طريقه العمل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تحويل «الطائر جميل الشكل» إلى خبر جملة اسمية:",
+    "options": [
+     "الطائر يجمل",
+     "الطائر جميل",
+     "الطائر شكله جميل",
+     "الشكل جميل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تحويل «الأب قلبه رحيم» إلى خبر مفرد:",
+    "options": [
+     "رحيم الأب قلبه",
+     "القلب رحيم",
+     "الأب يرحم",
+     "الأب رحيم القلب"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تحويل «الرياضة عديدة الفوائد» إلى خبر جملة اسمية:",
+    "options": [
+     "الرياضة مفيدة",
+     "الرياضة تفيد",
+     "الرياضة فوائدها عديدة",
+     "الفوائد عديدة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تحويل «الحديقة كثيرة الأزهار» إلى خبر جملة اسمية:",
+    "options": [
+     "الأزهار كثيرة",
+     "الحديقة أزهارها كثيرة",
+     "الحديقة تزهر",
+     "الحديقة كثيرة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تحويل «النيل جميل المنظر» إلى خبر جملة اسمية:",
+    "options": [
+     "النيل جميل",
+     "النيل منظره جميل",
+     "النيل يجمل",
+     "المنظر جميل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "إعراب «أبوك» في «أبوك خبراته كثيرة»:",
+    "options": [
+     "مبتدأ أول مرفوع بالواو",
+     "مبتدأ ثان",
+     "فاعل",
+     "خبر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "إعراب «خبراته» في «أبوك خبراته كثيرة»:",
+    "options": [
+     "مفعول به",
+     "خبر مفرد",
+     "مبتدأ ثان مرفوع بالضمة",
+     "مبتدأ أول"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "جملة «خبراته كثيرة» في «أبوك خبراته كثيرة»:",
+    "options": [
+     "مبتدأ",
+     "لا محل لها",
+     "في محل رفع خبر",
+     "مفعول به"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "جملة «يطور الذات» في «التعلم يطور الذات»:",
+    "options": [
+     "في محل رفع خبر",
+     "لا محل لها",
+     "مبتدأ",
+     "مفعول به"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع الخبر في «القراران صحيحان»:",
+    "options": [
+     "مفرد",
+     "جملة",
+     "ظرف",
+     "شبه جملة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع الخبر في «المسؤول يختار كلماته»:",
+    "options": [
+     "جملة اسمية",
+     "مفرد",
+     "شبه جملة",
+     "جملة فعلية"
+    ],
+    "ans": 3
+   }
+  ]
+ },
+ {
+  "id": "g4",
+  "title": "صح أم خطأ",
+  "type": "true_false",
+  "desc": "هل العبارة صحيحة أم خاطئة؟",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+  "questions": [
+   {
+    "q": "الخبر المفرد ما ليس جملة ولا شبه جملة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر شبه الجملة يكون ظرفًا أو جارًّا ومجرورًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر الجملة لا يحتاج إلى رابط.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الرابط ضمير يعود على المبتدأ ويطابقه في النوع والعدد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الرابط قد يكون ضميرًا بارزًا أو مستترًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «المتحف قريب» جملة اسمية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر في «التخطيط يوفر الوقت» جملة فعلية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «الزهرة في الحديقة» شبه جملة جار ومجرور.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «الاجتماع غدًا» شبه جملة ظرف.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «العمل أساسه النجاح» جملة فعلية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر في «الصديقان متعاونان» مفرد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الضبط هو وضع العلامات الإعرابية على أواخر الكلمات.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الجملة الاسمية تتكون من المبتدأ والخبر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر نوع واحد فقط هو المفرد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر الجملة قد تكون اسمية أو فعلية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الظرف والجار والمجرور من أنواع الخبر الجملة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر في «الشجرة ثمارها ناضجة» جملة اسمية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «المسؤول يدرس قراراته» جملة اسمية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر في «جدول الأعمال مزدحم» مفرد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «اللافتة على الحائط» ظرف.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر في «الالتزام فوائده عظيمة» جملة اسمية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «الاجتماع صباحًا» شبه جملة ظرف.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الرابط في «الفاكهة طعمها لذيذ» هو «ها».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الرابط في «العلماء خدماتهم جليلة» هو «جليلة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الرابط في «البنات عملهن متقن» يدل على جمع المؤنث.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الرابط في «التخطيط يوفر الوقت» ضمير مستتر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «القمر سطع نوره» الفاعل هو «القمر».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «القمر سطع نوره» الفاعل هو «نوره».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الإنجاز يمنح الثقة لصاحبه» الفاعل ضمير مستتر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «الوقت من ذهب» جار ومجرور.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «المعلمة بين الصفوف» جار ومجرور.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر في «الطعام على المائدة» جار ومجرور.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الحديقة كثيرة الأزهار» تحويلها إلى خبر جملة: «الحديقة أزهارها كثيرة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الأب قلبه رحيم» تحويلها إلى خبر مفرد: «الأب رحيم القلب».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الطائر جميل الشكل» خبرها جملة اسمية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«أبوك» في «أبوك خبراته كثيرة» مبتدأ أول مرفوع بالواو.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«خبراته» في «أبوك خبراته كثيرة» خبر مفرد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جملة «خبراته كثيرة» في محل رفع خبر المبتدأ الأول.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جملة «يطور الذات» في «التعلم يطور الذات» لا محل لها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخبر في «القراران صحيحان» مفرد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «المسؤول يختار كلماته» جملة فعلية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الطائر فوق الشجرة» خبرها شبه جملة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«المدرسة نظامها رائع» خبرها جملة فعلية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«النيل جميل المنظر» تحويلها: «النيل منظره جميل».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر المفرد قد يكون مثنى أو جمعًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر الجملة تكون في محل رفع.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الخبر في «الكتب داخل الحقيبة» هو «الحقيبة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الرحلة صباحًا» خبرها جار ومجرور.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الرابط يطابق المبتدأ في النوع والعدد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الصديقان تعاونهما رائع» الرابط «هما».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g5",
+  "title": "تحدي العباقرة",
+  "type": "genius",
+  "desc": "أسئلة أعمق في أنواع الخبر والرابط والإعراب",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path><path d=\"M10 21h4\"></path></svg>",
+  "questions": [
+   {
+    "q": "«العلماء خدماتهم جليلة» كلمة (جليلة) إعرابها:",
+    "options": [
+     "رابط",
+     "مفعول به",
+     "مبتدأ أول",
+     "خبر المبتدأ الثاني"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «الأب قلبه رحيم» الخبر:",
+    "options": [
+     "قلب",
+     "الأب",
+     "رحيم فقط",
+     "جملة (قلبه رحيم)"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الطعام على المائدة» تحويل الخبر إلى جملة فعلية:",
+    "options": [
+     "الطعام كثير",
+     "الطعام يوضع على المائدة",
+     "الطعام لذيذ",
+     "المائدة طعامها"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا يتطابق الرابط مع المبتدأ؟",
+    "options": [
+     "لأنه حرف",
+     "لأنه ظرف",
+     "لأنه يعود عليه في النوع والعدد",
+     "لأنه فعل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الرابط في «البنات عملهن متقن» يدل على:",
+    "options": [
+     "جمع مذكر",
+     "جمع مؤنث",
+     "مفرد مذكر",
+     "مثنى"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الرابط في «الصديقان تعاونهما رائع» يدل على:",
+    "options": [
+     "الجمع",
+     "المفرد",
+     "المؤنث المفرد",
+     "المثنى"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ضبط «المسؤوليةُ تعني الالتزامَ»: الالتزام:",
+    "options": [
+     "مجرور",
+     "مبتدأ",
+     "فاعل مرفوع",
+     "مفعول به منصوب"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ضبط «البحث عن الأعذارِ عادةٌ سيئة»: عادة:",
+    "options": [
+     "مفعول به",
+     "مبتدأ",
+     "مجرور",
+     "خبر مرفوع"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ضبط «القائدُ يبث الثقة في الجنودِ»: الجنود:",
+    "options": [
+     "مفعول به",
+     "خبر",
+     "اسم مجرور",
+     "فاعل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أي جملة خبرها شبه جملة؟",
+    "options": [
+     "الطائر صوته جميل",
+     "الطائر جميل",
+     "الطائر فوق الشجرة",
+     "الطائر يغرد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أي جملة خبرها جملة اسمية؟",
+    "options": [
+     "المدرسة كبيرة",
+     "المدرسة تفتح مبكرًا",
+     "المدرسة نظامها رائع",
+     "المدرسة في الحي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أي جملة خبرها جملة فعلية؟",
+    "options": [
+     "القمر سطع نوره",
+     "القمر منير",
+     "القمر في السماء",
+     "القمر نوره ساطع"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا لا يصح «العلماء خدماته جليلة»؟",
+    "options": [
+     "لأن الرابط يجب أن يطابق المبتدأ في العدد",
+     "لأن الخبر مفرد",
+     "لا خطأ",
+     "لأن المبتدأ مفرد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا لا يصح «البنات عمله متقن»؟",
+    "options": [
+     "لأن الخبر ظرف",
+     "لأن الرابط يجب أن يطابق المبتدأ في النوع والعدد",
+     "لا خطأ",
+     "لأن المبتدأ مذكر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صحح الرابط: «الصديقان تعاونه رائع»",
+    "options": [
+     "الصديقان تعاونهما رائع",
+     "الصديقان تعاونهم رائع",
+     "لا خطأ",
+     "الصديقان تعاونها رائع"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "صحح الرابط: «الشجرة ثماره ناضجة»",
+    "options": [
+     "الشجرة ثمارهم ناضجة",
+     "الشجرة ثمارهما ناضجة",
+     "لا خطأ",
+     "الشجرة ثمارها ناضجة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي جملة خبرها جملة فعلية؟",
+    "options": [
+     "الأمل يصنع المستقبل",
+     "الأمل جميل",
+     "الأمل في القلوب",
+     "الأمل نوره ساطع"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أي جملة خبرها ظرف؟",
+    "options": [
+     "الامتحان أسئلته واضحة",
+     "الامتحان غدًا",
+     "الامتحان في القاعة",
+     "الامتحان سهل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي جملة خبرها جار ومجرور؟",
+    "options": [
+     "الكتاب في الحقيبة",
+     "الكتاب مفيد",
+     "الكتاب فوق المكتب",
+     "الكتاب صفحاته كثيرة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أي جملة خبرها مفرد؟",
+    "options": [
+     "العلماء خدماتهم جليلة",
+     "العلماء يكتشفون",
+     "العلماء في المعمل",
+     "العلماء مخلصون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "كم نوعًا للخبر في جمل: (المتحف قريب - العمل أساسه النجاح - الزهرة في الحديقة)؟",
+    "options": [
+     "نوع واحد",
+     "نوعان",
+     "ثلاثة أنواع مختلفة",
+     "أربعة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «الصديقان متعاونان» لماذا رفع الخبر بالألف؟",
+    "options": [
+     "لأنه مفرد",
+     "لأنه مثنى",
+     "لأنه ظرف",
+     "لأنه جمع"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «الفلاحون نشيطون» لماذا رفع الخبر بالواو؟",
+    "options": [
+     "لأنه مفرد",
+     "لأنه جمع مذكر سالم",
+     "لأنه ظرف",
+     "لأنه مثنى"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ضبط «الأعذار» في «البحث عن الأعذار عادة سيئة»:",
+    "options": [
+     "الأعذارٌ",
+     "الأعذارُ",
+     "الأعذارَ",
+     "الأعذارِ (مجرور)"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ضبط «عادة» في «البحث عن الأعذار عادة سيئة»:",
+    "options": [
+     "عادةَ",
+     "عادةٌ (خبر مرفوع)",
+     "عادةٍ",
+     "عادةً"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ضبط «المسؤولية» في «المسؤولية تعني الالتزام»:",
+    "options": [
+     "المسؤوليةَ",
+     "المسؤوليةِ",
+     "المسؤوليةُ (مبتدأ مرفوع)",
+     "المسؤوليةً"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ضبط «الواجبات» في «تذكر الواجبات يعكس شخصيتك»:",
+    "options": [
+     "الواجباتٌ",
+     "الواجباتُ",
+     "الواجباتَ",
+     "الواجباتِ (مضاف إليه مجرور)"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ضبط «جديد» في «القصص غلافها جديد»:",
+    "options": [
+     "جديدٍ",
+     "جديدَ",
+     "جديدٌ (خبر مرفوع)",
+     "جديدًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "اجعل «ذو علم» خبرًا في جملة مفيدة:",
+    "options": [
+     "المعلم ذا علم",
+     "المعلم ذي علم",
+     "المعلم ذو علم",
+     "ذو علم المعلم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "اجعل «بين العمال» خبرًا في جملة مفيدة:",
+    "options": [
+     "بين العمال المهندس يعمل",
+     "المهندس يعمل",
+     "المهندس بين العمال",
+     "العمال بين"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "اجعل «يحققون أهدافهم» خبرًا في جملة مفيدة:",
+    "options": [
+     "المجتهد يحققون",
+     "المجتهدون يحققون أهدافهم",
+     "يحققون أهدافهم المجتهدين",
+     "الأهداف يحققون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "اجعل «قراراتها حاسمة» خبرًا في جملة مفيدة:",
+    "options": [
+     "قراراتها حاسمة القائدة",
+     "القائد قراراتها حاسمة",
+     "القائدة قراراتها حاسمة",
+     "القائدات قراراتها"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «المدرسة نظامها رائع» الخبر الجملة يتكون من:",
+    "options": [
+     "مبتدأ ثان وخبره",
+     "ظرف",
+     "جار ومجرور",
+     "فعل وفاعل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «القمر سطع نوره» الخبر الجملة يتكون من:",
+    "options": [
+     "فعل وفاعل",
+     "ظرف",
+     "مبتدأ ثان وخبره",
+     "جار ومجرور"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «القراران صحيحان» ما المطابقة بين المبتدأ والخبر؟",
+    "options": [
+     "لا مطابقة",
+     "المبتدأ مفرد",
+     "الخبر جمع",
+     "كلاهما مثنى"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أكمل بخبر جملة: «المدرسة ............»",
+    "options": [
+     "نظامها رائع",
+     "أمام البيت",
+     "في الحي",
+     "رائعة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بخبر شبه جملة: «الطائر ............»",
+    "options": [
+     "يغرد",
+     "جميل",
+     "فوق الشجرة",
+     "صوته عذب"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أكمل بخبر مفرد: «الطالب ............»",
+    "options": [
+     "خلقه حسن",
+     "مجتهد",
+     "يجتهد",
+     "في الفصل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أكمل بخبر جملة فعلية: «الأم ............»",
+    "options": [
+     "قلبها رحيم",
+     "في البيت",
+     "حنون",
+     "ترعى أبناءها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أكمل بخبر جملة اسمية: «الحاسوب ............»",
+    "options": [
+     "مفيد",
+     "فوائده كثيرة",
+     "على المكتب",
+     "يفيدنا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا «فوق الشجرة» خبر شبه جملة ظرف؟",
+    "options": [
+     "لأنه جملة",
+     "لأن «الشجرة» مجرورة بحرف جر",
+     "لأنه مفرد",
+     "لأن «فوق» ظرف مكان"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا «في الحديقة» خبر شبه جملة جار ومجرور؟",
+    "options": [
+     "لأنه ظرف",
+     "لأنه جملة",
+     "لأنه حرف جر واسم مجرور",
+     "لأنه مفرد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الفرق بين «الطائر جميل الشكل» و«الطائر شكله جميل»:",
+    "options": [
+     "الأولى خبرها مفرد والثانية جملة اسمية",
+     "كلاهما شبه جملة",
+     "الأولى جملة والثانية مفرد",
+     "لا فرق"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الإنجاز يمنح الثقة لصاحبه» الخبر:",
+    "options": [
+     "يمنح الثقة لصاحبه",
+     "الثقة",
+     "الإنجاز",
+     "لصاحبه"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الكتب داخل الحقيبة» كلمة «الحقيبة» إعرابها:",
+    "options": [
+     "خبر",
+     "مبتدأ",
+     "مفعول به",
+     "مضاف إليه مجرور"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «الوقت من ذهب» كلمة «ذهب» إعرابها:",
+    "options": [
+     "مبتدأ",
+     "اسم مجرور",
+     "خبر",
+     "فاعل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «لقاء الأصدقاء مساءً» المبتدأ:",
+    "options": [
+     "الأصدقاء",
+     "لا يوجد",
+     "مساءً",
+     "لقاء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي الجمل خبرها جملة اسمية رابطها «هم»؟",
+    "options": [
+     "العلماء في المعمل",
+     "العلماء خدماتهم جليلة",
+     "العلماء مخلصون",
+     "العلماء يعملون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي الجمل خبرها جملة فعلية فاعلها ظاهر؟",
+    "options": [
+     "التخطيط يوفر الوقت",
+     "التلميذ تحسنت درجاته",
+     "المسؤول يدرس قراراته",
+     "الإنجاز يمنح الثقة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي الجمل خبرها جملة فعلية فاعلها ضمير مستتر؟",
+    "options": [
+     "التلميذ تحسنت درجاته",
+     "الشجرة ثمارها ناضجة",
+     "التخطيط يوفر الوقت",
+     "القمر سطع نوره"
+    ],
+    "ans": 2
+   }
+  ]
+ }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+                <p style="margin-top:8px;font-size:.9rem;color:#0f766e;">${QUESTIONS_PER_PLAY} سؤالًا عشوائيًّا في كل مرة</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة لقائمة الألعاب</button>
+            </div>
+        `;
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_PLAY);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #059669)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.55 + Math.random() * 0.45; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

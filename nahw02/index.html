@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>أنواع المعارف - الصف السادس الابتدائي - شريف الديب</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;      
+            --primary-light: #14b8a6; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #effcf9;
+            background-image: radial-gradient(#a7dcd4 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(2.5rem, 10vw, 4.5rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.1;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(20, 184, 166, 0.3); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #0f766e; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #14b8a6; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #0f766e;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #0f766e);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(204,251,241,0.9));
+            color: #0f766e;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23fff7ed" width="100%" height="100%"/><circle fill="%23fed7aa" cx="20%" cy="30%" r="50"/><circle fill="%23fed7aa" cx="80%" cy="60%" r="70"/><circle fill="%23fed7aa" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #fffbeb; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #431407, #9a3412, #ea580c);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #fdba74; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(234,88,12,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #fde047, #f59e0b, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #fb923c, #ea580c);
+            border-bottom: 3px solid #7c2d12; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(253, 224, 71, 0.15); color: #fde047;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        .lesson-name { font-size: clamp(1.4rem, 5vw, 2rem) !important; color: #fde047 !important; font-weight: 900 !important; margin-top: 4px; }
+        .extra-line { font-size: .9em; color: #ccfbf1; }
+        @media (max-width: 600px) {
+            .teacher-photo { width: 170px !important; height: 170px !important; }
+            .header-main { padding: 20px 14px 70px 14px; }
+            #home-screen { padding: 14px; }
+            .grid-menu { grid-template-columns: 1fr; gap: 16px; }
+            .game-container { padding: 0 12px 30px 12px; }
+            .game-nav { padding: 10px 12px; gap: 8px; }
+            .bubble { font-size: 0.78rem; padding: 8px 3px; }
+            .target-bird { white-space: normal; max-width: 78vw; font-size: 0.95rem; padding: 8px 14px; }
+            .tf-grid .btn { min-width: 130px !important; font-size: 1.6rem !important; padding: 22px !important; }
+            .modal { padding: 26px; }
+            #feedback-title { font-size: 1.8rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img class="teacher-photo" src="../teacher.jpg" alt="الأستاذ شريف الديب" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fde047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">شريف الديب</h1>
+                    <h2>الصَّفُّ السَّادِسُ الابْتِدَائِيُّ - الوحدة الأولى: أطور ذاتي</h2>
+                    <h2 class="lesson-name">أنواع المعارف</h2>
+                    <p style="margin-top: 10px;">القواعد النحوية<br><span class="extra-line">من درس: اصنع قرارك</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#effcf9" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 20</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | الأستاذ / شريف الديب</p>
+    </footer>
+
+<script>
+    const LESSON_NAME = "أنواع المعارف";
+    const QUESTIONS_PER_PLAY = 20;
+    const allGamesData = [
+ {
+  "id": "g1",
+  "title": "أفهم القاعدة",
+  "type": "mcq",
+  "desc": "أسئلة على قاعدة: أنواع المعارف",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>",
+  "questions": [
+   {
+    "q": "عدد أنواع المعارف التي درستها:",
+    "options": [
+     "ثلاثة",
+     "أربعة",
+     "خمسة",
+     "ستة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "النوع الأول من المعارف:",
+    "options": [
+     "الفعل الماضي",
+     "الظرف",
+     "حرف الجر",
+     "المعرف بالألف واللام"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "العلم هو:",
+    "options": [
+     "اسم يوصل به",
+     "اسم سمي به شخص أو بلد أو شهر وغير ذلك",
+     "اسم يشار به",
+     "ضمير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الضمائر نوعان:",
+    "options": [
+     "مفردة ومثناة فقط",
+     "ظاهرة ومستترة فقط",
+     "ماضية ومضارعة",
+     "منفصلة ومتصلة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مثال الضمير المنفصل في الكتاب:",
+    "options": [
+     "الكتاب",
+     "التي",
+     "هذا",
+     "هو"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مثال الضمير المتصل في الكتاب:",
+    "options": [
+     "محمد",
+     "التي",
+     "الهاء في (كتابه)",
+     "هذا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مثال اسم الإشارة في الكتاب:",
+    "options": [
+     "مصر",
+     "التي",
+     "هذا",
+     "هو"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مثال الاسم الموصول في الكتاب:",
+    "options": [
+     "التي",
+     "هذا",
+     "هو",
+     "أكتوبر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "المضاف إلى معرفة:",
+    "options": [
+     "اسم دخلت عليه أل",
+     "ضمير",
+     "اسم سمي به شخص",
+     "اسم اكتسب التعريف من إضافته إلى معرفة بعده"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "من أمثلة العلم في الكتاب:",
+    "options": [
+     "هو - هي",
+     "محمد - مصر - أكتوبر",
+     "الذي - التي",
+     "هذا - هذه - هؤلاء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«كتاب التلميذ» كلمة (كتاب) معرفة لأنها:",
+    "options": [
+     "ضمير",
+     "مضافة إلى معرفة بأل",
+     "علم",
+     "اسم إشارة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«كتاب محمد» كلمة (كتاب) معرفة لأنها:",
+    "options": [
+     "اسم موصول",
+     "معرفة بأل",
+     "مضافة إلى علم",
+     "ضمير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«كتاب هذا التلميذ» كلمة (كتاب) معرفة لأنها:",
+    "options": [
+     "معرفة بأل",
+     "مضافة إلى علم",
+     "مضافة إلى اسم إشارة",
+     "ضمير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«كتابه» كلمة (كتاب) معرفة لأنها:",
+    "options": [
+     "مضافة إلى ضمير",
+     "علم",
+     "اسم موصول",
+     "معرفة بأل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «اتخذت القرار المناسب» كلمة (القرار) معرفة لاتصالها بـ:",
+    "options": [
+     "العلم",
+     "الإضافة",
+     "الضمير",
+     "ال"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «آدم حدد أهدافه بدقة» كلمة (آدم) معرفة لأنها:",
+    "options": [
+     "اسم إشارة",
+     "اسم لشخص",
+     "معرفة بأل",
+     "ضمير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «نحن نحب بلادنا» كلمة (نحن) معرفة لأنها:",
+    "options": [
+     "علم",
+     "ضمير",
+     "اسم موصول",
+     "اسم إشارة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «هذه الآلة توفر الوقت والجهد» كلمة (هذه) معرفة لأنها:",
+    "options": [
+     "معرفة بأل",
+     "ضمير",
+     "علم",
+     "اسم إشارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «ينجح الذي يحرص على وقته» كلمة (الذي) معرفة لأنها:",
+    "options": [
+     "علم",
+     "اسم إشارة",
+     "اسم موصول",
+     "ضمير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «صناعة القرار مهارة مهمة» كلمة (صناعة) معرفة لأنها:",
+    "options": [
+     "علم",
+     "ضمير",
+     "اسم إشارة",
+     "مضافة إلى معرفة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا كانت الكلمات الملونة في الأمثلة كلها معرفة؟",
+    "options": [
+     "لأنها تدل على أشياء محددة",
+     "لأنها غير محددة",
+     "لأنها حروف",
+     "لأنها أفعال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع المعرفة في «التلاميذ الذين شاركوا في المسابقة مبدعون» (الذين):",
+    "options": [
+     "ضمير",
+     "اسم موصول",
+     "اسم إشارة",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع المعرفة في «سافرنا إلى أسوان الشتاء الماضي» (أسوان):",
+    "options": [
+     "علم",
+     "ضمير",
+     "اسم إشارة",
+     "معرفة بأل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع المعرفة في «رحب أبي بهؤلاء الضيوف» (هؤلاء):",
+    "options": [
+     "اسم موصول",
+     "اسم إشارة",
+     "ضمير",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع المعرفة في «ألوان اللوحة جميلة وجذابة» (ألوان):",
+    "options": [
+     "مضاف إلى معرفة",
+     "علم",
+     "اسم إشارة",
+     "ضمير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع المعرفة في «كتبت الأهداف التي أريد تحقيقها» (التي):",
+    "options": [
+     "ضمير",
+     "اسم إشارة",
+     "علم",
+     "اسم موصول"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الاسم المعرفة ونوعه في «تلك طائرة محلقة»:",
+    "options": [
+     "محلقة - ضمير",
+     "تلك - اسم إشارة",
+     "تلك - ضمير",
+     "طائرة - علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الاسم المعرفة ونوعه في «أنتم أصدقاء متعاونون»:",
+    "options": [
+     "متعاونون - إشارة",
+     "أصدقاء - علم",
+     "أنتم - ضمير",
+     "أنتم - علم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الاسم المعرفة ونوعه في «اتخذ عمر قرارات مدروسة»:",
+    "options": [
+     "مدروسة - ضمير",
+     "عمر - علم",
+     "قرارات - معرفة بأل",
+     "عمر - ضمير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الاسم المعرفة ونوعه في «ضع قائمة متنوعة من الخيارات»:",
+    "options": [
+     "الخيارات - علم",
+     "الخيارات - معرفة بأل",
+     "قائمة - علم",
+     "متنوعة - ضمير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أكمل بمعرفة بالإضافة إلى ضمير: «............ نظيف»",
+    "options": [
+     "الفصل",
+     "فصلي",
+     "هذا",
+     "فصل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أكمل باسم موصول: «اخترت الأماكن ............ أفضلها»",
+    "options": [
+     "التي",
+     "هذه",
+     "الذي",
+     "هي"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بنكرة: «هناك ............ كثيرة لهذه المشكلة»",
+    "options": [
+     "حلول",
+     "التي",
+     "هذه",
+     "الحلول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بعلم: «يا ............ انتبهي جيدًا في أثناء المناقشة»",
+    "options": [
+     "التي",
+     "فاطمة",
+     "الفتاة",
+     "هي"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جملة اسمية المبتدأ فيها معرفة والخبر نكرة:",
+    "options": [
+     "الصدق نجاة",
+     "في الصدق",
+     "صدق الطالب",
+     "يصدق الطالب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جملة اسمية المبتدأ فيها معرف بالإضافة:",
+    "options": [
+     "صناعة القرار مهارة",
+     "القرار مهم",
+     "هذا قرار",
+     "هو قرار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جملة فعلية المفعول به فيها اسم إشارة:",
+    "options": [
+     "شاهدت الفيلم",
+     "شاهدت هذا",
+     "سافر محمد",
+     "شاهد محمد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في فقرة نصيحة المعلم: «نصح المعلم تلاميذه» كلمة (المعلم):",
+    "options": [
+     "معرفة بأل",
+     "إشارة",
+     "علم",
+     "ضمير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في فقرة نصيحة المعلم: «تلاميذه» معرفة لأنها:",
+    "options": [
+     "علم",
+     "بأل",
+     "إشارة",
+     "مضافة إلى ضمير"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في فقرة نصيحة المعلم: «وهذه الخطوات ضرورية» (هذه):",
+    "options": [
+     "ضمير",
+     "اسم إشارة",
+     "علم",
+     "اسم موصول"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في فقرة نصيحة المعلم: «للذي يريد النجاح» (الذي):",
+    "options": [
+     "علم",
+     "اسم موصول",
+     "اسم إشارة",
+     "ضمير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في فقرة نصيحة المعلم: «وأنتم يا أبنائي» (أنتم):",
+    "options": [
+     "موصول",
+     "ضمير",
+     "إشارة",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «التفكير الجيد والتخطيط المسبق هما سبيل» الضمير:",
+    "options": [
+     "التفكير",
+     "هما",
+     "الجيد",
+     "سبيل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «التفكير الجيد والتخطيط المسبق هما سبيل» اسم معرف بأل:",
+    "options": [
+     "التفكير",
+     "سبيل",
+     "لاتخاذ",
+     "هما"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «التفكير الجيد والتخطيط المسبق هما سبيل» النكرة:",
+    "options": [
+     "سبيل",
+     "هما",
+     "التفكير",
+     "المسبق"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "إعراب «التفكير» في الجملة السابقة:",
+    "options": [
+     "مبتدأ مرفوع",
+     "اسم مجرور",
+     "خبر مرفوع",
+     "مفعول به"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "إعراب «الأخطاء» في «تجنب الوقوع في الأخطاء»:",
+    "options": [
+     "اسم مجرور",
+     "مفعول به",
+     "مبتدأ",
+     "فاعل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«مصر» من المعارف لأنها:",
+    "options": [
+     "علم على بلد",
+     "ضمير",
+     "معرفة بأل",
+     "اسم إشارة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«أكتوبر» من المعارف لأنها:",
+    "options": [
+     "ضمير",
+     "اسم إشارة",
+     "علم على شهر",
+     "اسم موصول"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الكتاب» من المعارف لأنها:",
+    "options": [
+     "معرفة بالألف واللام",
+     "ضمير",
+     "علم",
+     "مضاف"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g2",
+  "title": "الفقاعات المتساقطة",
+  "type": "bubbles",
+  "desc": "حدد نوع المعرفة في كل كلمة",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"8\" cy=\"8\" r=\"5\"></circle><circle cx=\"17\" cy=\"15\" r=\"4\"></circle><circle cx=\"7\" cy=\"18\" r=\"2.5\"></circle></svg>",
+  "questions": [
+   {
+    "q": "«محمد»:",
+    "options": [
+     "علم",
+     "موصول",
+     "إشارة",
+     "ضمير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«مصر»:",
+    "options": [
+     "علم",
+     "ضمير",
+     "موصول",
+     "إشارة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«أكتوبر»:",
+    "options": [
+     "علم",
+     "إشارة",
+     "ضمير",
+     "موصول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«أسوان»:",
+    "options": [
+     "موصول",
+     "ضمير",
+     "إشارة",
+     "علم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«آدم»:",
+    "options": [
+     "ضمير",
+     "علم",
+     "موصول",
+     "إشارة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«عمر»:",
+    "options": [
+     "إشارة",
+     "علم",
+     "ضمير",
+     "موصول"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«ليلى»:",
+    "options": [
+     "موصول",
+     "علم",
+     "ضمير",
+     "إشارة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«فاطمة»:",
+    "options": [
+     "علم",
+     "ضمير",
+     "إشارة",
+     "موصول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«هو»:",
+    "options": [
+     "إشارة",
+     "ضمير",
+     "علم",
+     "موصول"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«نحن»:",
+    "options": [
+     "إشارة",
+     "ضمير",
+     "موصول",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«أنتم»:",
+    "options": [
+     "علم",
+     "إشارة",
+     "موصول",
+     "ضمير"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«هما»:",
+    "options": [
+     "علم",
+     "ضمير",
+     "موصول",
+     "إشارة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«هي»:",
+    "options": [
+     "ضمير",
+     "علم",
+     "موصول",
+     "إشارة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«أنا»:",
+    "options": [
+     "إشارة",
+     "علم",
+     "ضمير",
+     "موصول"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«هذا»:",
+    "options": [
+     "ضمير",
+     "علم",
+     "موصول",
+     "إشارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«هذه»:",
+    "options": [
+     "موصول",
+     "ضمير",
+     "علم",
+     "إشارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«تلك»:",
+    "options": [
+     "علم",
+     "موصول",
+     "إشارة",
+     "ضمير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«هؤلاء»:",
+    "options": [
+     "علم",
+     "ضمير",
+     "إشارة",
+     "موصول"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«ذلك»:",
+    "options": [
+     "ضمير",
+     "إشارة",
+     "موصول",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«التي»:",
+    "options": [
+     "علم",
+     "ضمير",
+     "موصول",
+     "إشارة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الذي»:",
+    "options": [
+     "موصول",
+     "إشارة",
+     "علم",
+     "ضمير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الذين»:",
+    "options": [
+     "إشارة",
+     "ضمير",
+     "علم",
+     "موصول"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الكتاب»:",
+    "options": [
+     "بأل",
+     "علم",
+     "إشارة",
+     "ضمير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«القرار»:",
+    "options": [
+     "بأل",
+     "علم",
+     "إشارة",
+     "ضمير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الخيارات»:",
+    "options": [
+     "إشارة",
+     "ضمير",
+     "علم",
+     "بأل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«المعلم»:",
+    "options": [
+     "علم",
+     "بأل",
+     "ضمير",
+     "إشارة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الطائرة»:",
+    "options": [
+     "بأل",
+     "علم",
+     "ضمير",
+     "إشارة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«المسابقة»:",
+    "options": [
+     "علم",
+     "بأل",
+     "إشارة",
+     "ضمير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«كتاب التلميذ» (كتاب):",
+    "options": [
+     "إشارة",
+     "ضمير",
+     "علم",
+     "مضاف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«ألوان اللوحة» (ألوان):",
+    "options": [
+     "إشارة",
+     "علم",
+     "ضمير",
+     "مضاف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«صناعة القرار» (صناعة):",
+    "options": [
+     "ضمير",
+     "إشارة",
+     "علم",
+     "مضاف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«كتابه» (كتاب):",
+    "options": [
+     "إشارة",
+     "ضمير",
+     "علم",
+     "مضاف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«تلاميذه» (تلاميذ):",
+    "options": [
+     "علم",
+     "ضمير",
+     "مضاف",
+     "إشارة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«أبنائي» (أبناء):",
+    "options": [
+     "علم",
+     "مضاف",
+     "إشارة",
+     "ضمير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«بلادنا» (بلاد):",
+    "options": [
+     "إشارة",
+     "علم",
+     "مضاف",
+     "ضمير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«أهدافه» (أهداف):",
+    "options": [
+     "إشارة",
+     "علم",
+     "ضمير",
+     "مضاف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«كتاب محمد» (كتاب):",
+    "options": [
+     "ضمير",
+     "مضاف",
+     "إشارة",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهاء في «كتابه»:",
+    "options": [
+     "ضمير",
+     "إشارة",
+     "موصول",
+     "علم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "التاء في «اتخذتُ»:",
+    "options": [
+     "علم",
+     "موصول",
+     "إشارة",
+     "ضمير"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«نا» في «سافرنا»:",
+    "options": [
+     "علم",
+     "ضمير",
+     "إشارة",
+     "موصول"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "علم من الأسماء:",
+    "options": [
+     "التي",
+     "مصر",
+     "هو",
+     "هذا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "اسم إشارة من الأسماء:",
+    "options": [
+     "الذين",
+     "عمر",
+     "هؤلاء",
+     "هم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "اسم موصول من الأسماء:",
+    "options": [
+     "أسوان",
+     "الذين",
+     "هؤلاء",
+     "هم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ضمير منفصل من الأسماء:",
+    "options": [
+     "تلك",
+     "آدم",
+     "التي",
+     "أنتم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "اسم معرف بأل:",
+    "options": [
+     "الأهداف",
+     "أهداف",
+     "هذه",
+     "نحن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نكرة لا معرفة:",
+    "options": [
+     "القائمة",
+     "قائمة",
+     "قائمتي",
+     "هذه القائمة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نكرة لا معرفة:",
+    "options": [
+     "تلك",
+     "طائرة",
+     "الطائرة",
+     "طائرتنا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نكرة لا معرفة:",
+    "options": [
+     "عمر",
+     "قرارات",
+     "قراراته",
+     "القرارات"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نكرة لا معرفة:",
+    "options": [
+     "حلولكم",
+     "هذه",
+     "الحلول",
+     "حلول"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "نكرة لا معرفة:",
+    "options": [
+     "أصدقاء",
+     "أصدقائي",
+     "الأصدقاء",
+     "أنتم"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g3",
+  "title": "التنشين والاصطياد",
+  "type": "shooting",
+  "desc": "طبّق أنواع المعارف في جمل الكتاب",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+  "questions": [
+   {
+    "q": "الاسم المعرفة اسم يدل على:",
+    "options": [
+     "زمن",
+     "شيء محدد",
+     "شيء غير محدد",
+     "حدث"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "كلمة (القرار) في «اتخذت القرار المناسب» معرفة لأنها:",
+    "options": [
+     "ضمير",
+     "اسم إشارة",
+     "علم",
+     "معرفة بأل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "كلمة (آدم) في «آدم حدد أهدافه بدقة» معرفة لأنها:",
+    "options": [
+     "علم",
+     "ضمير",
+     "معرفة بأل",
+     "اسم موصول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كلمة (نحن) في «نحن نحب بلادنا» معرفة لأنها:",
+    "options": [
+     "اسم موصول",
+     "اسم إشارة",
+     "علم",
+     "ضمير"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "كلمة (هذه) في «هذه الآلة توفر الوقت» معرفة لأنها:",
+    "options": [
+     "ضمير",
+     "معرفة بأل",
+     "علم",
+     "اسم إشارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "كلمة (الذي) في «ينجح الذي يحرص على وقته» معرفة لأنها:",
+    "options": [
+     "اسم موصول",
+     "ضمير",
+     "اسم إشارة",
+     "علم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كلمة (صناعة) في «صناعة القرار مهارة» معرفة لأنها:",
+    "options": [
+     "اسم إشارة",
+     "ضمير",
+     "مضافة إلى معرفة",
+     "علم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "العلم اسم سمي به:",
+    "options": [
+     "فعل ماض",
+     "شخص أو بلد أو شهر",
+     "صفة",
+     "حرف جر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "من أمثلة العلم:",
+    "options": [
+     "الكتاب",
+     "التي",
+     "مصر",
+     "هذا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "من أمثلة اسم الإشارة:",
+    "options": [
+     "محمد",
+     "هذا",
+     "التي",
+     "هو"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "من أمثلة الاسم الموصول:",
+    "options": [
+     "التي",
+     "هو",
+     "هذا",
+     "أكتوبر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "من أمثلة الضمير المنفصل:",
+    "options": [
+     "هو",
+     "هذا",
+     "مصر",
+     "الذي"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«كتابه» معرفة لأنها:",
+    "options": [
+     "اسم إشارة",
+     "مضافة إلى ضمير",
+     "معرفة بأل",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«كتاب التلميذ» كلمة (كتاب) اكتسبت التعريف من:",
+    "options": [
+     "إضافتها إلى معرفة",
+     "دخول أل عليها",
+     "كونها علمًا",
+     "كونها ضميرًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع المعرفة (الذين) في «التلاميذ الذين شاركوا مبدعون»:",
+    "options": [
+     "اسم إشارة",
+     "علم",
+     "ضمير",
+     "اسم موصول"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "نوع المعرفة (أسوان) في «سافرنا إلى أسوان»:",
+    "options": [
+     "علم",
+     "ضمير",
+     "معرفة بأل",
+     "اسم موصول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع المعرفة (التي) في «كتبت الأهداف التي أريد تحقيقها»:",
+    "options": [
+     "علم",
+     "اسم إشارة",
+     "ضمير",
+     "اسم موصول"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "نوع المعرفة (هؤلاء) في «رحب أبي بهؤلاء الضيوف»:",
+    "options": [
+     "علم",
+     "ضمير",
+     "اسم إشارة",
+     "اسم موصول"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "نوع المعرفة (ألوان) في «ألوان اللوحة جميلة»:",
+    "options": [
+     "ضمير",
+     "اسم إشارة",
+     "مضاف إلى معرفة",
+     "علم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الاسم المعرفة في «تلك طائرة محلقة»:",
+    "options": [
+     "تلك",
+     "محلقة",
+     "لا يوجد",
+     "طائرة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع المعرفة (تلك):",
+    "options": [
+     "اسم إشارة",
+     "ضمير",
+     "علم",
+     "اسم موصول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الاسم المعرفة في «أنتم أصدقاء متعاونون»:",
+    "options": [
+     "أنتم",
+     "متعاونون",
+     "لا يوجد",
+     "أصدقاء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "نوع المعرفة (أنتم):",
+    "options": [
+     "اسم موصول",
+     "ضمير",
+     "اسم إشارة",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الاسم المعرفة في «اتخذ عمر قرارات مدروسة»:",
+    "options": [
+     "اتخذ",
+     "عمر",
+     "قرارات",
+     "مدروسة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "نوع المعرفة (عمر):",
+    "options": [
+     "اسم إشارة",
+     "معرفة بأل",
+     "ضمير",
+     "علم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الاسم المعرفة في «ضع قائمة متنوعة من الخيارات»:",
+    "options": [
+     "متنوعة",
+     "قائمة",
+     "الخيارات",
+     "ضع"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "نوع المعرفة (الخيارات):",
+    "options": [
+     "معرفة بأل",
+     "ضمير",
+     "علم",
+     "مضاف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بمعرفة بالإضافة إلى ضمير: «............ نظيف»",
+    "options": [
+     "هذا",
+     "فصل",
+     "الفصل",
+     "فصلي"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أكمل باسم موصول: «اخترت الأماكن ............ أفضلها»",
+    "options": [
+     "التي",
+     "هي",
+     "الذي",
+     "هذه"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بنكرة: «هناك ............ كثيرة لهذه المشكلة»",
+    "options": [
+     "الحلول",
+     "التي",
+     "حلول",
+     "هذه"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أكمل بعلم: «يا ............ انتبهي جيدًا في أثناء المناقشة»",
+    "options": [
+     "فاطمة",
+     "الفتاة",
+     "هي",
+     "التي"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «نصح المعلم تلاميذه» كلمة (المعلم) معرفة:",
+    "options": [
+     "بالإضافة",
+     "علم",
+     "بأل",
+     "ضمير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «نصح المعلم تلاميذه» كلمة (تلاميذه) معرفة:",
+    "options": [
+     "بأل",
+     "علم",
+     "إشارة",
+     "بالإضافة إلى ضمير"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «وهذه الخطوات ضرورية» كلمة (هذه):",
+    "options": [
+     "اسم موصول",
+     "علم",
+     "ضمير",
+     "اسم إشارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «ضرورية للذي يريد النجاح» كلمة (الذي):",
+    "options": [
+     "اسم إشارة",
+     "علم",
+     "اسم موصول",
+     "ضمير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «وأنتم يا أبنائي» كلمة (أنتم):",
+    "options": [
+     "اسم موصول",
+     "اسم إشارة",
+     "ضمير",
+     "علم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «وأنتم يا أبنائي» كلمة (أبنائي) معرفة:",
+    "options": [
+     "علم",
+     "بأل",
+     "بالإضافة إلى ضمير",
+     "إشارة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "جملة اسمية المبتدأ فيها معرفة والخبر نكرة:",
+    "options": [
+     "الوقت كنز",
+     "ذهب الوقت",
+     "في الوقت",
+     "كنز الوقت"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جملة اسمية المبتدأ فيها معرف بالإضافة:",
+    "options": [
+     "صناعة القرار مهارة",
+     "هذا قرار",
+     "هو ناجح",
+     "القرار صعب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جملة فعلية المفعول به فيها اسم إشارة:",
+    "options": [
+     "شاهدت هذا",
+     "شاهدته غدًا",
+     "شاهدت الفيلم",
+     "شاهد محمد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "إعراب «التفكير» في «التفكير الجيد والتخطيط المسبق هما سبيل»:",
+    "options": [
+     "خبر مرفوع",
+     "مفعول به",
+     "اسم مجرور",
+     "مبتدأ مرفوع"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "إعراب «الأخطاء» في «تجنب الوقوع في الأخطاء»:",
+    "options": [
+     "فاعل",
+     "مبتدأ",
+     "مفعول به",
+     "اسم مجرور"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الضمير في «التفكير الجيد والتخطيط المسبق هما سبيل»:",
+    "options": [
+     "سبيل",
+     "الجيد",
+     "التفكير",
+     "هما"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الاسم النكرة في «هما سبيل لاتخاذ القرارات الصحيحة»:",
+    "options": [
+     "القرارات",
+     "هما",
+     "الصحيحة",
+     "سبيل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي الكلمات التالية علم؟",
+    "options": [
+     "هو",
+     "أكتوبر",
+     "الشهر",
+     "هذا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي الكلمات التالية اسم موصول؟",
+    "options": [
+     "هؤلاء",
+     "أصدقاء",
+     "هم",
+     "الذين"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي الكلمات التالية اسم إشارة؟",
+    "options": [
+     "هي",
+     "التي",
+     "هذه",
+     "سارة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أي الكلمات التالية ضمير؟",
+    "options": [
+     "هنا",
+     "ذلك",
+     "نحن",
+     "الذي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "عدد أنواع المعارف التي درستها:",
+    "options": [
+     "أربعة",
+     "عشرة",
+     "ستة",
+     "ثلاثة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«كتاب هذا التلميذ» كلمة (كتاب) مضافة إلى:",
+    "options": [
+     "ضمير",
+     "اسم موصول",
+     "علم",
+     "اسم إشارة"
+    ],
+    "ans": 3
+   }
+  ]
+ },
+ {
+  "id": "g4",
+  "title": "صح أم خطأ",
+  "type": "true_false",
+  "desc": "هل العبارة صحيحة أم خاطئة؟",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+  "questions": [
+   {
+    "q": "العلم اسم سمي به شخص أو بلد أو شهر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الضمائر من المعارف.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الاسم الموصول مثل «التي» من المعارف.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "المضاف إلى معرفة اسم اكتسب التعريف من إضافته إلى معرفة بعده.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كلمة «مصر» معرفة لأنها معرفة بأل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "كلمة «هذا» اسم إشارة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كلمة «كتابه» نكرة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "كلمة «عمر» في «اتخذ عمر قرارات» علم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "المعرفة اسم يدل على شيء محدد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "من أنواع المعارف الفعل الماضي.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أنواع المعارف ستة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "المعرف بالألف واللام مثل «الكتاب».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "العلم اسم يشار به إلى شيء قريب.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«أكتوبر» علم على شهر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«أسوان» في «سافرنا إلى أسوان» اسم إشارة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الذين» في «التلاميذ الذين شاركوا مبدعون» اسم موصول.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«هؤلاء» في «رحب أبي بهؤلاء الضيوف» اسم موصول.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«ألوان» في «ألوان اللوحة جميلة» معرفة بالإضافة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«التي» في «كتبت الأهداف التي أريد تحقيقها» اسم إشارة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«تلك» في «تلك طائرة محلقة» اسم إشارة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«طائرة» في «تلك طائرة محلقة» معرفة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«أنتم» في «أنتم أصدقاء متعاونون» ضمير.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الخيارات» في «ضع قائمة من الخيارات» علم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«قائمة» في «ضع قائمة متنوعة» نكرة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«آدم» في «آدم حدد أهدافه» علم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«نحن» في «نحن نحب بلادنا» اسم موصول.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«هذه» في «هذه الآلة توفر الوقت» اسم إشارة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الذي» في «ينجح الذي يحرص على وقته» ضمير.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«صناعة» في «صناعة القرار مهارة» معرفة بالإضافة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«مهارة» في «صناعة القرار مهارة مهمة» معرفة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«كتاب» في «كتاب التلميذ» اكتسب التعريف من الإضافة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهاء في «كتابه» ضمير متصل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«هو» ضمير متصل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«هو» ضمير منفصل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«المعلم» في «نصح المعلم تلاميذه» معرف بأل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«تلاميذه» في «نصح المعلم تلاميذه» علم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«أبنائي» في «يا أبنائي» معرفة بالإضافة إلى ضمير.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«هما» في «التفكير والتخطيط هما سبيل» ضمير.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«سبيل» في «هما سبيل» معرفة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«التفكير» في «التفكير الجيد سبيل للنجاح» مبتدأ مرفوع.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الأخطاء» في «تجنب الوقوع في الأخطاء» مفعول به.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«فاطمة» في «يا فاطمة انتبهي» علم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«حلول» في «هناك حلول كثيرة» معرفة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "اسم الإشارة «هذا» يدل على شيء محدد مشار إليه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الاسم الموصول «التي» يحتاج إلى جملة بعده توضحه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«عمر» في «اتخذ عمر قرارات» معرف بأل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«قرارات» في «اتخذ عمر قرارات مدروسة» نكرة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "المضاف إلى نكرة يصبح معرفة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "المضاف إلى معرفة يكتسب التعريف منها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«محمد» من الضمائر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   }
+  ]
+ },
+ {
+  "id": "g5",
+  "title": "تحدي العباقرة",
+  "type": "genius",
+  "desc": "أسئلة تطبيقية أعمق في أنواع المعارف",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path><path d=\"M10 21h4\"></path></svg>",
+  "questions": [
+   {
+    "q": "«القرار المدروس يبني مستقبلك» كلمة (القرار) نوعها:",
+    "options": [
+     "معرفة بأل",
+     "اسم إشارة",
+     "ضمير",
+     "علم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«ليلى» في قصة الفقرة المتحررة نوعها من المعارف:",
+    "options": [
+     "علم",
+     "ضمير",
+     "معرفة بأل",
+     "اسم إشارة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«هل هذا القرار سيفيدني؟» كلمة (هذا):",
+    "options": [
+     "ضمير",
+     "علم",
+     "اسم إشارة معرفة",
+     "نكرة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "المعارف في «نحن نحب بلادنا»:",
+    "options": [
+     "نحن - بلادنا",
+     "نحن فقط",
+     "لا توجد",
+     "نحب - بلاد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أنواع المعارف في «هذه الآلة توفر الوقت»:",
+    "options": [
+     "اسم إشارة ومعرف بأل",
+     "ضمير فقط",
+     "علم وضمير",
+     "موصول وعلم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أنواع المعارف في «آدم حدد أهدافه بدقة»:",
+    "options": [
+     "اسم إشارة فقط",
+     "معرف بأل فقط",
+     "موصول",
+     "علم ومضاف إلى ضمير وضمير"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة النكرة في «آدم حدد أهدافه بدقة»:",
+    "options": [
+     "أهدافه",
+     "دقة",
+     "آدم",
+     "الهاء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «ينجح الذي يحرص على وقته» كلمة (وقته) معرفة لأنها:",
+    "options": [
+     "إشارة",
+     "مضافة إلى ضمير",
+     "بأل",
+     "علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي جملة تحتوي على علم؟",
+    "options": [
+     "زار أحمد المتحف",
+     "زار هذا المتحف",
+     "زار الطالب المتحف",
+     "زار الذي فاز"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أي جملة تحتوي على اسم موصول؟",
+    "options": [
+     "فاز الطالب",
+     "فاز هذا الطالب",
+     "فاز أحمد",
+     "فاز الذي اجتهد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي جملة تحتوي على اسم إشارة؟",
+    "options": [
+     "هذه حديقة جميلة",
+     "الحديقة جميلة",
+     "حديقتنا جميلة",
+     "التي في الحي جميلة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أي جملة تحتوي على ضمير منفصل؟",
+    "options": [
+     "هذه متفوقة",
+     "سارة متفوقة",
+     "التي نجحت متفوقة",
+     "هي متفوقة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي جملة تحتوي على معرف بالإضافة؟",
+    "options": [
+     "الحقيبة جديدة",
+     "حقيبة سارة جديدة",
+     "هذه حقيبة",
+     "حقيبة جديدة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "كوّن جملة اسمية المبتدأ معرفة والخبر نكرة:",
+    "options": [
+     "عبادة العمل",
+     "في العمل",
+     "العمل عبادة",
+     "عمل الطالب"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «اختر الأنسب» كلمة (الأنسب) نوعها:",
+    "options": [
+     "ضمير",
+     "معرفة بأل",
+     "علم",
+     "إشارة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «تبدأ بتحديد الهدف» كلمة (تحديد) معرفة لأنها:",
+    "options": [
+     "إشارة",
+     "علم",
+     "ضمير",
+     "مضافة إلى معرفة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «أنتم يا أبنائي تستحقون ذلك» كلمة (ذلك):",
+    "options": [
+     "اسم موصول",
+     "علم",
+     "ضمير",
+     "اسم إشارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «أنتم يا أبنائي تستحقون ذلك» كم نوعًا من المعارف؟",
+    "options": [
+     "لا يوجد",
+     "واحد",
+     "ثلاثة (ضمير - مضاف - إشارة)",
+     "اثنان"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا «كتاب» في «كتاب جديد» نكرة؟",
+    "options": [
+     "لأنه إشارة",
+     "لأنه علم",
+     "لأنه ضمير",
+     "لأنه غير مضاف لمعرفة ولا معرف بأل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الفرق بين «هذا» و«الذي»:",
+    "options": [
+     "لا فرق",
+     "الأول اسم إشارة والثاني اسم موصول",
+     "كلاهما ضمير",
+     "كلاهما علم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الفرق بين «هو» و«هذا»:",
+    "options": [
+     "لا فرق",
+     "كلاهما موصول",
+     "كلاهما إشارة",
+     "الأول ضمير والثاني اسم إشارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«سمر» في «سمر تطور نفسها»:",
+    "options": [
+     "إشارة",
+     "موصول",
+     "علم",
+     "ضمير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«نفسها» في «سمر تطور نفسها» معرفة لأنها:",
+    "options": [
+     "بأل",
+     "إشارة",
+     "مضافة إلى ضمير",
+     "علم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الحسن بن الهيثم» علم على:",
+    "options": [
+     "شهر",
+     "بلد",
+     "شخص",
+     "مكان فقط"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أي الكلمات معرفة بنوعين معًا كالإضافة إلى علم؟",
+    "options": [
+     "هذا",
+     "كتاب محمد",
+     "هو",
+     "الكتاب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «ألوان اللوحة جميلة» الكلمة المعرفة بأل:",
+    "options": [
+     "اللوحة",
+     "جميلة",
+     "ألوان",
+     "لا يوجد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «ألوان اللوحة جميلة» الكلمة النكرة:",
+    "options": [
+     "جميلة",
+     "ألوان",
+     "اللوحة",
+     "لا يوجد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تحويل «قرارات» إلى معرفة بالإضافة إلى ضمير:",
+    "options": [
+     "قرار",
+     "قراراته",
+     "القرارات",
+     "هذه قرارات"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تحويل «طائرة» إلى معرفة بأل:",
+    "options": [
+     "تلك",
+     "طائرتنا",
+     "طائرات",
+     "الطائرة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تحويل «حقيبة» إلى معرفة بالإضافة إلى علم:",
+    "options": [
+     "حقيبتي",
+     "هذه حقيبة",
+     "حقيبة سارة",
+     "الحقيبة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «اتخاذ القرار يمر بمجموعة من الخطوات» الكلمة المعرفة بالإضافة:",
+    "options": [
+     "مجموعة",
+     "القرار",
+     "الخطوات",
+     "اتخاذ"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «اتخاذ القرار يمر بمجموعة من الخطوات» الكلمة النكرة:",
+    "options": [
+     "الخطوات",
+     "القرار",
+     "اتخاذ",
+     "مجموعة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "اسم الإشارة «هؤلاء» يستخدم لـ:",
+    "options": [
+     "المثنى فقط",
+     "الجمع",
+     "المفرد المؤنث",
+     "المفرد المذكر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الاسم الموصول «الذين» يستخدم لـ:",
+    "options": [
+     "المثنى",
+     "المفرد المذكر",
+     "المفرد المؤنث",
+     "جمع المذكر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«هذه» يشار بها إلى:",
+    "options": [
+     "المفرد المذكر",
+     "الجمع",
+     "المثنى",
+     "المفردة المؤنثة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«التي» اسم موصول لـ:",
+    "options": [
+     "المثنى",
+     "المفردة المؤنثة",
+     "المفرد المذكر",
+     "الجمع المذكر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الذي» اسم موصول لـ:",
+    "options": [
+     "المثنى المؤنث",
+     "المفردة المؤنثة",
+     "المفرد المذكر",
+     "الجمع"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «مصر بلدي» نوع المعرفتين:",
+    "options": [
+     "موصول وعلم",
+     "معرف بأل فقط",
+     "علم ومضاف إلى ضمير",
+     "ضمير وإشارة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «أحب هذا الكتاب» عدد المعارف:",
+    "options": [
+     "اثنان (هذا - الكتاب)",
+     "واحد",
+     "ثلاثة",
+     "لا يوجد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «القاهرة عاصمة مصر» المعرفة بأل والعلم:",
+    "options": [
+     "مصر نكرة",
+     "القاهرة نكرة",
+     "لا يوجد",
+     "القاهرة علم - مصر علم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «هل اتخذتم قرارات من قبل؟» الضمير:",
+    "options": [
+     "تم في اتخذتم",
+     "قرارات",
+     "قبل",
+     "هل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «سافرنا إلى أسوان الشتاء الماضي» المعرف بأل:",
+    "options": [
+     "أسوان",
+     "نا",
+     "الشتاء - الماضي",
+     "إلى"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «سافرنا إلى أسوان» الضمير المتصل:",
+    "options": [
+     "أسوان",
+     "سافر",
+     "نا",
+     "إلى"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «رحب أبي بهؤلاء الضيوف» كلمة (أبي) معرفة لأنها:",
+    "options": [
+     "مضافة إلى ضمير المتكلم",
+     "بأل",
+     "إشارة",
+     "علم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «رحب أبي بهؤلاء الضيوف» المعرف بأل:",
+    "options": [
+     "هؤلاء",
+     "الضيوف",
+     "أبي",
+     "رحب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «التلاميذ الذين شاركوا في المسابقة مبدعون» الكلمة النكرة:",
+    "options": [
+     "الذين",
+     "التلاميذ",
+     "المسابقة",
+     "مبدعون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «كتبت الأهداف التي أريد تحقيقها» المعرف بأل:",
+    "options": [
+     "التي",
+     "الأهداف",
+     "تحقيق",
+     "أريد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أكمل باسم إشارة: «............ الطالب مجتهد»",
+    "options": [
+     "محمد",
+     "هو",
+     "هذا",
+     "الذي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أكمل باسم موصول: «فاز الطالب ............ اجتهد»",
+    "options": [
+     "التي",
+     "الذي",
+     "هذا",
+     "هو"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أكمل بضمير منفصل: «............ نحب وطننا»",
+    "options": [
+     "مصر",
+     "نحن",
+     "هذا",
+     "الذين"
+    ],
+    "ans": 1
+   }
+  ]
+ }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+                <p style="margin-top:8px;font-size:.9rem;color:#0f766e;">${QUESTIONS_PER_PLAY} سؤالًا عشوائيًّا في كل مرة</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة لقائمة الألعاب</button>
+            </div>
+        `;
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_PLAY);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #059669)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.55 + Math.random() * 0.45; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

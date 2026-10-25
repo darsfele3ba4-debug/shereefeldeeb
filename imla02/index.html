@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>تطبيقات على الهمزة المتوسطة على الألف - الصف السادس الابتدائي - شريف الديب</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;      
+            --primary-light: #14b8a6; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #effcf9;
+            background-image: radial-gradient(#a7dcd4 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(2.5rem, 10vw, 4.5rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.1;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(20, 184, 166, 0.3); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #0f766e; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #14b8a6; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #0f766e;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #0f766e);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(204,251,241,0.9));
+            color: #0f766e;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23fff7ed" width="100%" height="100%"/><circle fill="%23fed7aa" cx="20%" cy="30%" r="50"/><circle fill="%23fed7aa" cx="80%" cy="60%" r="70"/><circle fill="%23fed7aa" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #fffbeb; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #431407, #9a3412, #ea580c);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #fdba74; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(234,88,12,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #fde047, #f59e0b, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #fb923c, #ea580c);
+            border-bottom: 3px solid #7c2d12; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(253, 224, 71, 0.15); color: #fde047;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        .lesson-name { font-size: clamp(1.4rem, 5vw, 2rem) !important; color: #fde047 !important; font-weight: 900 !important; margin-top: 4px; }
+        .extra-line { font-size: .9em; color: #ccfbf1; }
+        @media (max-width: 600px) {
+            .teacher-photo { width: 170px !important; height: 170px !important; }
+            .header-main { padding: 20px 14px 70px 14px; }
+            #home-screen { padding: 14px; }
+            .grid-menu { grid-template-columns: 1fr; gap: 16px; }
+            .game-container { padding: 0 12px 30px 12px; }
+            .game-nav { padding: 10px 12px; gap: 8px; }
+            .bubble { font-size: 0.78rem; padding: 8px 3px; }
+            .target-bird { white-space: normal; max-width: 78vw; font-size: 0.95rem; padding: 8px 14px; }
+            .tf-grid .btn { min-width: 130px !important; font-size: 1.6rem !important; padding: 22px !important; }
+            .modal { padding: 26px; }
+            #feedback-title { font-size: 1.8rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img class="teacher-photo" src="../teacher.jpg" alt="الأستاذ شريف الديب" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fde047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">شريف الديب</h1>
+                    <h2>الصَّفُّ السَّادِسُ الابْتِدَائِيُّ - الوحدة الأولى: أطور ذاتي</h2>
+                    <h2 class="lesson-name">تطبيقات على الهمزة المتوسطة على الألف</h2>
+                    <p style="margin-top: 10px;">القواعد الإملائية<br><span class="extra-line">من درس: اصنع قرارك</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#effcf9" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 20</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | الأستاذ / شريف الديب</p>
+    </footer>
+
+<script>
+    const LESSON_NAME = "تطبيقات على الهمزة المتوسطة على الألف";
+    const QUESTIONS_PER_PLAY = 20;
+    const allGamesData = [
+ {
+  "id": "g1",
+  "title": "أفهم القاعدة",
+  "type": "mcq",
+  "desc": "أسئلة على قاعدة: تطبيقات على الهمزة المتوسطة على الألف",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>",
+  "questions": [
+   {
+    "q": "تذكر: تكتب الهمزة المتوسطة على الألف إذا كانت:",
+    "options": [
+     "مضمومة وقبلها مضموم",
+     "ساكنة وقبلها مكسور",
+     "مكسورة",
+     "مفتوحة وقبلها مفتوح، أو ساكنة وقبلها مفتوح، أو مفتوحة وقبلها صحيح ساكن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «طمأن» من «طمأن الطبيب المرضى»:",
+    "options": [
+     "مفتوحة وقبلها حرف صحيح ساكن",
+     "مفتوحة وقبلها مفتوح",
+     "ساكنة وقبلها مفتوح",
+     "مكسورة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «قرأت» من «قرأت قصيدة»:",
+    "options": [
+     "ساكنة وقبلها مفتوح",
+     "مضمومة",
+     "مفتوحة وقبلها مفتوح",
+     "مفتوحة وقبلها ساكن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «سأل» من «سأل الموظف عن سبب الاجتماع»:",
+    "options": [
+     "مفتوحة وقبلها ساكن",
+     "ساكنة وقبلها مفتوح",
+     "مكسورة",
+     "مفتوحة وقبلها مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «الرأفة» من «تعامل مع الناس بالرأفة»:",
+    "options": [
+     "مفتوحة وقبلها مفتوح",
+     "مضمومة",
+     "مفتوحة وقبلها ساكن",
+     "ساكنة وقبلها مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صواب «الفئر» في «قصة الأسد والفئر»:",
+    "options": [
+     "الفؤر",
+     "الفأر",
+     "الفءر",
+     "الفار"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صواب «الفؤس» في «الفؤس من أدوات الفلاح»:",
+    "options": [
+     "الفأس",
+     "الفءس",
+     "الفاس",
+     "الفئس"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "صواب «مؤمون» في «الصديق الوفي مؤمون على الأسرار»:",
+    "options": [
+     "مامون",
+     "مأمون",
+     "مئمون",
+     "مءمون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صواب «تئخرت» في «تئخرت الطائرة بسبب المطر»:",
+    "options": [
+     "تؤخرت",
+     "تءخرت",
+     "تاخرت",
+     "تأخرت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أكمل بمفرد (شؤون): «يستشير الابن والده بـ............ مستقبله»",
+    "options": [
+     "شئن",
+     "شان",
+     "شؤن",
+     "شأن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أكمل بمضارع (أخذت): «............ بلادي خطوات نحو التقدم»",
+    "options": [
+     "تؤخذ",
+     "تاخذ",
+     "تأخذ",
+     "تئخذ"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أكمل بمضاد (مبكرًا): «وصل القطار ............ بسبب الظروف المناخية»",
+    "options": [
+     "متئخرًا",
+     "متؤخرًا",
+     "متأخرًا",
+     "متاخرًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أكمل بمفرد (كؤوس): «رفع الفريق الفائز ............ البطولة»",
+    "options": [
+     "كئس",
+     "كاس",
+     "كأس",
+     "كؤس"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا كتبت همزة «شأن» على الألف؟",
+    "options": [
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مضمومة",
+     "لأنها مكسورة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «تأخذ» على الألف؟",
+    "options": [
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها ساكن",
+     "لأنها مكسورة",
+     "لأنها مفتوحة وقبلها مفتوح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «متأخرًا» على الألف؟",
+    "options": [
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها ساكن",
+     "لأنها مضمومة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا كتبت همزة «كأس» على الألف؟",
+    "options": [
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مكسورة",
+     "لأنها مفتوحة وقبلها ساكن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «مأمون» على الألف؟",
+    "options": [
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مكسورة",
+     "لأنها مضمومة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «الفأر» على الألف؟",
+    "options": [
+     "لأنها مضمومة",
+     "لأنها مفتوحة وقبلها ساكن",
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها مفتوح"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا كتبت همزة «تأخرت» على الألف؟",
+    "options": [
+     "لأنها مكسورة",
+     "لأنها مفتوحة وقبلها ساكن",
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها ساكنة وقبلها مفتوح"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا كتبت همزة «تأمل» على الألف؟",
+    "options": [
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مضمومة",
+     "لأنها مفتوحة وقبلها ساكن",
+     "لأنها ساكنة وقبلها مفتوح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «يتأخر» على الألف؟",
+    "options": [
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مكسورة",
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مضمومة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «رأيت» على الألف؟",
+    "options": [
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها ساكن",
+     "لأنها مكسورة",
+     "لأنها ساكنة وقبلها مفتوح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «سأعطيكم» على الألف؟",
+    "options": [
+     "لأنها مكسورة",
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مضمومة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا كتبت همزة «تأتوا» على الألف؟",
+    "options": [
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مكسورة",
+     "لأنها مفتوحة وقبلها ساكن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كتبت همزة «مسألة» على الألف؟",
+    "options": [
+     "لأنها مضمومة",
+     "لأنها ساكنة وقبلها مفتوح",
+     "لأنها مفتوحة وقبلها حرف صحيح ساكن",
+     "لأنها مفتوحة وقبلها مفتوح"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا كتبت همزة «يسأل» على الألف؟",
+    "options": [
+     "لأنها مفتوحة وقبلها مفتوح",
+     "لأنها مكسورة",
+     "لأنها مفتوحة وقبلها حرف صحيح ساكن",
+     "لأنها ساكنة وقبلها مفتوح"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكلمة التي همزتها مفتوحة وقبلها حرف صحيح ساكن:",
+    "options": [
+     "قرأت",
+     "طمأن",
+     "سأل",
+     "الرأفة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة التي همزتها ساكنة وقبلها مفتوح:",
+    "options": [
+     "طمأن",
+     "تأخرت",
+     "قرأت",
+     "سأل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكلمة التي همزتها مفتوحة وقبلها مفتوح:",
+    "options": [
+     "طمأن",
+     "سأل",
+     "قرأت",
+     "الرأفة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة المختلفة في سبب الكتابة: (قرأت - الرأفة - مأمون - سأل)",
+    "options": [
+     "سأل",
+     "مأمون",
+     "قرأت",
+     "الرأفة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة المختلفة في سبب الكتابة: (طمأن - يسأل - مسألة - شأن)",
+    "options": [
+     "شأن",
+     "مسألة",
+     "طمأن",
+     "يسأل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة المختلفة في سبب الكتابة: (تأخرت - تأمل - رأيت - الفأس)",
+    "options": [
+     "تأخرت",
+     "الفأس",
+     "رأيت",
+     "تأمل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخطأ في كتابة «الفئر» سببه:",
+    "options": [
+     "الهمزة مكسورة",
+     "كتابة الهمزة على النبرة مع أنها ساكنة بعد فتح",
+     "لا يوجد خطأ",
+     "الهمزة في أول الكلمة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الخطأ في كتابة «مؤمون» سببه:",
+    "options": [
+     "قبلها مضموم",
+     "الهمزة مضمومة",
+     "لا خطأ",
+     "كتابة الهمزة على الواو مع أنها ساكنة بعد فتح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الخطأ في كتابة «تئخرت» سببه:",
+    "options": [
+     "قبلها مكسور",
+     "لا خطأ",
+     "الهمزة مكسورة",
+     "كتابة الهمزة على النبرة مع أنها مفتوحة بعد فتح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة الصحيحة في «حينما (أتؤمل - أتأمل) السماء أشعر بالهدوء»:",
+    "options": [
+     "أتئمل",
+     "أتؤمل",
+     "أتامل",
+     "أتأمل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة الصحيحة في «(القئس - الفأس) من أدوات الفلاح»:",
+    "options": [
+     "القئس",
+     "الفأس",
+     "الفئس",
+     "الفاس"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «طمأن» قبلها حرف:",
+    "options": [
+     "الطاء المفتوحة",
+     "الألف",
+     "الميم الساكنة",
+     "النون"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الهمزة في «قرأت» قبلها حرف:",
+    "options": [
+     "التاء",
+     "القاف",
+     "الراء المفتوحة",
+     "الراء الساكنة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "حركة الهمزة في «الرأفة»:",
+    "options": [
+     "الكسرة",
+     "السكون",
+     "الضمة",
+     "الفتحة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "حركة الهمزة في «سأل»:",
+    "options": [
+     "الضمة",
+     "السكون",
+     "الكسرة",
+     "الفتحة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «تأخرت الطائرة» حركة الحرف الذي قبل الهمزة:",
+    "options": [
+     "الفتحة",
+     "الكسرة",
+     "السكون",
+     "الضمة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الصديق مأمون» حركة الهمزة:",
+    "options": [
+     "الكسرة",
+     "الضمة",
+     "السكون",
+     "الفتحة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «حل المسألة» حركة ما قبل الهمزة:",
+    "options": [
+     "الضمة",
+     "السكون",
+     "الكسرة",
+     "الفتحة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "عند تصويب «الفؤس» إلى «الفأس» نحن طبقنا حالة:",
+    "options": [
+     "الهمزة المكسورة",
+     "الهمزة المفتوحة بعد ساكن",
+     "الهمزة الساكنة بعد فتح",
+     "الهمزة المضمومة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أقوى حركتين في «طمأن» هما الفتحة (للهمزة) و:",
+    "options": [
+     "لا شيء",
+     "الضمة",
+     "السكون (لما قبلها) والأقوى الفتحة",
+     "الكسرة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لو كانت الهمزة في «قرأت» مكسورة لكتبت على:",
+    "options": [
+     "الياء (النبرة)",
+     "الواو",
+     "الألف",
+     "السطر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مثال لهمزة متوسطة على الألف من نص «اصنع قرارك»:",
+    "options": [
+     "الذين",
+     "سأعطيكم",
+     "المستقبل",
+     "القرار"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مثال لهمزة متوسطة على الألف من نص «كنز لا يقدر بثمن»:",
+    "options": [
+     "بالتأكيد",
+     "الأذكياء",
+     "الأبد",
+     "أولوياتنا"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g2",
+  "title": "الفقاعات المتساقطة",
+  "type": "bubbles",
+  "desc": "اختر الكتابة الصحيحة أو سبب كتابة الهمزة على الألف",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"8\" cy=\"8\" r=\"5\"></circle><circle cx=\"17\" cy=\"15\" r=\"4\"></circle><circle cx=\"7\" cy=\"18\" r=\"2.5\"></circle></svg>",
+  "questions": [
+   {
+    "q": "قصة الأسد و............:",
+    "options": [
+     "الفأر",
+     "الفءر",
+     "الفؤر",
+     "الفئر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "............ من أدوات الفلاح:",
+    "options": [
+     "الفءس",
+     "الفؤس",
+     "الفأس",
+     "الفئس"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الصديق الوفي ............:",
+    "options": [
+     "مئمون",
+     "مؤمون",
+     "مءمون",
+     "مأمون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ الطائرة بسبب المطر:",
+    "options": [
+     "تئخرت",
+     "تؤخرت",
+     "تءخرت",
+     "تأخرت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ الطبيب المرضى:",
+    "options": [
+     "طمئن",
+     "طمءن",
+     "طمأن",
+     "طمؤن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ قصيدة جميلة:",
+    "options": [
+     "قرؤت",
+     "قرئت",
+     "قرءت",
+     "قرأت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تعامل مع الناس ............:",
+    "options": [
+     "بالرؤفة",
+     "بالرئفة",
+     "بالرأفة",
+     "بالرءفة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ الموظف عن الاجتماع:",
+    "options": [
+     "سأل",
+     "سؤل",
+     "سءل",
+     "سئل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «شؤون»:",
+    "options": [
+     "شؤن",
+     "شأن",
+     "شءن",
+     "شئن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مفرد «كؤوس»:",
+    "options": [
+     "كءس",
+     "كأس",
+     "كؤس",
+     "كئس"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «مبكرًا»:",
+    "options": [
+     "متأخرًا",
+     "متئخرًا",
+     "متؤخرًا",
+     "متءخرًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مضارع «أخذت» للمؤنث:",
+    "options": [
+     "تءخذ",
+     "تئخذ",
+     "تؤخذ",
+     "تأخذ"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (طَمْءَنَ):",
+    "options": [
+     "طمءن",
+     "طمأن",
+     "طمئن",
+     "طمؤن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (قَرَءْتُ):",
+    "options": [
+     "قرؤت",
+     "قرءت",
+     "قرأت",
+     "قرئت"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (الرَّءْفة):",
+    "options": [
+     "الرؤفة",
+     "الرأفة",
+     "الرءفة",
+     "الرئفة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مَءْمون):",
+    "options": [
+     "مءمون",
+     "مؤمون",
+     "مئمون",
+     "مأمون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (شَءْن):",
+    "options": [
+     "شءن",
+     "شئن",
+     "شؤن",
+     "شأن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (مُتَءَخِّرًا):",
+    "options": [
+     "متئخرًا",
+     "متأخرًا",
+     "متءخرًا",
+     "متؤخرًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (تَءَمَّلَ):",
+    "options": [
+     "تئمل",
+     "تؤمل",
+     "تأمل",
+     "تءمل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (سَءَعْطيكم):",
+    "options": [
+     "سؤعطيكم",
+     "سأعطيكم",
+     "سءعطيكم",
+     "سئعطيكم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (تَءْتوا):",
+    "options": [
+     "تئتوا",
+     "تؤتوا",
+     "تءتوا",
+     "تأتوا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (رَءَتْ):",
+    "options": [
+     "رئت",
+     "رؤت",
+     "رأت",
+     "رءت"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (الفَءْر):",
+    "options": [
+     "الفئر",
+     "الفؤر",
+     "الفءر",
+     "الفأر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (سَءَثْبِتُ):",
+    "options": [
+     "سءثبت",
+     "سؤثبت",
+     "سئثبت",
+     "سأثبت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (سَءُعْليها):",
+    "options": [
+     "سئعليها",
+     "سءعليها",
+     "سؤعليها",
+     "سأعليها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (يَتَءَمَّلُ):",
+    "options": [
+     "يتئمل",
+     "يتءمل",
+     "يتأمل",
+     "يتؤمل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (تَءْخيرٌ):",
+    "options": [
+     "تءخير",
+     "تأخير",
+     "تئخير",
+     "تؤخير"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكتابة الصحيحة لـ (المَسْءَلة):",
+    "options": [
+     "المسألة",
+     "المسؤلة",
+     "المسءلة",
+     "المسئلة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «طمأن»:",
+    "options": [
+     "مفتوحة بعد فتح",
+     "مفتوحة بعد سكون",
+     "مكسورة",
+     "ساكنة بعد فتح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «قرأت»:",
+    "options": [
+     "مفتوحة بعد سكون",
+     "مضمومة",
+     "مفتوحة بعد فتح",
+     "ساكنة بعد فتح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «سأل»:",
+    "options": [
+     "مفتوحة بعد سكون",
+     "مفتوحة بعد فتح",
+     "مكسورة",
+     "ساكنة بعد فتح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «الرأفة»:",
+    "options": [
+     "مفتوحة بعد فتح",
+     "مفتوحة بعد سكون",
+     "مضمومة",
+     "ساكنة بعد فتح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «مأمون»:",
+    "options": [
+     "ساكنة بعد فتح",
+     "مفتوحة بعد سكون",
+     "مكسورة",
+     "مفتوحة بعد فتح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «تأخرت»:",
+    "options": [
+     "مكسورة",
+     "مفتوحة بعد فتح",
+     "مفتوحة بعد سكون",
+     "ساكنة بعد فتح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «شأن»:",
+    "options": [
+     "ساكنة بعد فتح",
+     "مضمومة",
+     "مفتوحة بعد فتح",
+     "مفتوحة بعد سكون"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «تأخذ»:",
+    "options": [
+     "مكسورة",
+     "ساكنة بعد فتح",
+     "مفتوحة بعد فتح",
+     "مفتوحة بعد سكون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «متأخرًا»:",
+    "options": [
+     "مفتوحة بعد سكون",
+     "مكسورة",
+     "ساكنة بعد فتح",
+     "مفتوحة بعد فتح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «مسألة»:",
+    "options": [
+     "مفتوحة بعد سكون",
+     "مضمومة",
+     "ساكنة بعد فتح",
+     "مفتوحة بعد فتح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «تأمل»:",
+    "options": [
+     "مكسورة",
+     "ساكنة بعد فتح",
+     "مضمومة",
+     "مفتوحة بعد فتح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «تأتوا»:",
+    "options": [
+     "مفتوحة بعد سكون",
+     "مفتوحة بعد فتح",
+     "مكسورة",
+     "ساكنة بعد فتح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "همزة «رأت»:",
+    "options": [
+     "ساكنة بعد فتح",
+     "مفتوحة بعد فتح",
+     "مكسورة",
+     "مضمومة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «الفأس»:",
+    "options": [
+     "ساكنة بعد فتح",
+     "مفتوحة بعد فتح",
+     "مكسورة",
+     "مفتوحة بعد سكون"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «يسأل»:",
+    "options": [
+     "مضمومة",
+     "ساكنة بعد فتح",
+     "مفتوحة بعد سكون",
+     "مفتوحة بعد فتح"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "همزة «سأثبت»:",
+    "options": [
+     "مكسورة",
+     "مفتوحة بعد فتح",
+     "مفتوحة بعد سكون",
+     "ساكنة بعد فتح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «تأثير»:",
+    "options": [
+     "ساكنة بعد فتح",
+     "مفتوحة بعد فتح",
+     "مفتوحة بعد سكون",
+     "مضمومة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مكان الهمزة في «طمأن»:",
+    "options": [
+     "أول الكلمة",
+     "آخر الكلمة",
+     "وسط الكلمة",
+     "منفصلة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صورة الهمزة في «قرأت»:",
+    "options": [
+     "على الياء",
+     "على السطر",
+     "على الواو",
+     "على الألف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صورة الهمزة في «مأمون»:",
+    "options": [
+     "على السطر",
+     "على الياء",
+     "على الألف",
+     "على الواو"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صورة الهمزة في «الرأفة»:",
+    "options": [
+     "على السطر",
+     "على الألف",
+     "على الواو",
+     "على الياء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صورة الهمزة في «طمأن»:",
+    "options": [
+     "على الألف",
+     "على السطر",
+     "على الواو",
+     "على الياء"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g3",
+  "title": "التنشين والاصطياد",
+  "type": "shooting",
+  "desc": "صوّب الخطأ أو أكمل بالكلمة الصحيحة إملائيًّا",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+  "questions": [
+   {
+    "q": "صوّب: «أعجبتني قصة الأسد والفئر»",
+    "options": [
+     "الفار",
+     "الفءر",
+     "الفؤر",
+     "الفأر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صوّب: «الفؤس من أدوات الفلاح الضرورية»",
+    "options": [
+     "الفأس",
+     "الفاس",
+     "الفءس",
+     "الفئس"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "صوّب: «الصديق الوفي مؤمون على الأسرار»",
+    "options": [
+     "مئمون",
+     "مأمون",
+     "مءمون",
+     "مامون"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صوّب: «تئخرت الطائرة بسبب المطر»",
+    "options": [
+     "تءخرت",
+     "تؤخرت",
+     "تاخرت",
+     "تأخرت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صوّب: «طمئن الطبيب المرضى على صحتهم»",
+    "options": [
+     "طمان",
+     "طمأن",
+     "طمءن",
+     "طمؤن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صوّب: «قرئت قصيدة للشاعرة نبوية موسى»",
+    "options": [
+     "قرات",
+     "قرأت",
+     "قرءت",
+     "قرؤت"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صوّب: «سئل الموظف عن سبب الاجتماع» (بمعنى طَلَبَ المعرفة)",
+    "options": [
+     "سءل",
+     "سأل",
+     "سؤل",
+     "سال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صوّب: «تعامل مع الناس بالرئفة واللين»",
+    "options": [
+     "بالرءفة",
+     "بالرافة",
+     "بالرأفة",
+     "بالرؤفة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوّب: «رفع الفريق الفائز كئس البطولة»",
+    "options": [
+     "كأس",
+     "كءس",
+     "كاس",
+     "كؤس"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "صوّب: «يستشير الابن والده بشئن مستقبله»",
+    "options": [
+     "شان",
+     "شءن",
+     "شأن",
+     "شؤن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوّب: «تئخذ بلادي خطوات نحو التقدم»",
+    "options": [
+     "تءخذ",
+     "تاخذ",
+     "تأخذ",
+     "تؤخذ"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوّب: «وصل القطار متئخرًا»",
+    "options": [
+     "متؤخرًا",
+     "متءخرًا",
+     "متأخرًا",
+     "متاخرًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوّب: «حل التلميذ المسئلة»",
+    "options": [
+     "المسألة",
+     "المسءلة",
+     "المسؤلة",
+     "المسالة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "صوّب: «رئت سمر أهدافها مكتوبة»",
+    "options": [
+     "رؤت",
+     "رءت",
+     "رات",
+     "رأت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صوّب: «سئترك خيالي يسبح بعيدًا»",
+    "options": [
+     "سؤترك",
+     "ساترك",
+     "سأترك",
+     "سءترك"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوّب: «لا تتئخر عن موعدك»",
+    "options": [
+     "تتءخر",
+     "تتاخر",
+     "تتأخر",
+     "تتؤخر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوّب: «أحب التئمل في الطبيعة»",
+    "options": [
+     "التامل",
+     "التأمل",
+     "التؤمل",
+     "التءمل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صوّب: «سئعطيكم مثالًا من حياتنا»",
+    "options": [
+     "سؤعطيكم",
+     "ساعطيكم",
+     "سأعطيكم",
+     "سءعطيكم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوّب: «ثم تئتوا إلى المدرسة»",
+    "options": [
+     "تءتوا",
+     "تاتوا",
+     "تأتوا",
+     "تؤتوا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوّب: «سئثبت لك ذلك»",
+    "options": [
+     "سؤثبت",
+     "ساثبت",
+     "سءثبت",
+     "سأثبت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ الطبيب المريض فاطمأن قلبه",
+    "options": [
+     "طمءن",
+     "طمأن",
+     "طمؤن",
+     "طمئن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "............ كتابًا عن الحسن بن الهيثم",
+    "options": [
+     "قرؤت",
+     "قرئت",
+     "قرءت",
+     "قرأت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ المعلم: من صاحب الإجابة؟",
+    "options": [
+     "سئل",
+     "سءل",
+     "سؤل",
+     "سأل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الرحمة و............ من صفات المؤمن",
+    "options": [
+     "الرؤفة",
+     "الرأفة",
+     "الرءفة",
+     "الرئفة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الأمين ............ على ما يملكه الناس",
+    "options": [
+     "مءمون",
+     "مئمون",
+     "مؤمون",
+     "مأمون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ الحافلة فوصلنا متأخرين",
+    "options": [
+     "تءخرت",
+     "تأخرت",
+     "تؤخرت",
+     "تئخرت"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الطالب المهتم بـ............ دروسه يتفوق",
+    "options": [
+     "شئن",
+     "شءن",
+     "شؤن",
+     "شأن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ الأم بيد طفلها لتعبر الطريق",
+    "options": [
+     "تءخذ",
+     "تؤخذ",
+     "تئخذ",
+     "تأخذ"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "المتأخر عن موعده يصل ............",
+    "options": [
+     "متأخرًا",
+     "متءخرًا",
+     "متئخرًا",
+     "متؤخرًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "فاز فريق المدرسة بـ............ الدوري",
+    "options": [
+     "كءس",
+     "كئس",
+     "كأس",
+     "كؤس"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "هرب ............ إلى جحره",
+    "options": [
+     "الفءر",
+     "الفأر",
+     "الفؤر",
+     "الفئر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "يحمل الحطاب ............ إلى الغابة",
+    "options": [
+     "الفئس",
+     "الفأس",
+     "الفءس",
+     "الفؤس"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "............ الأب أبناءه بالمذاكرة",
+    "options": [
+     "يؤمر",
+     "يءمر",
+     "يأمر",
+     "يئمر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ في خلق السماوات",
+    "options": [
+     "نتأمل",
+     "نتئمل",
+     "نتؤمل",
+     "نتءمل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أخبرني ............ في الموضوع",
+    "options": [
+     "برؤيك",
+     "برءيك",
+     "برأيك",
+     "برئيك"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ عن الطريق فأرشدني رجل",
+    "options": [
+     "سألت",
+     "سؤلت",
+     "سءلت",
+     "سئلت"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لا ............ في الرد على رسائل أصدقائك",
+    "options": [
+     "تتءخر",
+     "تتئخر",
+     "تتأخر",
+     "تتؤخر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "يمسك الحطاب ............ بيده",
+    "options": [
+     "الفأس",
+     "الفءس",
+     "الفؤس",
+     "الفئس"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "............ ابن الهيثم في الغرفة المظلمة صورة مقلوبة",
+    "options": [
+     "رءى",
+     "رأى",
+     "رؤى",
+     "رئى"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "حل المعلم ............ صعبة أمام التلاميذ",
+    "options": [
+     "مسءلة",
+     "مسئلة",
+     "مسؤلة",
+     "مسألة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الكلمة الطيبة لها ............ كبير في النفوس",
+    "options": [
+     "تأثير",
+     "تءثير",
+     "تؤثير",
+     "تئثير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "............ الأسد عندما رأى الصياد",
+    "options": [
+     "زأر",
+     "زئر",
+     "زءر",
+     "زؤر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وصلت ............ من صديقي في عيد ميلادي",
+    "options": [
+     "مفاجئة",
+     "مفاجءة",
+     "مفاجؤة",
+     "مفاجأة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ في نهاية اليوم ما أنجزته",
+    "options": [
+     "أتءمل",
+     "أتئمل",
+     "أتؤمل",
+     "أتأمل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لا تقبل ............ عمل اليوم",
+    "options": [
+     "تأخير",
+     "تئخير",
+     "تؤخير",
+     "تءخير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "............ الطفل الحلوى من أمه",
+    "options": [
+     "يأخذ",
+     "يءخذ",
+     "يؤخذ",
+     "يئخذ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الأب ............ أبناءه بالصدق",
+    "options": [
+     "يءمر",
+     "يئمر",
+     "يأمر",
+     "يؤمر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "............ أن الكلمات قوة",
+    "options": [
+     "تئكدت",
+     "تأكدت",
+     "تؤكدت",
+     "تءكدت"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "غطى المسافر ............ من حرارة الشمس",
+    "options": [
+     "رؤسه",
+     "رأسه",
+     "رئسه",
+     "رءسه"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لكل إنسان ............ يحترم",
+    "options": [
+     "رؤي",
+     "رءي",
+     "رأي",
+     "رئي"
+    ],
+    "ans": 2
+   }
+  ]
+ },
+ {
+  "id": "g4",
+  "title": "صح أم خطأ",
+  "type": "true_false",
+  "desc": "هل العبارة صحيحة أم خاطئة؟",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+  "questions": [
+   {
+    "q": "الهمزة في «طمأن» مكتوبة على الألف لأنها مفتوحة وقبلها حرف صحيح ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «قرأت» مكتوبة على الألف لأنها ساكنة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «الرأفة» مكتوبة على الألف لأنها ساكنة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «قصة الأسد والفئر».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «الفأس من أدوات الفلاح الضرورية».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «الصديق الوفي مؤمون على الأسرار».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «تأخرت الطائرة بسبب المطر».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «شؤون» هو «شأن».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «كؤوس» هو «كأس».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مضاد «مبكرًا» هو «متأخرًا».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «طمأن» مفتوحة وقبلها حرف صحيح ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «قرأت» ساكنة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «سأل» ساكنة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «الرأفة» ساكنة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «مأمون» مفتوحة وقبلها مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «تأخرت» مفتوحة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «شأن» ساكنة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «كأس» مكسورة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «مسألة» مفتوحة وقبلها حرف صحيح ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «تأخذ» مفتوحة وقبلها مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «متأخرًا» مفتوحة وقبلها حرف مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «قصة الأسد والفأر».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «الصديق الوفي مأمون على الأسرار».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «طمئن الطبيب المرضى».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «قرأت قصيدة جميلة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «تعامل مع الناس بالرئفة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «حل التلميذ المسألة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «رئت سمر أهدافها».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «سأترك خيالي يسبح بعيدًا».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «يستشير الابن والده بشئن مستقبله».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «تأخذ بلادي خطوات نحو التقدم».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «وصل القطار متؤخرًا».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مفرد «كؤوس» هو «كئس».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مفرد «شؤون» هو «شؤن».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «تأتوا» ساكنة وقبلها مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «سأعطيكم» مفتوحة وقبلها مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «رأت» ساكنة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة المتوسطة على الألف لا تكون مكسورة أبدًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "إذا كان قبل الهمزة المتوسطة كسرة فإنها لا تكتب على الألف.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تكتب الهمزة المتوسطة على الألف إذا كانت مضمومة وقبلها مضموم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الهمزة في «الفأس» ساكنة وقبلها مفتوح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «يسأل» مفتوحة وقبلها حرف صحيح ساكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الهمزة في «الفأر» مضمومة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «أحب التأمل في الطبيعة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «سئعطيكم مثالًا».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصواب: «ثم تأتوا إلى المدرسة».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصواب: «لا تتئخر عن موعدك».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "همزة «طمأن» كتبت على الألف لأن الفتحة أقوى من السكون الذي قبلها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همزة «قرأت» كتبت على الألف لأن الفتحة التي قبلها أقوى من سكونها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كلمة «مأمون» همزتها على الواو.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   }
+  ]
+ },
+ {
+  "id": "g5",
+  "title": "تحدي العباقرة",
+  "type": "genius",
+  "desc": "تطبيقات أعمق على الهمزة المتوسطة على الألف",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path><path d=\"M10 21h4\"></path></svg>",
+  "questions": [
+   {
+    "q": "سبب كتابة الهمزة على الألف في «طمأن»:",
+    "options": [
+     "مفتوحة وقبلها مفتوح",
+     "ساكنة وقبلها مفتوح",
+     "مكسورة وقبلها مفتوح",
+     "مفتوحة وقبلها حرف صحيح ساكن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «قرأت»:",
+    "options": [
+     "مضمومة وقبلها مفتوح",
+     "مفتوحة وقبلها ساكن",
+     "مفتوحة وقبلها مفتوح",
+     "ساكنة وقبلها مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «سأل»:",
+    "options": [
+     "مكسورة وقبلها ساكن",
+     "ساكنة وقبلها مفتوح",
+     "مفتوحة وقبلها ساكن",
+     "مفتوحة وقبلها مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «الرأفة»:",
+    "options": [
+     "مفتوحة وقبلها مفتوح",
+     "مفتوحة وقبلها ساكن",
+     "مضمومة وقبلها ساكن",
+     "ساكنة وقبلها مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «فجأة»:",
+    "options": [
+     "مكسورة",
+     "ساكنة وقبلها مفتوح",
+     "مفتوحة وقبلها حرف صحيح ساكن",
+     "مفتوحة وقبلها مفتوح"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «تأمل»:",
+    "options": [
+     "مفتوحة وقبلها ساكن",
+     "ساكنة وقبلها مفتوح",
+     "مفتوحة وقبلها مفتوح",
+     "مضمومة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "سبب كتابة الهمزة على الألف في «مأمون»:",
+    "options": [
+     "مفتوحة وقبلها مفتوح",
+     "مضمومة وقبلها ساكن",
+     "مكسورة",
+     "ساكنة وقبلها مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صوب الخطأ: «أعجبتني قصة الأسد والفئر»",
+    "options": [
+     "الفير",
+     "الفأر",
+     "الفءر",
+     "الفؤر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "صوب الخطأ: «الفؤس من أدوات الفلاح»",
+    "options": [
+     "الفئس",
+     "الفاس",
+     "الفأس",
+     "الفءس"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "صوب الخطأ: «الصديق الوفي مؤمون على الأسرار»",
+    "options": [
+     "مءمون",
+     "مئمون",
+     "ماءمون",
+     "مأمون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صوب الخطأ: «تئخرت الطائرة بسبب المطر»",
+    "options": [
+     "تؤخرت",
+     "تءخرت",
+     "تأخرت",
+     "تاخرت"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أكمل بمفرد (شؤون): «يستشير الابن والده بـ............ مستقبله»",
+    "options": [
+     "شئن",
+     "شءن",
+     "شأن",
+     "شؤن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أكمل بمضارع (أخذت): «............ بلادي خطوات نحو التقدم»",
+    "options": [
+     "تؤخذ",
+     "تأخذ",
+     "تءخذ",
+     "تئخذ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أكمل بمضاد (مبكرًا): «وصل القطار ............ بسبب الظروف»",
+    "options": [
+     "متأخرًا",
+     "متءخرًا",
+     "متئخرًا",
+     "متؤخرًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أكمل بمفرد (كؤوس): «رفع الفريق الفائز ............ البطولة»",
+    "options": [
+     "كءس",
+     "كأس",
+     "كئس",
+     "كؤس"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة الصحيحة إملائيًّا:",
+    "options": [
+     "يسؤل",
+     "يسأل",
+     "يسئل",
+     "يسءل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة الصحيحة إملائيًّا:",
+    "options": [
+     "رؤفة",
+     "رأفة",
+     "رءفة",
+     "رئفة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة الصحيحة إملائيًّا:",
+    "options": [
+     "طمئن",
+     "طمأن",
+     "طمءن",
+     "طمؤن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة الصحيحة إملائيًّا:",
+    "options": [
+     "قرئت",
+     "قرأت",
+     "قرؤت",
+     "قرءت"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة التي همزتها مفتوحة وقبلها حرف صحيح ساكن:",
+    "options": [
+     "رأس",
+     "سأل",
+     "يسأل",
+     "تأخر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكلمة التي همزتها ساكنة وقبلها مفتوح:",
+    "options": [
+     "مأمون",
+     "سأل",
+     "فجأة",
+     "طمأن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة التي همزتها مفتوحة وقبلها مفتوح:",
+    "options": [
+     "كأس",
+     "الفأر",
+     "يسأل",
+     "تأمل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما الذي يحدد صورة الهمزة المتوسطة؟",
+    "options": [
+     "طول الكلمة",
+     "أول الكلمة",
+     "حركتها وحركة ما قبلها",
+     "نوع الكلمة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الكلمة التي همزتها ساكنة وقبلها مفتوح من كلمات الدرس:",
+    "options": [
+     "الرأفة",
+     "طمأن",
+     "فجأة",
+     "سأل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «طمأن الطبيب المرضى على صحتهم» كم همزة متوسطة على الألف؟",
+    "options": [
+     "لا توجد",
+     "ثلاث",
+     "اثنتان",
+     "واحدة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «قرأت قصيدة للشاعرة» نوع الهمزة في «قرأت»:",
+    "options": [
+     "متوسطة",
+     "متطرفة",
+     "لا توجد",
+     "أولية"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «سأل الموظف عن سبب الاجتماع» ماذا يحدث لو جعلنا الفعل مضارعًا «يسأل»؟",
+    "options": [
+     "تبقى على الألف لأنها مفتوحة بعد ساكن",
+     "تكتب على السطر",
+     "تكتب على الواو",
+     "تكتب على الياء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا لا تكتب همزة «مأمون» على الواو رغم وجود الواو بعدها؟",
+    "options": [
+     "لأن العبرة بحركتها وحركة ما قبلها لا بما بعدها",
+     "لأنها مكسورة",
+     "لأن قبلها مضموم",
+     "لأنها مضمومة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أي الكلمات تتبع حالة «طمأن» نفسها؟",
+    "options": [
+     "سأل",
+     "مسألة",
+     "قرأت",
+     "الرأفة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي الكلمات تتبع حالة «قرأت» نفسها؟",
+    "options": [
+     "طمأن",
+     "الرأفة",
+     "سأل",
+     "تأخرت"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي الكلمات تتبع حالة «سأل» نفسها؟",
+    "options": [
+     "طمأن",
+     "مسألة",
+     "قرأت",
+     "تأخرت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا صوبنا «تئخرت» إلى «تأخرت»؟",
+    "options": [
+     "لأنها في الأول",
+     "لأن الهمزة مفتوحة وقبلها مفتوح فلا كسرة توجب النبرة",
+     "لأنها متطرفة",
+     "لأن الهمزة مكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا صوبنا «مؤمون» إلى «مأمون»؟",
+    "options": [
+     "لأن الهمزة ساكنة وقبلها مفتوح",
+     "لأن قبلها مضموم",
+     "لأن الهمزة مضمومة",
+     "لأنها مكسورة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا صوبنا «الفئر» إلى «الفأر»؟",
+    "options": [
+     "لأن قبلها مكسور",
+     "لأن الهمزة ساكنة وقبلها مفتوح",
+     "لأنها مضمومة",
+     "لأنها مكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ترتيب الحركات يساعدنا على:",
+    "options": [
+     "معرفة الحرف الذي تكتب عليه الهمزة المتوسطة",
+     "معرفة معنى الكلمة",
+     "معرفة عدد الحروف",
+     "معرفة إعراب الكلمة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أي الكلمات التالية همزتها ليست على الألف؟",
+    "options": [
+     "فجأة",
+     "مأمون",
+     "تأخر",
+     "فئات"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا لا نكتب «قرئت» بالنبرة؟",
+    "options": [
+     "لأنها متطرفة",
+     "لأن الهمزة ساكنة وقبلها مفتوح ولا كسرة",
+     "لأن قبلها مكسور",
+     "لأن الهمزة مكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «سأثبت لك ذلك» الهمزة:",
+    "options": [
+     "ساكنة بعد فتح",
+     "مكسورة",
+     "مفتوحة بعد فتح فكتبت على الألف",
+     "مضمومة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «سأعليها إلى النجم» الهمزة:",
+    "options": [
+     "مفتوحة بعد فتح فكتبت على الألف",
+     "مضمومة",
+     "مكسورة",
+     "ساكنة بعد ضم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «بالتأكيد ستبدأ» الهمزة في «بالتأكيد»:",
+    "options": [
+     "مفتوحة بعد فتح",
+     "ساكنة بعد فتح",
+     "مفتوحة بعد سكون",
+     "مكسورة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ما وجه الشبه بين «قرأت» و«الرأفة» و«مأمون»؟",
+    "options": [
+     "قبلها ساكن",
+     "الهمزة مضمومة",
+     "الهمزة مكسورة",
+     "الهمزة ساكنة وقبلها مفتوح في كل منها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما وجه الشبه بين «طمأن» و«مسألة» و«يسأل»؟",
+    "options": [
+     "الهمزة مكسورة",
+     "الهمزة ساكنة",
+     "قبلها مفتوح",
+     "الهمزة مفتوحة وقبلها حرف صحيح ساكن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما وجه الشبه بين «سأل» و«تأخرت» و«تأمل»؟",
+    "options": [
+     "الهمزة ساكنة",
+     "قبلها ساكن",
+     "الهمزة مضمومة",
+     "الهمزة مفتوحة وقبلها مفتوح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما الكلمة التي كتبت همزتها خطأ؟",
+    "options": [
+     "مئمون",
+     "قرأت",
+     "سأل",
+     "مأمون"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الكلمة التي كتبت همزتها خطأ؟",
+    "options": [
+     "طمئن",
+     "طمأن",
+     "تأخرت",
+     "الفأر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الكلمة التي كتبت همزتها خطأ؟",
+    "options": [
+     "الفؤس",
+     "كأس",
+     "الفأس",
+     "شأن"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الكلمة التي كتبت همزتها صحيحة؟",
+    "options": [
+     "متءخرًا",
+     "متؤخرًا",
+     "متئخرًا",
+     "متأخرًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما الكلمة التي كتبت همزتها صحيحة؟",
+    "options": [
+     "الرءفة",
+     "الرئفة",
+     "الرأفة",
+     "الرؤفة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الحرف الساكن قبل الهمزة في «مسألة»:",
+    "options": [
+     "السين",
+     "اللام",
+     "الميم",
+     "التاء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الحرف المفتوح قبل الهمزة في «الرأفة»:",
+    "options": [
+     "اللام",
+     "التاء",
+     "الراء",
+     "الفاء"
+    ],
+    "ans": 2
+   }
+  ]
+ }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+                <p style="margin-top:8px;font-size:.9rem;color:#0f766e;">${QUESTIONS_PER_PLAY} سؤالًا عشوائيًّا في كل مرة</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة لقائمة الألعاب</button>
+            </div>
+        `;
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_PLAY);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #059669)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.55 + Math.random() * 0.45; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>
