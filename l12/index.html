@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>سعادة الأوطان - الصف السادس الابتدائي - شريف الديب</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;      
+            --primary-light: #14b8a6; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #effcf9;
+            background-image: radial-gradient(#a7dcd4 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(2.5rem, 10vw, 4.5rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.1;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(20, 184, 166, 0.3); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #0f766e; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #14b8a6; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #0f766e;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #0f766e);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(204,251,241,0.9));
+            color: #0f766e;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23fff7ed" width="100%" height="100%"/><circle fill="%23fed7aa" cx="20%" cy="30%" r="50"/><circle fill="%23fed7aa" cx="80%" cy="60%" r="70"/><circle fill="%23fed7aa" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #fffbeb; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #431407, #9a3412, #ea580c);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #fdba74; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(234,88,12,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #fde047, #f59e0b, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #fb923c, #ea580c);
+            border-bottom: 3px solid #7c2d12; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(253, 224, 71, 0.15); color: #fde047;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        .lesson-name { font-size: clamp(1.4rem, 5vw, 2rem) !important; color: #fde047 !important; font-weight: 900 !important; margin-top: 4px; }
+        .extra-line { font-size: .9em; color: #ccfbf1; }
+        @media (max-width: 600px) {
+            .teacher-photo { width: 170px !important; height: 170px !important; }
+            .header-main { padding: 20px 14px 70px 14px; }
+            #home-screen { padding: 14px; }
+            .grid-menu { grid-template-columns: 1fr; gap: 16px; }
+            .game-container { padding: 0 12px 30px 12px; }
+            .game-nav { padding: 10px 12px; gap: 8px; }
+            .bubble { font-size: 0.78rem; padding: 8px 3px; }
+            .target-bird { white-space: normal; max-width: 78vw; font-size: 0.95rem; padding: 8px 14px; }
+            .tf-grid .btn { min-width: 130px !important; font-size: 1.6rem !important; padding: 22px !important; }
+            .modal { padding: 26px; }
+            #feedback-title { font-size: 1.8rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img class="teacher-photo" src="../teacher.jpg" alt="الأستاذ شريف الديب" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fde047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">شريف الديب</h1>
+                    <h2>الصَّفُّ السَّادِسُ الابْتِدَائِيُّ - الوحدة الثالثة: العلم والخيال والمستقبل</h2>
+                    <h2 class="lesson-name">سعادة الأوطان</h2>
+                    <p style="margin-top: 10px;">الدرس الرابع: النص الشعري</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#effcf9" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 20</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | الأستاذ / شريف الديب</p>
+    </footer>
+
+<script>
+    const LESSON_NAME = "سعادة الأوطان";
+    const QUESTIONS_PER_PLAY = 20;
+    const allGamesData = [
+ {
+  "id": "g1",
+  "title": "فهم الأبيات",
+  "type": "mcq",
+  "desc": "أسئلة على معاني أبيات «سعادة الأوطان»",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>",
+  "questions": [
+   {
+    "q": "عن أي شيء يتحدث الشاعر في الأبيات؟",
+    "options": [
+     "الرحلات",
+     "بناء الأوطان",
+     "جمال الطبيعة",
+     "الحروب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "يرى الشاعر أن لكل زمان:",
+    "options": [
+     "همة تناسبه",
+     "لونًا خاصًّا",
+     "حزنًا خاصًّا",
+     "مشكلة لا تحل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«همم الرجال مقيسة بزمانها» المعنى:",
+    "options": [
+     "الهمم لا تتغير",
+     "الزمان يقاس بالساعة",
+     "الرجال لا همة لهم",
+     "لكل جيل دوره وهمته على مر العصور"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "يؤكد الشاعر أن تقدم الأوطان مرتبط بـ:",
+    "options": [
+     "حروبها",
+     "عمرانها",
+     "صحرائها",
+     "فقرها"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سعادة الأوطان كما في البيت الأول:",
+    "options": [
+     "في مالها فقط",
+     "في جبالها",
+     "في أنهارها",
+     "في عمرانها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أساس عمران البلاد عند الشاعر:",
+    "options": [
+     "الحظ",
+     "الانعزال",
+     "تعاون متواصل من سكانها",
+     "المال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "عمران الأوطان لا يتحقق إلا بـ:",
+    "options": [
+     "هجرتهم",
+     "تفرقهم",
+     "كسلهم",
+     "تعاون أبنائها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تعاون الأقوام لا يحصل إلا بـ:",
+    "options": [
+     "نشر العلم في أوطانها",
+     "السفر",
+     "جمع المال",
+     "الحروب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يعد الشاعر العلم:",
+    "options": [
+     "ركيزة أساسية لتحقيق التعاون بين الشعوب",
+     "سببًا للخلاف",
+     "مضيعة للوقت",
+     "أمرًا ثانويًّا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بم يفتخر الشاعر بعد ذلك؟",
+    "options": [
+     "بالغرباء",
+     "بنفسه",
+     "بالطبيعة",
+     "بأمجاد العرب عبر التاريخ"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "بم اشتهرت الأمة العربية كما في البيت الرابع؟",
+    "options": [
+     "بصحرائها",
+     "بحروبها فقط",
+     "بأموالها فقط",
+     "بفتوحها وعلومها وبيانها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«بيانها» في البيت الرابع يقصد بها:",
+    "options": [
+     "فصاحتها وبلاغتها",
+     "أموالها",
+     "جيوشها",
+     "بيوتها"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "من إنجازات الأمة العربية التي افتخر بها الشاعر:",
+    "options": [
+     "تأسيس المدارس وإنشاء المصانع",
+     "بناء الأهرام",
+     "السفر إلى القمر",
+     "اختراع الطائرة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«كم قد أقامت للعلوم مدارسًا» تعبير يدل على:",
+    "options": [
+     "كثرة المدارس التي أنشأها العرب",
+     "قلة المدارس",
+     "هدم المدارس",
+     "صغر المدارس"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مدارس العرب كثيرة لدرجة أن:",
+    "options": [
+     "يعيا ذوو الإحصاء عن حسبانها",
+     "لا وجود لها",
+     "يعرفها الجميع بالعدد",
+     "يسهل عدها"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«وبنت بأقطار البلاد مصانعًا» يدل على:",
+    "options": [
+     "هدم المصانع",
+     "قلة المصانع",
+     "انتشار المصانع في نواحي البلاد",
+     "مصنع واحد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "المصانع التي بناها العرب:",
+    "options": [
+     "تتحير الأفكار في بنيانها",
+     "بسيطة",
+     "قليلة",
+     "قبيحة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«تتحير الأفكار في بنيانها» تدل على:",
+    "options": [
+     "صغر البناء",
+     "قبح البناء",
+     "براعة العرب ودقة بنائهم",
+     "ضعف البناء"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "البيت الذي يدل على أن تشييد المصانع دليل على تقدم الأمم وقدرتها على الابتكار:",
+    "options": [
+     "همم الرجال مقيسة بزمانها ...",
+     "وبنت بأقطار البلاد مصانعًا ...",
+     "والعرب أكبر أمة مشهورة ...",
+     "كم قد أقامت للعلوم مدارسًا ..."
+    ],
+    "ans": 1
+   },
+   {
+    "q": "البيت الذي يدل على أن ازدهار الأوطان مرتبط بتقدمها العمراني:",
+    "options": [
+     "وبنت بأقطار البلاد مصانعًا ...",
+     "كم قد أقامت للعلوم مدارسًا ...",
+     "والعرب أكبر أمة مشهورة ...",
+     "همم الرجال مقيسة بزمانها ... وسعادة الأوطان في عمرانها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "البيت الذي يدل على أنه لا يمكن تحقيق التعاون بين الشعوب إلا بنشر العلم:",
+    "options": [
+     "وبنت بأقطار البلاد مصانعًا ...",
+     "وتعاون الأقوام ليس بحاصل ... إلا بنشر العلم في أوطانها",
+     "والعرب أكبر أمة مشهورة ...",
+     "وأساس عمران البلاد تعاون ..."
+    ],
+    "ans": 1
+   },
+   {
+    "q": "البيت الذي يفتخر فيه الشاعر بفتوح العرب وعلومهم وبيانهم:",
+    "options": [
+     "والعرب أكبر أمة مشهورة ... بفتوحها وعلومها وبيانها",
+     "وتعاون الأقوام ليس بحاصل ...",
+     "همم الرجال مقيسة بزمانها ...",
+     "وأساس عمران البلاد تعاون ..."
+    ],
+    "ans": 0
+   },
+   {
+    "q": "البيت الذي يؤكد أن التعاون أساس العمران:",
+    "options": [
+     "وأساس عمران البلاد تعاون ... متواصل الأسباب من سكانها",
+     "والعرب أكبر أمة مشهورة ...",
+     "وبنت بأقطار البلاد مصانعًا ...",
+     "كم قد أقامت للعلوم مدارسًا ..."
+    ],
+    "ans": 0
+   },
+   {
+    "q": "البيت الذي يعبر عن «أن الأمم تنهض بهمة أبنائها»:",
+    "options": [
+     "وبنت بأقطار البلاد مصانعًا ...",
+     "كم قد أقامت للعلوم مدارسًا ...",
+     "همم الرجال مقيسة بزمانها ...",
+     "والعرب أكبر أمة مشهورة ..."
+    ],
+    "ans": 2
+   },
+   {
+    "q": "عمران البلاد يعتمد على:",
+    "options": [
+     "الحظ",
+     "الغرباء",
+     "الكسل",
+     "تعاون أهلها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "يتحقق التقدم بين الشعوب من خلال:",
+    "options": [
+     "الحروب",
+     "الجهل",
+     "الانعزال",
+     "نشر العلم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الأمة العربية اشتهرت بـ:",
+    "options": [
+     "فقرها",
+     "سبقها في العلوم والصناعة",
+     "تأخرها",
+     "كسلها"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "هل الصناعة مهمة في بناء الأوطان كما فهمت من الأبيات؟",
+    "options": [
+     "تضر الأوطان",
+     "ليست مهمة",
+     "نعم، مهمة جدًّا",
+     "لا علاقة لها"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "العلاقة بين العلم والتعاون كما فهمت من النص:",
+    "options": [
+     "لا علاقة",
+     "التعاون يمنع العلم",
+     "العلم يمنع التعاون",
+     "العلم ينشر التعاون بين الشعوب"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "من أسباب نهوض الأمة كما فهمت من الأبيات:",
+    "options": [
+     "الجهل",
+     "التعاون ونشر العلم والهمة العالية",
+     "التفرق",
+     "الكسل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "عنوان جديد مناسب للقصيدة:",
+    "options": [
+     "يوم ممطر",
+     "رحلة بحرية",
+     "بالعلم والتعاون تبنى الأوطان",
+     "جمال الطبيعة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الفكرة العامة للأبيات:",
+    "options": [
+     "الحزن على الماضي",
+     "الهجرة",
+     "وصف الصحراء",
+     "بناء الأوطان بالتعاون والعلم والفخر بأمجاد العرب"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "القيمة التي يدعو إليها الرصافي والروحاني:",
+    "options": [
+     "الكسل",
+     "التعاون",
+     "الأنانية",
+     "التفرق"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«بفضل التعاون أرست أمم صروحًا من المجد فوق القمم» يرى الروحاني أن الأمم بنت المجد بـ:",
+    "options": [
+     "الحروب",
+     "الحظ",
+     "التعاون",
+     "المال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تعبير مجازي في بيت الروحاني:",
+    "options": [
+     "أمم",
+     "بفضل التعاون",
+     "فوق القمم",
+     "أرست أمم صروحًا من المجد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "التشبيه تعبير عن:",
+    "options": [
+     "أمر",
+     "اختلاف شيئين",
+     "اشتراك شيئين مذكورين في صفة أو أكثر",
+     "سؤال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«الوطن كالأم لنا في حنانها» الصفة المشتركة:",
+    "options": [
+     "الحنان",
+     "السرعة",
+     "الجمال",
+     "القوة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الوطن أم لنا» شبه الوطن بـ:",
+    "options": [
+     "البيت",
+     "الأب",
+     "الأم",
+     "الشجرة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «قيم نفسك»: بم سيعمر الوطن خيرًا؟",
+    "options": [
+     "بنشر العلم وروح العون والعزم",
+     "بالمال فقط",
+     "بالراحة",
+     "بالحظ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «قيم نفسك»: «فأرضي جنة الدنيا» شبه الشاعر أرضه بـ:",
+    "options": [
+     "النجم",
+     "جنة الدنيا",
+     "الزرع",
+     "الصحراء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «قيم نفسك»: إلى أين سيعلي الشاعر أرضه؟",
+    "options": [
+     "إلى البحر",
+     "إلى الجبل",
+     "إلى النجم",
+     "إلى القمر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «قيم نفسك»: «ولن نعيا فذا علمي» يدل على:",
+    "options": [
+     "الحزن",
+     "العجز",
+     "الثقة والعزم وعدم العجز",
+     "الخوف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «قيم نفسك»: العلم أساس:",
+    "options": [
+     "خراب الأمم",
+     "فقر الأمم",
+     "نهضة الأمم",
+     "ضعف الأمم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «قيم نفسك»: هل الشباب قادرون على تعمير أوطانهم؟",
+    "options": [
+     "نعم",
+     "أحيانًا",
+     "لا يهتمون",
+     "لا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «قيم نفسك»: هل نحتاج إلى التعاون لنبني أوطاننا؟",
+    "options": [
+     "لا علاقة",
+     "قليلًا",
+     "نعم نحتاج إليه",
+     "لا نحتاج"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "واجبنا نحو الوطن كما فهمت من أبيات «قيم نفسك»:",
+    "options": [
+     "الكسل",
+     "نشر العلم والتعاون والعمل على تعميره",
+     "الشكوى",
+     "الهجرة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«هنا زرع هنا نبني» تدل على:",
+    "options": [
+     "السفر",
+     "العمل في الزراعة والبناء",
+     "اللعب",
+     "النوم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لوحة الكلمات في الدرس عنوانها:",
+    "options": [
+     "العلم نور",
+     "الأمم تنهض بسواعد أبنائها",
+     "الوطن جميل",
+     "الصبر مفتاح الفرج"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا يعجز ذوو الإحصاء عن عد مدارس العرب؟",
+    "options": [
+     "لكثرتها",
+     "لقدمها",
+     "لصغرها",
+     "لبعدها"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الذي يشهد على براعة العرب كما في شرح الأبيات؟",
+    "options": [
+     "الخيام",
+     "المصانع التي أنشؤوها",
+     "الحروب",
+     "الأسواق"
+    ],
+    "ans": 1
+   }
+  ]
+ },
+ {
+  "id": "g2",
+  "title": "ثروتي اللغوية",
+  "type": "bubbles",
+  "desc": "معاني كلمات «سعادة الأوطان» ومضاداتها ومفردها",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"8\" cy=\"8\" r=\"5\"></circle><circle cx=\"17\" cy=\"15\" r=\"4\"></circle><circle cx=\"7\" cy=\"18\" r=\"2.5\"></circle></svg>",
+  "questions": [
+   {
+    "q": "معنى «مقيسة»:",
+    "options": [
+     "منسية",
+     "مجهولة",
+     "مكسورة",
+     "يتم قياسها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "معنى «عمرانها»:",
+    "options": [
+     "فقرها",
+     "صحراؤها",
+     "خرابها",
+     "بنيانها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «عمرانها»:",
+    "options": [
+     "تقدمها",
+     "خرابها",
+     "ازدهارها",
+     "بنيانها"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «بيانها»:",
+    "options": [
+     "بيوتها",
+     "أموالها",
+     "فصاحتها",
+     "جيوشها"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "معنى «يعيا»:",
+    "options": [
+     "يبحث",
+     "يعجز",
+     "يعبر",
+     "يتحدث"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «ذوو الإحصاء»:",
+    "options": [
+     "الشعراء",
+     "أصحاب الحساب والعدد",
+     "الجنود",
+     "الأطباء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «حسبانها»:",
+    "options": [
+     "جمالها",
+     "طولها",
+     "حسابها وعدها",
+     "لونها"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "معنى «أقطار»:",
+    "options": [
+     "نواح وجهات",
+     "شوارع",
+     "أحياء",
+     "أمطار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «أقطار»:",
+    "options": [
+     "قطرة",
+     "قطار",
+     "مقطورة",
+     "قطر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "معنى «تتحير»:",
+    "options": [
+     "تتردد وتندهش",
+     "تنام",
+     "تسرع",
+     "تفرح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تقدم «العمران» في بلدنا:",
+    "options": [
+     "الاقتصاد",
+     "الأمن",
+     "البنيان",
+     "البحث"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أعجبني «بيان» الكاتب في مقالاته:",
+    "options": [
+     "رأي",
+     "أسلوب",
+     "فصاحة",
+     "خط"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«يعيا» الإنسان عن إحصاء نعم الله:",
+    "options": [
+     "يبحث",
+     "يتحدث",
+     "يعبر",
+     "يعجز"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "نشعر بالأمان في جميع «أقطار» وطننا:",
+    "options": [
+     "أحياء",
+     "شوارع",
+     "منازل",
+     "جهات"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أنا ماهر في «حسبان» المسائل الرياضية:",
+    "options": [
+     "كتابة",
+     "شعر",
+     "قراءة",
+     "حساب"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "معنى «نعيا» في «قيم نفسك»:",
+    "options": [
+     "نتحير",
+     "نكسل",
+     "نرفض",
+     "نعجز"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "جمع «روح»:",
+    "options": [
+     "رياح",
+     "أرواح",
+     "مراوح",
+     "روائح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «يعمر»:",
+    "options": [
+     "يقلل",
+     "يتعب",
+     "يخرب",
+     "يضيق"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مضاد «سعادة»:",
+    "options": [
+     "سرور",
+     "بهجة",
+     "فرح",
+     "شقاء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «تعاون»:",
+    "options": [
+     "مساعدة",
+     "تآزر",
+     "تكاتف",
+     "تخاذل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «متواصل»:",
+    "options": [
+     "دائم",
+     "مستمر",
+     "متتابع",
+     "منقطع"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «نشر»:",
+    "options": [
+     "بث",
+     "طي وكتمان",
+     "إعلان",
+     "إذاعة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «أكبر»:",
+    "options": [
+     "أعظم",
+     "أضخم",
+     "أوسع",
+     "أصغر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «مشهورة»:",
+    "options": [
+     "ذائعة",
+     "مغمورة",
+     "شهيرة",
+     "معروفة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «العلم»:",
+    "options": [
+     "الجهل",
+     "الفهم",
+     "الدراية",
+     "المعرفة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مضاد «أقامت»:",
+    "options": [
+     "هدمت",
+     "بنت",
+     "شيدت",
+     "أسست"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مضاد «بنت»:",
+    "options": [
+     "عمرت",
+     "أقامت",
+     "هدمت",
+     "شيدت"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مضاد «تتحير»:",
+    "options": [
+     "تتردد",
+     "تضطرب",
+     "تهتدي",
+     "تندهش"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مضاد «الخير»:",
+    "options": [
+     "الفضل",
+     "الشر",
+     "البر",
+     "النفع"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جمع «همة»:",
+    "options": [
+     "أهمام",
+     "هموم",
+     "أهمة",
+     "همم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مفرد «همم»:",
+    "options": [
+     "هم",
+     "مهمة",
+     "اهتمام",
+     "همة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "جمع «وطن»:",
+    "options": [
+     "وطنات",
+     "أوطان",
+     "وطون",
+     "أوطنة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جمع «أمة»:",
+    "options": [
+     "أمم",
+     "أموم",
+     "أمات",
+     "أمائم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «الأقوام»:",
+    "options": [
+     "المقام",
+     "القائم",
+     "القوم",
+     "القيمة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مفرد «مدارس»:",
+    "options": [
+     "درس",
+     "دارس",
+     "مدرسة",
+     "تدريس"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مفرد «مصانع»:",
+    "options": [
+     "صنع",
+     "مصنع",
+     "صانع",
+     "صناعة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جمع «علم» (المعرفة):",
+    "options": [
+     "معالم",
+     "علمات",
+     "علوم",
+     "علائم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مفرد «الأفكار»:",
+    "options": [
+     "الفكرة",
+     "الفكور",
+     "المفكر",
+     "التفكير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «سكانها»:",
+    "options": [
+     "مسكن",
+     "سكن",
+     "سكينة",
+     "ساكن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مفرد «فتوح»:",
+    "options": [
+     "فتح",
+     "فتحة",
+     "فاتح",
+     "مفتاح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «الرجال»:",
+    "options": [
+     "الرجل",
+     "الرجولة",
+     "المرجل",
+     "الراجل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «نجم»:",
+    "options": [
+     "نجائم",
+     "مناجم",
+     "نجوم",
+     "أنجام"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "جمع «جنة»:",
+    "options": [
+     "جنات",
+     "جنن",
+     "جنون",
+     "أجنة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مرادف «عمرانها»:",
+    "options": [
+     "فقرها",
+     "بنيانها",
+     "هدمها",
+     "خرابها"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مرادف «بيانها»:",
+    "options": [
+     "صمتها",
+     "عجزها",
+     "سكوتها",
+     "فصاحتها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مرادف «يعيا»:",
+    "options": [
+     "يقدر",
+     "ينجح",
+     "يستطيع",
+     "يعجز"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مرادف «أقطار»:",
+    "options": [
+     "جهات",
+     "بحار",
+     "أمطار",
+     "جبال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مرادف «حسبانها»:",
+    "options": [
+     "عدها",
+     "جمالها",
+     "بنائها",
+     "علمها"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مرادف «تتحير»:",
+    "options": [
+     "تهتدي",
+     "تفهم",
+     "تندهش",
+     "تعرف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مرادف «العزم»:",
+    "options": [
+     "التردد",
+     "الإرادة القوية",
+     "الضعف",
+     "الكسل"
+    ],
+    "ans": 1
+   }
+  ]
+ },
+ {
+  "id": "g3",
+  "title": "أكمل البيت",
+  "type": "shooting",
+  "desc": "اصطد الكلمة الصحيحة لإكمال الأبيات",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+  "questions": [
+   {
+    "q": "همم ............ مقيسة بزمانها",
+    "options": [
+     "الرجال",
+     "الشيوخ",
+     "الأطفال",
+     "النساء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همم الرجال ............ بزمانها",
+    "options": [
+     "معروفة",
+     "مكسورة",
+     "مقيسة",
+     "منسية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "همم الرجال مقيسة ............",
+    "options": [
+     "بأهلها",
+     "بمكانها",
+     "بزمانها",
+     "بمالها"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وسعادة ............ في عمرانها",
+    "options": [
+     "الإنسان",
+     "البلدان",
+     "الأوطان",
+     "الأزمان"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وسعادة الأوطان في ............",
+    "options": [
+     "عمرانها",
+     "بنيانها",
+     "أوطانها",
+     "سكانها"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وأساس ............ البلاد تعاون",
+    "options": [
+     "خراب",
+     "سكان",
+     "أوطان",
+     "عمران"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "وأساس عمران البلاد ............",
+    "options": [
+     "تعاون",
+     "تخاذل",
+     "تنافر",
+     "تكاسل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "متواصل ............ من سكانها",
+    "options": [
+     "الأصحاب",
+     "الأحباب",
+     "الأسباب",
+     "الأبواب"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "متواصل الأسباب من ............",
+    "options": [
+     "أوطانها",
+     "سكانها",
+     "عمرانها",
+     "بنيانها"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وتعاون ............ ليس بحاصل",
+    "options": [
+     "الأقوام",
+     "الأقلام",
+     "الأيام",
+     "الأعوام"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وتعاون الأقوام ليس ............",
+    "options": [
+     "بسهل",
+     "بقليل",
+     "بباطل",
+     "بحاصل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "إلا بنشر ............ في أوطانها",
+    "options": [
+     "الحرب",
+     "العلم",
+     "الجهل",
+     "المال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "إلا بنشر العلم في ............",
+    "options": [
+     "سكانها",
+     "عمرانها",
+     "أوطانها",
+     "بنيانها"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "والعرب أكبر ............ مشهورة",
+    "options": [
+     "قرية",
+     "قبيلة",
+     "دولة",
+     "أمة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "والعرب أكبر أمة ............",
+    "options": [
+     "صغيرة",
+     "فقيرة",
+     "مغمورة",
+     "مشهورة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "بفتوحها وعلومها و............",
+    "options": [
+     "بنيانها",
+     "سكانها",
+     "عمرانها",
+     "بيانها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ وعلومها وبيانها",
+    "options": [
+     "بحروبها",
+     "بجبالها",
+     "بفتوحها",
+     "بأموالها"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "كم قد أقامت ............ مدارسًا",
+    "options": [
+     "للعلوم",
+     "للحروب",
+     "للتجارة",
+     "للعب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كم قد أقامت للعلوم ............",
+    "options": [
+     "مدارسًا",
+     "قصورًا",
+     "مصانعًا",
+     "سجونًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يعيا ذوو ............ عن حسبانها",
+    "options": [
+     "الأعداء",
+     "الأبناء",
+     "الإحصاء",
+     "الأخطاء"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "يعيا ذوو الإحصاء عن ............",
+    "options": [
+     "حسبانها",
+     "عمرانها",
+     "بنيانها",
+     "بيانها"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "............ ذوو الإحصاء عن حسبانها",
+    "options": [
+     "يعيا",
+     "يقدر",
+     "يرضى",
+     "يسعى"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وبنت بأقطار البلاد ............",
+    "options": [
+     "حدائق",
+     "مصانعًا",
+     "قصورًا",
+     "مدارسًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وبنت ............ البلاد مصانعًا",
+    "options": [
+     "بأسوار",
+     "بأقطار",
+     "بأنهار",
+     "بأمطار"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تتحير ............ في بنيانها",
+    "options": [
+     "الأشجار",
+     "الأنهار",
+     "الأمطار",
+     "الأفكار"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تتحير الأفكار في ............",
+    "options": [
+     "بنيانها",
+     "سكانها",
+     "بيانها",
+     "عمرانها"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بنشر العلم في ............",
+    "options": [
+     "بيتي",
+     "يومي",
+     "قومي",
+     "نومي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وروح ............ والعزم",
+    "options": [
+     "العون",
+     "الحزن",
+     "الخوف",
+     "الكسل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وروح العون و............",
+    "options": [
+     "الحزن",
+     "الكسل",
+     "العزم",
+     "النوم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "سيعمر ............ خير",
+    "options": [
+     "قريتنا",
+     "حينا",
+     "مصرنا",
+     "بيتنا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بحسبان مع ............",
+    "options": [
+     "الفهم",
+     "الغم",
+     "الهم",
+     "الوهم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "هنا زرع هنا ............",
+    "options": [
+     "ننسى",
+     "نبني",
+     "ننام",
+     "نبكي"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ولن ............ فذا علمي",
+    "options": [
+     "نبقى",
+     "نعيا",
+     "نسعى",
+     "نرضى"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "فأرضي ............ الدنيا",
+    "options": [
+     "جنة",
+     "زينة",
+     "صحراء",
+     "نعمة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سأعليها إلى ............",
+    "options": [
+     "النجم",
+     "السهل",
+     "البحر",
+     "الجبل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بفضل ............ أرست أمم",
+    "options": [
+     "الحرب",
+     "الكسل",
+     "التنافر",
+     "التعاون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "صروحًا من ............ فوق القمم",
+    "options": [
+     "الذهب",
+     "الخشب",
+     "الحجر",
+     "المجد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "وأساس عمران البلاد تعاون ... متواصل الأسباب من ............",
+    "options": [
+     "بنيانها",
+     "عمرانها",
+     "أوطانها",
+     "سكانها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "كلمات متماثلة النهاية في الأبيات:",
+    "options": [
+     "مدارس - مصانع - أفكار",
+     "عمرانها - سكانها - أوطانها",
+     "العرب - أمة - مشهورة",
+     "الرجال - الأوطان - البلاد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة التي كررها الشاعر للتأكيد على أن التعاون أساس العمران:",
+    "options": [
+     "العلم",
+     "تعاون",
+     "عمران",
+     "الأوطان"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تعبير مجازي صور الهمم بشيء مادي يقاس:",
+    "options": [
+     "همم الرجال مقيسة",
+     "بنت مصانعًا",
+     "العرب أكبر أمة",
+     "سعادة الأوطان"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تعبير مجازي صور الأوطان بأناس يسعدون:",
+    "options": [
+     "يعيا ذوو الإحصاء",
+     "همم الرجال",
+     "وسعادة الأوطان في عمرانها",
+     "تتحير الأفكار"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تعبير مجازي صور التعاون بالأساس:",
+    "options": [
+     "أكبر أمة",
+     "وأساس عمران البلاد تعاون",
+     "مدارسًا",
+     "بنشر العلم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تعبير يدل على كثرة المدارس:",
+    "options": [
+     "أكبر أمة",
+     "وبنت مصانعًا",
+     "سعادة الأوطان",
+     "كم قد أقامت للعلوم مدارسًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تشبيه من أمثلة الدرس:",
+    "options": [
+     "أحب وطني",
+     "الوطن كبير",
+     "الوطن كالأم لنا في حنانها",
+     "الوطن جميل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تشبيه في «قيم نفسك»:",
+    "options": [
+     "فأرضي جنة الدنيا",
+     "بنشر العلم في قومي",
+     "هنا زرع هنا نبني",
+     "ولن نعيا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كلمتان متماثلتان النهاية في «قيم نفسك»:",
+    "options": [
+     "زرع - نبني",
+     "العزم - الفهم",
+     "قومي - مصرنا",
+     "أرضي - الدنيا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "القيمة المشتركة بين الرصافي والروحاني:",
+    "options": [
+     "التعاون",
+     "الكسل",
+     "الحرب",
+     "الغنى"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لوحة الكلمات: «الأمم تنهض بـ............ أبنائها»",
+    "options": [
+     "سواعد",
+     "أموال",
+     "أحلام",
+     "كلام"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بناء الأوطان يحتاج إلى العلم و............",
+    "options": [
+     "التعاون",
+     "التنافر",
+     "الكسل",
+     "الجهل"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g4",
+  "title": "صح أم خطأ",
+  "type": "true_false",
+  "desc": "حدد صحة العبارة وفق الأبيات",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+  "questions": [
+   {
+    "q": "عمران البلاد يعتمد على تعاون أهلها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يتحقق التقدم بين الشعوب من خلال نشر العلم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الأمة العربية اشتهرت بسبقها في العلوم والصناعة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصناعة ليست مهمة في بناء الأوطان.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "يتحدث الشاعر عن بناء الأوطان.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يرى الشاعر أن لكل زمان همة تناسبه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سعادة الأوطان في خرابها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أساس عمران البلاد تعاون متواصل من سكانها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تعاون الأقوام يحصل دون نشر العلم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "يفتخر الشاعر بأمجاد العرب عبر التاريخ.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "اشتهر العرب في الأبيات بأموالهم فقط.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أقام العرب مدارس قليلة يسهل عدها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "بنى العرب مصانع في أقطار البلاد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تتحير الأفكار في بنيان مصانع العرب.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «مقيسة»: يتم قياسها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «عمرانها»: خرابها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «عمرانها»: خرابها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «بيانها»: فصاحتها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «يعيا»: يقدر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «أقطار»: نواح وجهات.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «أقطار»: قطار.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «حسبانها»: جمالها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «تتحير»: تهتدي وتعرف.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ذوو الإحصاء هم أصحاب العلوم في الحساب والعدد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«عمرانها - سكانها - أوطانها» كلمات متماثلة النهاية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«همم الرجال مقيسة بزمانها» صور فيه الهمم بشيء مادي يقاس.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«وسعادة الأوطان في عمرانها» صور فيه الأوطان بأناس يسعدون.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«وأساس عمران البلاد تعاون» صور فيه التعاون بالأساس الذي يبنى عليه العمران.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«كم قد أقامت للعلوم مدارسًا» تدل على قلة المدارس.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "كرر الشاعر كلمة «تعاون» للتأكيد على أن التعاون أساس العمران.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الوطن كالأم لنا في حنانها» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الوطن أم لنا» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يدعو الرصافي والروحاني إلى التعاون.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يرى الشاعر أن العلم ركيزة أساسية لتحقيق التعاون بين الشعوب.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "العرب لم يتركوا أي إنجازات في التاريخ.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "العلم أساس نهضة الأمم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الشباب قادرون على تعمير أوطانهم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لا نحتاج إلى التعاون والمشاركة حتى نبني أوطاننا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «نعيا»: نكسل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جمع «روح»: رياح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «يعمر»: يخرب.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«فأرضي جنة الدنيا» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يرى الشاعر في «قيم نفسك» أنه سيعجز عن تعمير وطنه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تقدم الأوطان مرتبط بعمرانها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يرى الشاعر أن الجهل طريق التقدم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«يعيا ذوو الإحصاء عن حسبانها» تدل على كثرة المدارس.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "همم الرجال لا علاقة لها بالزمان.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تشييد المصانع دليل على تقدم الأمم وقدرتها على الابتكار.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "عند إلقاء النص يجب التحدث بوضوح وتنويع التنغيم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بفضل التعاون أرست أمم صروحًا من المجد كما قال الروحاني.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g5",
+  "title": "تحدي العباقرة",
+  "type": "genius",
+  "desc": "تذوق أبيات «سعادة الأوطان»",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path><path d=\"M10 21h4\"></path></svg>",
+  "questions": [
+   {
+    "q": "سر جمال «همم الرجال مقيسة بزمانها»:",
+    "options": [
+     "تشبيه الرجال بالأسود",
+     "تصوير الهمم بشيء مادي يقاس",
+     "سؤال",
+     "تكرار"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سر جمال «وسعادة الأوطان في عمرانها»:",
+    "options": [
+     "تصوير العمران بالبحر",
+     "سؤال",
+     "تشبيه بالأم",
+     "تصوير الأوطان بأناس يسعدون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سر جمال «وأساس عمران البلاد تعاون»:",
+    "options": [
+     "تصوير التعاون بالأساس الذي يبنى عليه العمران",
+     "سؤال",
+     "نداء",
+     "تصوير البلاد بالسفينة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما دلالة «كم قد أقامت للعلوم مدارسًا»؟",
+    "options": [
+     "كثرة المدارس التي أنشأها العرب",
+     "جهل العرب",
+     "قلة المدارس",
+     "هدم المدارس"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا كرر الشاعر كلمة «تعاون»؟",
+    "options": [
+     "للسخرية",
+     "لإطالة البيت",
+     "لأنه نسي",
+     "للتأكيد على أن التعاون أساس عمران البلاد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مصدر الجرس الموسيقي في الأبيات:",
+    "options": [
+     "كثرة الأفعال",
+     "كثرة الأسئلة",
+     "قصر الأبيات",
+     "تماثل النهايات (عمرانها - سكانها - أوطانها)"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الشعور المسيطر على الشاعر في البيتين الأخيرين:",
+    "options": [
+     "اليأس",
+     "الحزن",
+     "الفخر والاعتزاز بأمجاد العرب",
+     "الخوف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما العلاقة بين البيت الثاني والثالث؟",
+    "options": [
+     "الثالث يناقض الثاني",
+     "الثاني يجعل التعاون أساس العمران والثالث يجعل العلم شرط التعاون",
+     "لا علاقة",
+     "تكرار للمعنى نفسه"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ترتيب أسس بناء الأوطان كما فهمت من الأبيات:",
+    "options": [
+     "العلم ينشر التعاون والتعاون يصنع العمران",
+     "المال ثم الحرب",
+     "الكسل ثم العمل",
+     "العمران ثم الجهل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«يعيا ذوو الإحصاء عن حسبانها» فيها مبالغة تدل على:",
+    "options": [
+     "قلة المدارس",
+     "صعوبة الحساب",
+     "جهل المحاسبين",
+     "كثرة مدارس العرب كثرة كبيرة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«تتحير الأفكار في بنيانها» تدل على:",
+    "options": [
+     "قلة المصانع",
+     "بساطة المصانع",
+     "عظمة المصانع وبراعة صناعتها",
+     "قبح المصانع"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا اختار الشاعر عنوان «سعادة الأوطان»؟",
+    "options": [
+     "لأن الأبيات تبين أسباب سعادة الأوطان وازدهارها",
+     "لأنه يتحدث عن الحزن",
+     "لأنه عن الطبيعة",
+     "لأنه عن السفر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الذي يجمع بين «بناة المجد» و«سعادة الأوطان»؟",
+    "options": [
+     "الحزن",
+     "الحديث عن الحرب",
+     "الفخر بالعمل والبناء وصنع الحضارة",
+     "وصف البحر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما الذي يجمع بين بيت الرصافي «وأساس عمران البلاد تعاون» وبيت الروحاني «بفضل التعاون أرست أمم»؟",
+    "options": [
+     "الحزن",
+     "وصف الطبيعة",
+     "الدعوة إلى التعاون",
+     "المدح الشخصي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«أرست أمم صروحًا من المجد» تعبير مجازي صور فيه المجد بـ:",
+    "options": [
+     "إنسان",
+     "نهر",
+     "طائر",
+     "بناء عالٍ له صروح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «الوطن كالأم لنا في حنانها» أداة التشبيه:",
+    "options": [
+     "الكاف",
+     "حنانها",
+     "لنا",
+     "في"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الوطن كالأم لنا في حنانها» المشبه:",
+    "options": [
+     "الكاف",
+     "الحنان",
+     "الأم",
+     "الوطن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «الوطن كالأم لنا في حنانها» المشبه به:",
+    "options": [
+     "الحنان",
+     "لنا",
+     "الوطن",
+     "الأم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «فأرضي جنة الدنيا» شبهت الأرض بـ:",
+    "options": [
+     "البحر",
+     "الزرع",
+     "النجم",
+     "الجنة في جمالها وخيرها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«سأعليها إلى النجم» تعبير يدل على:",
+    "options": [
+     "الخوف",
+     "الطموح إلى رفع الوطن عاليًا",
+     "السفر",
+     "الحزن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لو رسمت لوحة لبيت «وبنت بأقطار البلاد مصانعًا» فماذا ترسم؟",
+    "options": [
+     "حدائق",
+     "صحراء",
+     "سفنًا",
+     "مصانع منتشرة في أنحاء البلاد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لو رسمت لوحة لبيت «كم قد أقامت للعلوم مدارسًا» فماذا ترسم؟",
+    "options": [
+     "مدارس كثيرة يتعلم فيها الطلاب",
+     "طائرات",
+     "مصانع",
+     "جبالًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا يرى الشاعر أن العلم شرط للتعاون؟",
+    "options": [
+     "لأن العلم يقرب بين الناس وينظم عملهم المشترك",
+     "لأن الجهل يجمع",
+     "لأن العلم يفرق",
+     "لا سبب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما رأيك في قول الشاعر «وسعادة الأوطان في عمرانها»؟",
+    "options": [
+     "خطأ لأن العمران مكلف",
+     "صحيح لأن البناء والتعمير يجلبان الرخاء",
+     "خطأ لأن الخراب أفضل",
+     "لا علاقة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«بفتوحها وعلومها وبيانها» تعدد إنجازات العرب في:",
+    "options": [
+     "التجارة فقط",
+     "الفتوح والعلوم والبلاغة",
+     "الزراعة فقط",
+     "الرياضة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "كلمة «متواصل» في «تعاون متواصل الأسباب» تدل على:",
+    "options": [
+     "قلة التعاون",
+     "انقطاع التعاون",
+     "نهاية التعاون",
+     "استمرار التعاون دون انقطاع"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما واجبنا نحو الوطن كما فهمت من النص؟",
+    "options": [
+     "الكسل",
+     "الشكوى",
+     "الهجرة",
+     "التعاون ونشر العلم والعمل على عمرانه"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي البيوت يعبر عن «أن الأمم تنهض بهمة أبنائها»؟",
+    "options": [
+     "همم الرجال مقيسة بزمانها ...",
+     "وبنت بأقطار البلاد ...",
+     "والعرب أكبر أمة مشهورة ...",
+     "يعيا ذوو الإحصاء ..."
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الصفة التي يحبها الشاعر في الأمة؟",
+    "options": [
+     "التفرق",
+     "التعاون والعلم والهمة",
+     "الجهل",
+     "الكسل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الأسلوب في «كم قد أقامت للعلوم مدارسًا»:",
+    "options": [
+     "نهي",
+     "أمر",
+     "خبر يدل على الكثرة",
+     "استفهام حقيقي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا ذكر الشاعر المدارس قبل المصانع؟",
+    "options": [
+     "لأن العلم أساس الصناعة",
+     "لأن المصانع أقل أهمية",
+     "مصادفة",
+     "لا سبب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«ذوو الإحصاء» من الأسماء الخمسة؟",
+    "options": [
+     "نعم",
+     "نعم لأنها مفردة",
+     "نعم لأنها بمعنى صاحب",
+     "لا، لأنها جمع"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«بنشر العلم في قومي ... وروح العون والعزم» يحدد الشاعر وسائل تعمير مصر وهي:",
+    "options": [
+     "الحرب",
+     "العلم والتعاون والعزم",
+     "المال",
+     "السفر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«ولن نعيا فذا علمي» يدل على:",
+    "options": [
+     "الشك",
+     "الحزن",
+     "الثقة بالعلم في تحقيق الأهداف",
+     "العجز"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«هنا زرع هنا نبني» يبين أن تعمير الوطن يكون بـ:",
+    "options": [
+     "السفر",
+     "الراحة",
+     "الكلام",
+     "الزراعة والبناء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "القافية في أبيات «سعادة الأوطان» تنتهي بـ:",
+    "options": [
+     "ـفوا",
+     "ـانها",
+     "ـادِ",
+     "ـالا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "القافية في أبيات «قيم نفسك» تنتهي بـ:",
+    "options": [
+     "ـانها",
+     "ـمِ (العزم - الفهم - علمي - النجم)",
+     "ـفوا",
+     "ـادِ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "عند إلقاء الأبيات يجب:",
+    "options": [
+     "النظر إلى الأرض",
+     "التحدث بوضوح وتنويع التنغيم واستخدام تعبيرات الوجه",
+     "الهمس",
+     "القراءة بسرعة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ما الذي تتعلمه من القصيدة؟",
+    "options": [
+     "أن أترك وطني",
+     "أن أعتمد على غيري",
+     "أن أكسل",
+     "أن أتعاون مع غيري وأتعلم لأبني وطني"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ماذا تعني «همة» في «همم الرجال»؟",
+    "options": [
+     "الجسم",
+     "الحزن",
+     "العزيمة والإرادة",
+     "المال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا وصف الشاعر العرب بأنهم «أكبر أمة مشهورة»؟",
+    "options": [
+     "لغناهم",
+     "لكثرة إنجازاتهم في الفتوح والعلوم والبيان",
+     "لكثرة عددهم فقط",
+     "لصحرائهم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الفرق بين «عمرانها» و«خرابها»:",
+    "options": [
+     "ترادف",
+     "تشبيه",
+     "تكرار",
+     "تضاد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "العلاقة بين «بيانها» و«فصاحتها»:",
+    "options": [
+     "ترادف",
+     "تضاد",
+     "تشبيه",
+     "سبب ونتيجة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كيف تعبر لوحة «الأمم تنهض بسواعد أبنائها» عن فكرة النص؟",
+    "options": [
+     "تؤكد أن نهضة الأمة بعمل أبنائها وتعاونهم",
+     "تتحدث عن الطبيعة",
+     "تنفي دور الأبناء",
+     "تتحدث عن الحرب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "النص ينتمي إلى وحدة «العلم والخيال والمستقبل» لأنه يؤكد:",
+    "options": [
+     "دور الخيال وحده",
+     "دور المال",
+     "دور العلم في بناء مستقبل الأوطان",
+     "دور الحظ"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أنسب شعور بعد قراءة القصيدة:",
+    "options": [
+     "الخوف",
+     "الحزن",
+     "الملل",
+     "الفخر والانتماء والرغبة في العمل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«تعاون الأقوام» المقصود بالأقوام:",
+    "options": [
+     "الأنهار",
+     "الشعوب والجماعات",
+     "الجبال",
+     "المدن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لو اختفى التعاون بين سكان البلاد فالأرجح أن:",
+    "options": [
+     "يزداد عمرانها",
+     "لا يتغير شيء",
+     "يتأخر عمرانها",
+     "تسعد أكثر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "أي العبارات تلخص فكرة البيت الثالث؟",
+    "options": [
+     "لا تعاون بين الشعوب بغير علم",
+     "الأوطان لا تحتاج العلم",
+     "التعاون يأتي بالمال",
+     "العلم يفرق الشعوب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة الدالة على البلاغة والفصاحة في الأبيات:",
+    "options": [
+     "بنيانها",
+     "بيانها",
+     "سكانها",
+     "عمرانها"
+    ],
+    "ans": 1
+   }
+  ]
+ }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+                <p style="margin-top:8px;font-size:.9rem;color:#0f766e;">${QUESTIONS_PER_PLAY} سؤالًا عشوائيًّا في كل مرة</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة لقائمة الألعاب</button>
+            </div>
+        `;
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_PLAY);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #059669)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.55 + Math.random() * 0.45; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

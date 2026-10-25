@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>إلى الشباب - الصف السادس الابتدائي - شريف الديب</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;      
+            --primary-light: #14b8a6; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #effcf9;
+            background-image: radial-gradient(#a7dcd4 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(2.5rem, 10vw, 4.5rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.1;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(20, 184, 166, 0.3); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #0f766e; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #14b8a6; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #0f766e;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #0f766e);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(204,251,241,0.9));
+            color: #0f766e;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23fff7ed" width="100%" height="100%"/><circle fill="%23fed7aa" cx="20%" cy="30%" r="50"/><circle fill="%23fed7aa" cx="80%" cy="60%" r="70"/><circle fill="%23fed7aa" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #fffbeb; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #431407, #9a3412, #ea580c);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #fdba74; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(234,88,12,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #fde047, #f59e0b, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #fb923c, #ea580c);
+            border-bottom: 3px solid #7c2d12; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(253, 224, 71, 0.15); color: #fde047;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        .lesson-name { font-size: clamp(1.4rem, 5vw, 2rem) !important; color: #fde047 !important; font-weight: 900 !important; margin-top: 4px; }
+        .extra-line { font-size: .9em; color: #ccfbf1; }
+        @media (max-width: 600px) {
+            .teacher-photo { width: 170px !important; height: 170px !important; }
+            .header-main { padding: 20px 14px 70px 14px; }
+            #home-screen { padding: 14px; }
+            .grid-menu { grid-template-columns: 1fr; gap: 16px; }
+            .game-container { padding: 0 12px 30px 12px; }
+            .game-nav { padding: 10px 12px; gap: 8px; }
+            .bubble { font-size: 0.78rem; padding: 8px 3px; }
+            .target-bird { white-space: normal; max-width: 78vw; font-size: 0.95rem; padding: 8px 14px; }
+            .tf-grid .btn { min-width: 130px !important; font-size: 1.6rem !important; padding: 22px !important; }
+            .modal { padding: 26px; }
+            #feedback-title { font-size: 1.8rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img class="teacher-photo" src="../teacher.jpg" alt="الأستاذ شريف الديب" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fde047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">شريف الديب</h1>
+                    <h2>الصَّفُّ السَّادِسُ الابْتِدَائِيُّ - الوحدة الأولى: أطور ذاتي</h2>
+                    <h2 class="lesson-name">إلى الشباب</h2>
+                    <p style="margin-top: 10px;">الدرس الرابع: النص الشعري</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#effcf9" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 20</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | الأستاذ / شريف الديب</p>
+    </footer>
+
+<script>
+    const LESSON_NAME = "إلى الشباب";
+    const QUESTIONS_PER_PLAY = 20;
+    const allGamesData = [
+ {
+  "id": "g1",
+  "title": "فهم الأبيات",
+  "type": "mcq",
+  "desc": "أسئلة على معاني أبيات «إلى الشباب»",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>",
+  "questions": [
+   {
+    "q": "إلى من يوجه الشاعر حديثه في الأبيات؟",
+    "options": [
+     "الأعداء",
+     "الأطفال الصغار",
+     "أبناء مصر الشباب",
+     "السائحين"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "إلامَ يدعو الشاعر أبناء مصر؟",
+    "options": [
+     "الخلاف والتنازع",
+     "الراحة والكسل",
+     "السفر والهجرة",
+     "النهوض والسعي نحو الإصلاح والتقدم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "بم يصل الذي يبغي الصلاح لقومه كما في البيت الأول؟",
+    "options": [
+     "بنبيل صنع أو شريف جهاد",
+     "بالمال فقط",
+     "بالشكوى",
+     "بالكلام فقط"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«هذا زمانكم وذا ميدانكم» يؤكد الشاعر أن:",
+    "options": [
+     "الوقت الحاضر فرصة عظيمة لبناء الوطن",
+     "الميدان للكبار فقط",
+     "الزمان قد فات",
+     "الشباب لا دور لهم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«ماذا بكم من عدة وعتاد» يتساءل الشاعر عن:",
+    "options": [
+     "مدى استعداد أبناء مصر وقدراتهم",
+     "مواعيد السفر",
+     "عدد السكان",
+     "أسعار السلاح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما أهم خيرات مصر التي ذكرها الشاعر؟",
+    "options": [
+     "نهر النيل",
+     "الذهب",
+     "البترول",
+     "الصحراء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وصف الشاعر النيل بأنه:",
+    "options": [
+     "نهر صغير",
+     "ماء مالح",
+     "هبة السماء ومنحة الآباد",
+     "طريق للسفر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مِمَّ يحذر الشاعر أبناء مصر؟",
+    "options": [
+     "من العلم",
+     "من التعاون",
+     "من أطماع الغرباء وحقد الحاسدين",
+     "من العمل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«هذي دياركم وهذي شمسكم ... طمع الغريب وحرقة الحساد» المعنى:",
+    "options": [
+     "الغرباء أصدقاء",
+     "الشمس حارقة",
+     "الديار فقيرة",
+     "الوطن ملك لأبنائه مليء بخيرات يحسدون عليها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الطريق إلى النجاح كما يرى الشاعر يكون بـ:",
+    "options": [
+     "التعاون ونشر المحبة",
+     "الانعزال",
+     "الكسل",
+     "الخلاف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«فخذوا السبيل إلى الحياة تآلفًا ... وتكاتفًا» يدعو الشاعر إلى:",
+    "options": [
+     "التآلف والتكاتف",
+     "السفر",
+     "التنافس والخلاف",
+     "الراحة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أعظم الإنجازات في رأي الشاعر هي التي تتحقق بـ:",
+    "options": [
+     "الحظ",
+     "سواعد الجهاد والكفاح",
+     "الحبر والورق",
+     "المال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«خير الصحائف ما كتبت سطوره بيد الكفاح الحر لا بمداد» المعنى:",
+    "options": [
+     "الصحف كثيرة",
+     "الكتابة بالحبر أفضل",
+     "العظماء يسطرون بنضالهم تاريخ الوطن",
+     "الكتابة صعبة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "البيت الذي يتضمن دعوة للإصلاح والعمل من أجل رفعة الوطن:",
+    "options": [
+     "هذي دياركم وذلك نيلكم ...",
+     "قل للذي يبغي الصلاح لقومه ...",
+     "هذي دياركم وهذي شمسكم ...",
+     "خير الصحائف ما كتبت سطوره ..."
+    ],
+    "ans": 1
+   },
+   {
+    "q": "البيت الذي يدل على أن الوطن مليء بخيرات يحسدون عليها:",
+    "options": [
+     "خير الصحائف ما كتبت سطوره ...",
+     "قل للذي يبغي الصلاح لقومه ...",
+     "هذي دياركم وهذي شمسكم ... طمع الغريب وحرقة الحساد",
+     "فخذوا السبيل إلى الحياة تآلفًا ..."
+    ],
+    "ans": 2
+   },
+   {
+    "q": "البيت الذي يدل على أن العظماء يسطرون تاريخ الوطن بنضالهم:",
+    "options": [
+     "هذا زمانكم وذا ميدانكم ...",
+     "هذي دياركم وذلك نيلكم ...",
+     "قل للذي يبغي الصلاح لقومه ...",
+     "خير الصحائف ما كتبت سطوره ... بيد الكفاح الحر لا بمداد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "البيت الذي يدعو إلى التعاون والمحبة:",
+    "options": [
+     "فخذوا السبيل إلى الحياة تآلفًا ... وتكاتفًا في رغبة ووداد",
+     "خير الصحائف ما كتبت سطوره ...",
+     "هذي دياركم وهذي شمسكم ...",
+     "هذا زمانكم وذا ميدانكم ..."
+    ],
+    "ans": 0
+   },
+   {
+    "q": "البيت الذي يتحدث عن النيل:",
+    "options": [
+     "قل للذي يبغي الصلاح لقومه ...",
+     "خير الصحائف ما كتبت سطوره ...",
+     "فخذوا السبيل إلى الحياة تآلفًا ...",
+     "هذي دياركم وذلك نيلكم ... هبة السماء ومنحة الآباد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "البيت الذي يتساءل فيه الشاعر عن استعداد الشباب:",
+    "options": [
+     "هذي دياركم وذلك نيلكم ...",
+     "فخذوا السبيل إلى الحياة تآلفًا ...",
+     "هذا زمانكم وذا ميدانكم ... ماذا بكم من عدة وعتاد",
+     "خير الصحائف ما كتبت سطوره ..."
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما دورك في بناء الوطن كما فهمت من الأبيات؟",
+    "options": [
+     "العمل والتعاون والكفاح من أجل رفعته",
+     "الشكوى",
+     "الهجرة",
+     "الانتظار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "عنوان مناسب آخر للنص:",
+    "options": [
+     "رحلة نيلية",
+     "يا شباب مصر انهضوا",
+     "الشمس الحارقة",
+     "جمال الطبيعة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الفكرة العامة للأبيات:",
+    "options": [
+     "دعوة الشباب إلى العمل والتعاون لنهضة الوطن",
+     "وصف شواطئ مصر",
+     "الحديث عن الشمس",
+     "مدح الغرباء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "هل وصف الشاعر شواطئ مصر في الأبيات؟",
+    "options": [
+     "نعم، وصفها",
+     "وصف الإسكندرية",
+     "لا، لم يصفها",
+     "وصف البحر الأحمر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بالتخاذل والاختلاف:",
+    "options": [
+     "لا يحقق أبناء مصر نهضة بلادهم",
+     "يتقدم الوطن",
+     "يحقق أبناء مصر نهضتهم",
+     "يسعد الشعب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "التشبيه طريقة في التعبير نعبر بها عن:",
+    "options": [
+     "اشتراك شيئين مذكورين في صفة أو أكثر",
+     "اختلاف شيئين",
+     "سؤال",
+     "أمر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «اللاعب كالبرق في السرعة» الصفة المشتركة:",
+    "options": [
+     "السرعة",
+     "الذكاء",
+     "الجمال",
+     "الشجاعة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «الجندي أسد في شجاعته» الصفة المشتركة:",
+    "options": [
+     "الجمال",
+     "الشجاعة",
+     "السرعة",
+     "الذكاء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «الجندي أسد في شجاعته» شبه الجندي بـ:",
+    "options": [
+     "الجبل",
+     "الأسد",
+     "البرق",
+     "البحر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي العبارات فيها تشبيه؟",
+    "options": [
+     "أرجو أن أعمل في التجارة",
+     "هل تحب الرياضة؟",
+     "حافظوا على نظافة بيئتكم",
+     "أبناء الوطن في تعاونهم كالجسد الواحد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي العبارات فيها تشبيه؟",
+    "options": [
+     "هل تحب الرياضة؟",
+     "نفوسنا درع نحمي به الوطن",
+     "حافظوا على نظافة بيئتكم",
+     "التعاون سبيل النجاح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «أبناء الوطن في تعاونهم كالجسد الواحد» الصفة المشتركة:",
+    "options": [
+     "السرعة",
+     "الطول",
+     "اللون",
+     "التعاون والترابط"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سبيل التقدم عند الشاعر إبراهيم ناجي:",
+    "options": [
+     "المال",
+     "التآلف والتكاتف",
+     "السفر",
+     "الحظ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سبيل التقدم عند أحمد الكناني في «ما دام رائدنا الإخلاص في العمل»:",
+    "options": [
+     "الراحة",
+     "الإخلاص في العمل",
+     "الحظ",
+     "اللعب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«لا بد نبلغ يومًا غاية الأمل» شرط ذلك عند الكناني:",
+    "options": [
+     "أن يكون الإخلاص في العمل رائدنا",
+     "أن نسافر",
+     "أن نكسل",
+     "أن ننتظر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «قيم نفسك»: بم عرف شباب الوطن؟",
+    "options": [
+     "بالغياب",
+     "بالكسل",
+     "بالخوف",
+     "بالوفاء كالأسود"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «قيم نفسك»: لماذا وقف الشباب؟",
+    "options": [
+     "للعب",
+     "لرد عدونا",
+     "للراحة",
+     "للهروب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «قيم نفسك»: كيف عاش الشباب؟",
+    "options": [
+     "بكل تكاتف",
+     "بالكسل",
+     "بالانعزال",
+     "بالخلاف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «قيم نفسك»: ماذا فعل الشباب حين قيل لهم «وطن»؟",
+    "options": [
+     "تأخروا",
+     "ما غابوا وما ضعفوا",
+     "هربوا",
+     "ضعفوا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الدليل على إخلاص الشباب لوطنهم في أبيات «قيم نفسك»:",
+    "options": [
+     "وإن قلنا لهم وطن فما غابوا وما ضعفوا",
+     "بروح كفاحهم هتفوا",
+     "عتادًا للعلا وصفوا",
+     "شباب من بني وطني"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "البيت الذي يتضمن معنى «إن احتاج الوطن لأبنائه فإنهم يجيبون النداء»:",
+    "options": [
+     "شباب من بني وطني أسود بالوفا عرفوا",
+     "وإن قلنا لهم وطن فما غابوا وما ضعفوا",
+     "بروح كفاحهم هتفوا",
+     "بكل تكاتف عاشوا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لن تحيا الأوطان قوية إلا بـ:",
+    "options": [
+     "الخلاف",
+     "الغياب",
+     "الاتحاد والكفاح",
+     "الراحة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "من واجبات الشباب كما في أبيات «قيم نفسك»:",
+    "options": [
+     "الغياب",
+     "الضعف",
+     "الهروب",
+     "رد العدوان"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«عتادًا للعلا وصفوا» وُصف الشباب بأنهم:",
+    "options": [
+     "عتاد للعلا والمجد",
+     "أعداء",
+     "غائبون",
+     "ضعفاء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "قيمة يدعو إليها النص:",
+    "options": [
+     "الأنانية",
+     "الكسل",
+     "الانتماء للوطن والعمل من أجله",
+     "التفرقة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«هذي دياركم» تكررت في الأبيات لتؤكد:",
+    "options": [
+     "جمال الديار",
+     "قدم الديار",
+     "انتماء أبناء مصر لها وواجبهم نحوها",
+     "صغر الديار"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«هبة ومنحة» بينهما علاقة:",
+    "options": [
+     "تضاد",
+     "ترادف تؤكد المعنى",
+     "تعجب",
+     "سؤال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«جهاد - عتاد - آباد» كلمات متماثلة النهاية تعطي:",
+    "options": [
+     "تشبيهًا",
+     "جرسًا موسيقيًّا يطرب الأذن",
+     "سؤالًا",
+     "معنى متضادًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«منحة الآباد» تعبير مجازي صور فيه:",
+    "options": [
+     "الزمان بإنسان يعطي ويمنح",
+     "الكفاح بسيف",
+     "الشمس بقمر",
+     "النيل بأسد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«بيد الكفاح» تعبير مجازي صور فيه:",
+    "options": [
+     "النيل بهدية",
+     "الزمان بإنسان يعطي",
+     "الشمس بنار",
+     "الكفاح بإنسان له يد يكتب بها"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما الذي يتمنى الشاعر أن يسطره الشباب؟",
+    "options": [
+     "أشعارًا فقط",
+     "قصصًا بالحبر",
+     "رسائل للأصدقاء",
+     "تاريخ الوطن بالكفاح"
+    ],
+    "ans": 3
+   }
+  ]
+ },
+ {
+  "id": "g2",
+  "title": "ثروتي اللغوية",
+  "type": "bubbles",
+  "desc": "معاني الكلمات ومفردها وجمعها ومضادها",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"8\" cy=\"8\" r=\"5\"></circle><circle cx=\"17\" cy=\"15\" r=\"4\"></circle><circle cx=\"7\" cy=\"18\" r=\"2.5\"></circle></svg>",
+  "questions": [
+   {
+    "q": "معنى «يبغي»:",
+    "options": [
+     "يكره",
+     "يترك",
+     "يطلب",
+     "يخاف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "معنى «ميدانكم»:",
+    "options": [
+     "مجال عملكم",
+     "طريقكم",
+     "بيتكم",
+     "سوقكم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «ميدان»:",
+    "options": [
+     "أمدنة",
+     "ميدانات",
+     "مياديد",
+     "ميادين"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "معنى «عتاد»:",
+    "options": [
+     "الكتب",
+     "الطعام",
+     "الملابس",
+     "ما أعد للحرب من أسلحة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "جمع «عتاد»:",
+    "options": [
+     "أعتدة",
+     "عددًا",
+     "أعدادًا",
+     "معدات"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «هبة»:",
+    "options": [
+     "سلامة",
+     "قوة",
+     "خسارة",
+     "عطاء ومنحة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "جمع «هبة»:",
+    "options": [
+     "أهباب",
+     "هبات",
+     "هوابب",
+     "هبوب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «الآباد»:",
+    "options": [
+     "مدى الدهر",
+     "الأنهار",
+     "الأعداء",
+     "الصحراء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «الآباد»:",
+    "options": [
+     "الأبيد",
+     "البعد",
+     "الأبد",
+     "الأبدية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "معنى «حرقة»:",
+    "options": [
+     "شدة الغيظ والحزن",
+     "السعادة",
+     "الحرارة",
+     "النار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «السبيل»:",
+    "options": [
+     "الكتاب",
+     "النهر",
+     "الطريق",
+     "البيت"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "جمع «السبيل»:",
+    "options": [
+     "السبلات",
+     "السبائل",
+     "السوابل",
+     "السبل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "معنى «تآلفًا»:",
+    "options": [
+     "كراهية",
+     "مودة ومحبة",
+     "أمانًا",
+     "استقرارًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «تآلفًا»:",
+    "options": [
+     "كراهية",
+     "مودة",
+     "وئامًا",
+     "محبة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «مداد»:",
+    "options": [
+     "الورق",
+     "القلم",
+     "الكتاب",
+     "ما يكتب به كالحبر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أرجو أن أعمل في «ميدان» التجارة:",
+    "options": [
+     "سوق",
+     "مجال",
+     "محل",
+     "بنك"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الصحة «هبة» من الله:",
+    "options": [
+     "سلامة",
+     "قوة",
+     "منحة",
+     "هداية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "يعيش أفراد أسرتي «بتآلف»:",
+    "options": [
+     "سعادة",
+     "مودة",
+     "أمان",
+     "استقرار"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "التعاون «سبيل» النجاح:",
+    "options": [
+     "طريق",
+     "شكل",
+     "نتيجة",
+     "نهاية"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سجل العلماء معارفهم «بالمداد»:",
+    "options": [
+     "التضحية",
+     "الحبر",
+     "الفيض",
+     "العطاء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «تكاتف»:",
+    "options": [
+     "مهارة",
+     "تفاخر",
+     "شدة",
+     "تعاون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «الصلاح»:",
+    "options": [
+     "البر",
+     "الإصلاح",
+     "الفساد",
+     "الخير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مضاد «نبيل»:",
+    "options": [
+     "عظيم",
+     "دنيء",
+     "شريف",
+     "كريم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «شريف»:",
+    "options": [
+     "كريم",
+     "أمين",
+     "نبيل",
+     "وضيع"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «الغريب»:",
+    "options": [
+     "الأجنبي",
+     "البعيد",
+     "الدخيل",
+     "القريب"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «الحر»:",
+    "options": [
+     "الطليق",
+     "المستقل",
+     "العبد المقيد",
+     "الكريم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مضاد «خير»:",
+    "options": [
+     "بر",
+     "شر",
+     "أفضل",
+     "نفع"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «رغبة»:",
+    "options": [
+     "شوق",
+     "حب",
+     "نفور",
+     "ميل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مضاد «وداد»:",
+    "options": [
+     "بغض",
+     "صداقة",
+     "حب",
+     "مودة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مضاد «تكاتفًا»:",
+    "options": [
+     "تآزرًا",
+     "تساندًا",
+     "تعاونًا",
+     "تخاذلًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مرادف «وداد»:",
+    "options": [
+     "غضب",
+     "حب ومودة",
+     "خوف",
+     "كره"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مرادف «يبغي»:",
+    "options": [
+     "يترك",
+     "يرفض",
+     "يريد",
+     "ينسى"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مرادف «هبة»:",
+    "options": [
+     "عقوبة",
+     "خسارة",
+     "منحة",
+     "ضريبة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مرادف «الكفاح»:",
+    "options": [
+     "الهروب",
+     "الراحة",
+     "النضال",
+     "الكسل"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مرادف «طمع»:",
+    "options": [
+     "قناعة",
+     "جشع",
+     "عفة",
+     "رضا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جمع «صحيفة»:",
+    "options": [
+     "صحيفات",
+     "أصحاف",
+     "صحايف",
+     "صحائف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مفرد «الصحائف»:",
+    "options": [
+     "الصحفي",
+     "الصحيفة",
+     "المصحف",
+     "الصحف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جمع «سطر»:",
+    "options": [
+     "سطارات",
+     "مساطر",
+     "سطور",
+     "أساطير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "جمع «دار»:",
+    "options": [
+     "أدوار",
+     "مدارات",
+     "دورات",
+     "ديار"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مفرد «ديار»:",
+    "options": [
+     "دائر",
+     "دورة",
+     "دير",
+     "دار"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "جمع «قوم»:",
+    "options": [
+     "أقوام",
+     "قيام",
+     "مقامات",
+     "قوائم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «حاسد»:",
+    "options": [
+     "محاسد",
+     "حسدات",
+     "حساد",
+     "حسود"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "جمع «يد»:",
+    "options": [
+     "أيادٍ",
+     "يدود",
+     "أيدوات",
+     "يدات"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «شمس»:",
+    "options": [
+     "شموس",
+     "شمسات",
+     "شمائس",
+     "أشماس"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «الحساد»:",
+    "options": [
+     "المحسود",
+     "الحسدة",
+     "الحسد",
+     "الحاسد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "جمع «زمان»:",
+    "options": [
+     "أزمنة",
+     "زمانات",
+     "أزامين",
+     "زمون"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «العلا»:",
+    "options": [
+     "المجد والرفعة",
+     "الضعف",
+     "الانخفاض",
+     "الذل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «هتفوا»:",
+    "options": [
+     "ناموا",
+     "رفعوا أصواتهم بالنداء",
+     "هربوا",
+     "سكتوا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «أسود» في «أسود بالوفا عرفوا»:",
+    "options": [
+     "لون أسود",
+     "ليل",
+     "ظلام",
+     "جمع أسد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "معنى «غابوا» في «فما غابوا»:",
+    "options": [
+     "تأخروا وابتعدوا",
+     "انتصروا",
+     "حضروا",
+     "تكاتفوا"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g3",
+  "title": "أكمل البيت",
+  "type": "shooting",
+  "desc": "اصطد الكلمة الصحيحة لإكمال الأبيات",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+  "questions": [
+   {
+    "q": "قل للذي ............ الصلاح لقومه",
+    "options": [
+     "يترك",
+     "يبغي",
+     "يكره",
+     "يخشى"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "قل للذي يبغي ............ لقومه",
+    "options": [
+     "النجاح",
+     "الطعام",
+     "الفساد",
+     "الصلاح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "قل للذي يبغي الصلاح ............",
+    "options": [
+     "لنفسه",
+     "لأهله",
+     "لقومه",
+     "لغيره"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بنبيل ............ أو شريف جهاد",
+    "options": [
+     "علم",
+     "قول",
+     "صنع",
+     "مال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بنبيل صنع أو ............ جهاد",
+    "options": [
+     "عظيم",
+     "شريف",
+     "كريم",
+     "جميل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "بنبيل صنع أو شريف ............",
+    "options": [
+     "جهاد",
+     "آباد",
+     "وداد",
+     "عتاد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "هذا ............ وذا ميدانكم",
+    "options": [
+     "نيلكم",
+     "زمانكم",
+     "يومكم",
+     "مكانكم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "هذا زمانكم وذا ............",
+    "options": [
+     "داركم",
+     "نيلكم",
+     "ميدانكم",
+     "زمانكم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ماذا بكم من ............ وعتاد",
+    "options": [
+     "قوة",
+     "همة",
+     "عدة",
+     "شدة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ماذا بكم من عدة و............",
+    "options": [
+     "عتاد",
+     "وداد",
+     "جهاد",
+     "آباد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "هذي دياركم وذلك ............",
+    "options": [
+     "زمانكم",
+     "نيلكم",
+     "ميدانكم",
+     "شمسكم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "............ السماء ومنحة الآباد",
+    "options": [
+     "زينة",
+     "نعمة",
+     "عطية",
+     "هبة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "هبة السماء و............ الآباد",
+    "options": [
+     "هبة",
+     "نعمة",
+     "زينة",
+     "منحة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "هبة ............ ومنحة الآباد",
+    "options": [
+     "الآباء",
+     "الزمان",
+     "الأرض",
+     "السماء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "هبة السماء ومنحة ............",
+    "options": [
+     "الأولاد",
+     "البلاد",
+     "الأجداد",
+     "الآباد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "هذي دياركم وهذي ............",
+    "options": [
+     "داركم",
+     "شمسكم",
+     "نيلكم",
+     "أرضكم"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "............ الغريب وحرقة الحساد",
+    "options": [
+     "فرح",
+     "خوف",
+     "حب",
+     "طمع"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "طمع ............ وحرقة الحساد",
+    "options": [
+     "القريب",
+     "الغريب",
+     "الصديق",
+     "الحبيب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "طمع الغريب و............ الحساد",
+    "options": [
+     "محبة",
+     "رحمة",
+     "حرقة",
+     "فرحة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "طمع الغريب وحرقة ............",
+    "options": [
+     "الأولاد",
+     "الأعداء",
+     "الحساد",
+     "الأجداد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "فخذوا ............ إلى الحياة تآلفًا",
+    "options": [
+     "الطعام",
+     "السبيل",
+     "الكتاب",
+     "المال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "فخذوا السبيل إلى ............ تآلفًا",
+    "options": [
+     "الحياة",
+     "الفلاة",
+     "الصلاة",
+     "النجاة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "فخذوا السبيل إلى الحياة ............",
+    "options": [
+     "تفرقًا",
+     "تنافرًا",
+     "تآلفًا",
+     "تخاذلًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "و............ في رغبة ووداد",
+    "options": [
+     "تباعدًا",
+     "تخاذلًا",
+     "تكاتفًا",
+     "تنافرًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وتكاتفًا في ............ ووداد",
+    "options": [
+     "رهبة",
+     "غضبة",
+     "غربة",
+     "رغبة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "وتكاتفًا في رغبة و............",
+    "options": [
+     "عتاد",
+     "جهاد",
+     "وداد",
+     "سواد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "خير ............ ما كتبت سطوره",
+    "options": [
+     "الصحائف",
+     "الأيام",
+     "الأقلام",
+     "الكتب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "خير الصحائف ما كتبت ............",
+    "options": [
+     "كلماته",
+     "سطوره",
+     "أوراقه",
+     "حروفه"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "بيد ............ الحر لا بمداد",
+    "options": [
+     "الفلاح",
+     "السلاح",
+     "الكفاح",
+     "الصلاح"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بيد الكفاح ............ لا بمداد",
+    "options": [
+     "المر",
+     "الكبير",
+     "الحر",
+     "القوي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بيد الكفاح الحر لا ............",
+    "options": [
+     "بوداد",
+     "بجهاد",
+     "بعتاد",
+     "بمداد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "............ الصحائف ما كتبت سطوره",
+    "options": [
+     "أول",
+     "خير",
+     "شر",
+     "آخر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "شباب من بني ............",
+    "options": [
+     "قومي",
+     "وطني",
+     "أهلي",
+     "بلدي"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أسود ............ عرفوا",
+    "options": [
+     "بالقوة",
+     "بالعلم",
+     "بالوفا",
+     "بالكرم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بروح ............ هتفوا",
+    "options": [
+     "شبابهم",
+     "أحلامهم",
+     "قلوبهم",
+     "كفاحهم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لرد ............ وقفوا",
+    "options": [
+     "صديقنا",
+     "ضيفنا",
+     "جارنا",
+     "عدونا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "بكل ............ عاشوا",
+    "options": [
+     "تخاذل",
+     "تفاخر",
+     "تكاتف",
+     "تنافر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "عتادًا ............ وصفوا",
+    "options": [
+     "للحرب",
+     "للعلا",
+     "للسفر",
+     "للعب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وإن قلنا لهم ............",
+    "options": [
+     "مال",
+     "سلام",
+     "علم",
+     "وطن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "فما ............ وما ضعفوا",
+    "options": [
+     "قاموا",
+     "عادوا",
+     "حضروا",
+     "غابوا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "فما غابوا وما ............",
+    "options": [
+     "هتفوا",
+     "وقفوا",
+     "ضعفوا",
+     "عرفوا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما دام رائدنا ............ في العمل",
+    "options": [
+     "الإخلاص",
+     "الكسل",
+     "الإهمال",
+     "المال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لا بد نبلغ يومًا غاية ............",
+    "options": [
+     "العمل",
+     "الأمل",
+     "الألم",
+     "الجبل"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة المتماثلة النهاية مع «جهاد» في الأبيات:",
+    "options": [
+     "عتاد",
+     "سطوره",
+     "تآلفًا",
+     "ميدانكم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة المرادفة لـ«هبة» في الأبيات:",
+    "options": [
+     "منحة",
+     "طمع",
+     "حرقة",
+     "عدة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الكلمة المكررة لتأكيد الانتماء:",
+    "options": [
+     "هذي دياركم",
+     "قل للذي",
+     "خير الصحائف",
+     "بيد الكفاح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تعبير مجازي صور الكفاح بإنسان له يد:",
+    "options": [
+     "هبة السماء",
+     "طمع الغريب",
+     "بيد الكفاح",
+     "منحة الآباد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تعبير مجازي صور الزمان بإنسان يمنح:",
+    "options": [
+     "منحة الآباد",
+     "حرقة الحساد",
+     "شريف جهاد",
+     "بيد الكفاح"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «أسود بالوفا عرفوا» شبه الشباب بـ:",
+    "options": [
+     "الأسود",
+     "الجبال",
+     "البحار",
+     "البرق"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كلمتان متماثلتان النهاية في «قيم نفسك»:",
+    "options": [
+     "شباب - وطني",
+     "وطن - لهم",
+     "عاشوا - قلنا",
+     "عرفوا - وقفوا"
+    ],
+    "ans": 3
+   }
+  ]
+ },
+ {
+  "id": "g4",
+  "title": "صح أم خطأ",
+  "type": "true_false",
+  "desc": "حدد صحة العبارة وفق الأبيات",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+  "questions": [
+   {
+    "q": "يدعو الشاعر أبناء مصر للنهوض بها والعمل على تقدمها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يحث الشاعر أبناء مصر على حماية الوطن من أطماع كل غريب.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بالتخاذل والاختلاف يحقق أبناء مصر نهضة بلادهم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وصف الشاعر شواطئ مصر في الأبيات.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "يرى الشاعر أن الوقت الحاضر فرصة عظيمة لبناء الوطن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وصف الشاعر النيل بأنه هبة السماء ومنحة الآباد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يرى الشاعر أن أعظم الإنجازات تتحقق بالحبر والمداد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "يرى الشاعر أن أعظم الإنجازات تتحقق بسواعد الجهاد والكفاح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الطريق إلى النجاح عند الشاعر يكون بالتعاون ونشر المحبة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يدعو الشاعر الشباب إلى الانعزال عن الناس.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «يبغي»: يطلب.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «ميدانكم»: بيوتكم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "جمع «عتاد»: أعتدة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «هبة»: هبات.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «الآباد»: الأبد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «السبيل»: الطريق.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مضاد «تآلفًا»: كراهية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «مداد»: ما يكتب به كالحبر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «حرقة»: شدة الفرح والسرور.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «تكاتف»: تعاون.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "التشبيه تعبير عن اشتراك شيئين مذكورين في صفة أو أكثر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«اللاعب كالبرق في السرعة» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«هل تحب الرياضة؟» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«حافظوا على نظافة بيئتكم» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«أبناء الوطن في تعاونهم كالجسد الواحد» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«نفوسنا درع نحمي به الوطن» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«جهاد - عتاد - آباد» كلمات متماثلة النهاية تعطي جرسًا موسيقيًّا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بين «هبة» و«منحة» علاقة تضاد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«منحة الآباد» تعبير مجازي صور فيه الزمان بإنسان يعطي.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«بيد الكفاح» تعبير مجازي صور فيه الكفاح بإنسان له يد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تكررت «هذي دياركم» لتؤكد انتماء أبناء مصر لها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "البيت الأول دعوة للإصلاح والعمل من أجل رفعة الوطن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«خير الصحائف ما كتبت سطوره» يعني أن العظماء يسطرون بنضالهم تاريخ الوطن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يرى الشاعر أن مصر فقيرة لا خيرات فيها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "حذر الشاعر من أطماع الغرباء وحقد الحاسدين.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سبيل التقدم عند الكناني هو الإخلاص في العمل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "اشتهر شبابنا بالوفاء والإخلاص لأوطانهم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ليس من واجبات الشباب رد العدوان.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لن تحيا الأوطان قوية إلا بالاتحاد والكفاح.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في أبيات «قيم نفسك» غاب الشباب حين نادى الوطن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«شباب من بني وطني أسود» فيها تشبيه الشباب بالأسود.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «ميدان»: ميادين.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «السبيل»: السبل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الشاعر يتساءل في البيت الثاني عن استعداد أبناء مصر وقدراتهم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "النيل في الأبيات منحة دائمة من الله.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الشاعر يدعو إلى التنافر والكراهية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«تآلفًا» و«تكاتفًا» تدعوان إلى الوحدة والمحبة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الحر» في «الكفاح الحر» مضادها «المقيد».",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "عند إلقاء النص الشعري يجب التحدث بصوت واضح وتنويع تنغيمات الصوت.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«وداد» معناها كراهية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   }
+  ]
+ },
+ {
+  "id": "g5",
+  "title": "تحدي العباقرة",
+  "type": "genius",
+  "desc": "تذوق الأبيات والصور الجمالية",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path><path d=\"M10 21h4\"></path></svg>",
+  "questions": [
+   {
+    "q": "ما الغرض من أسلوب «قل للذي يبغي الصلاح لقومه»؟",
+    "options": [
+     "الشكوى",
+     "السخرية",
+     "التعجب",
+     "النصح والإرشاد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«ماذا بكم من عدة وعتاد» الغرض من الاستفهام:",
+    "options": [
+     "الذم",
+     "المدح",
+     "الشكوى",
+     "التساؤل عن الاستعداد وإثارة الهمة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا استخدم الشاعر «هذا زمانكم»؟",
+    "options": [
+     "ليصف الساعة",
+     "ليذكر التاريخ",
+     "ليؤكد أن الوقت الحاضر فرصتهم",
+     "ليتحدث عن الماضي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما علاقة البيت الثالث بالبيت الرابع؟",
+    "options": [
+     "الثاني يناقض الأول",
+     "لا علاقة",
+     "الأول سبب للهروب",
+     "كلاهما يبين قيمة الوطن وخيراته"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا يحسد الغرباء مصر في رأي الشاعر؟",
+    "options": [
+     "لكثرة خيراتها",
+     "لضعفها",
+     "لصغرها",
+     "لفقرها"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما سر جمال التعبير «هبة السماء»؟",
+    "options": [
+     "يصف الشمس",
+     "يبين أن النيل عطاء إلهي",
+     "يتحدث عن المطر فقط",
+     "يصف لون السماء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ما دلالة كلمة «تكاتفًا»؟",
+    "options": [
+     "التعاون الشديد ووقوف بعضهم مع بعض",
+     "الحزن",
+     "الكسل",
+     "التفرق"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا فضل الشاعر الكفاح على المداد؟",
+    "options": [
+     "لأنه لا يحب القراءة",
+     "لأن الكتابة ممنوعة",
+     "لأن العمل أبقى أثرًا من الكلام المكتوب",
+     "لأن الحبر غالٍ"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما القيمة التي يجمع عليها إبراهيم ناجي وأحمد الكناني؟",
+    "options": [
+     "الحظ",
+     "العمل الجاد سبيل التقدم",
+     "المال",
+     "الراحة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ما المقصود بـ«نبيل صنع»؟",
+    "options": [
+     "العمل الشريف النافع",
+     "الصناعة الضارة",
+     "الكلام الجميل",
+     "التجارة فقط"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«شريف جهاد» المراد بها:",
+    "options": [
+     "الكفاح النبيل في سبيل الوطن",
+     "الهروب",
+     "التكاسل",
+     "الخصام"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«ذا ميدانكم» الميدان هنا يعني:",
+    "options": [
+     "ساحة للعب",
+     "ملعب كرة",
+     "مجال عملكم",
+     "سوق"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا كرر الشاعر «هذي دياركم»؟",
+    "options": [
+     "لتأكيد الانتماء والواجب نحو الوطن",
+     "لأنه نسي",
+     "للسخرية",
+     "لإطالة البيت"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الصورة في «منحة الآباد»:",
+    "options": [
+     "تشبيه الشمس بالقمر",
+     "سؤال",
+     "تشبيه النيل بالأسد",
+     "تشخيص للزمان بإنسان يعطي"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الصورة في «بيد الكفاح»:",
+    "options": [
+     "تشبيه الكفاح بالسيف",
+     "تشخيص للكفاح بإنسان له يد",
+     "أمر",
+     "سؤال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الجرس الموسيقي في الأبيات مصدره:",
+    "options": [
+     "قلة الكلمات",
+     "تماثل نهايات الأبيات (جهاد - عتاد - آباد)",
+     "كثرة الأسئلة",
+     "طول الأبيات"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "العلاقة بين «هبة» و«منحة»:",
+    "options": [
+     "تشبيه",
+     "ترادف يؤكد المعنى",
+     "سبب ونتيجة",
+     "تضاد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "ما شعور الشاعر نحو وطنه؟",
+    "options": [
+     "الكره",
+     "الخوف منه",
+     "اللامبالاة",
+     "الحب والفخر والحرص عليه"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تخيل أنك ترسم لوحة لبيت «هذي دياركم وذلك نيلكم» فماذا ترسم؟",
+    "options": [
+     "ثلوجًا",
+     "بحرًا هائجًا",
+     "صحراء جرداء",
+     "نهر النيل وخيرات مصر"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي الكلمات تعبر عن المحبة في الأبيات؟",
+    "options": [
+     "عتاد",
+     "حرقة",
+     "طمع",
+     "وداد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أي الكلمات تعبر عن مشاعر الحاسدين؟",
+    "options": [
+     "تكاتف",
+     "تآلف",
+     "حرقة",
+     "وداد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«طمع الغريب» يحذر من:",
+    "options": [
+     "أطماع الغرباء في خيرات الوطن",
+     "كرم الغرباء",
+     "سفر الغرباء",
+     "زيارة الغرباء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الفرق بين التشبيه والتعبير المجازي في الدرس؟",
+    "options": [
+     "التشبيه فيه شيئان مذكوران يشتركان في صفة، والمجاز يصور الشيء بغيره",
+     "التشبيه لا صفة فيه",
+     "المجاز فيه أداة دائمًا",
+     "لا فرق"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «اللاعب كالبرق في السرعة» أداة التشبيه:",
+    "options": [
+     "في",
+     "السرعة",
+     "اللاعب",
+     "الكاف"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الجندي أسد في شجاعته» المشبه:",
+    "options": [
+     "أسد",
+     "الجندي",
+     "الشجاعة",
+     "في"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الجندي أسد في شجاعته» المشبه به:",
+    "options": [
+     "الشجاعة",
+     "أسد",
+     "في",
+     "الجندي"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«أبناء الوطن في تعاونهم كالجسد الواحد» المشبه به:",
+    "options": [
+     "الكاف",
+     "التعاون",
+     "الجسد الواحد",
+     "أبناء الوطن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«نفوسنا درع نحمي به الوطن» شبهت النفوس بـ:",
+    "options": [
+     "الوطن",
+     "الدرع",
+     "الجسد",
+     "السيف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «شباب من بني وطني أسود بالوفا عرفوا» وجه الشبه:",
+    "options": [
+     "القوة والشجاعة والوفاء",
+     "الطول",
+     "اللون",
+     "الجمال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الصفة التي يحبها الشاعر في الشباب؟",
+    "options": [
+     "الكسل",
+     "التفرق",
+     "الكفاح والتعاون",
+     "الخوف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "البيت الأخير «خير الصحائف...» يمثل:",
+    "options": [
+     "سؤالًا",
+     "وصفًا للطبيعة",
+     "بداية الحديث",
+     "خلاصة دعوة الشاعر إلى الكفاح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«بنبيل صنع أو شريف جهاد» العطف بـ(أو) يدل على:",
+    "options": [
+     "تنوع طرق خدمة الوطن",
+     "تناقض",
+     "سؤال",
+     "تكرار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما الذي يجعل الأوطان قوية وفق أبيات «قيم نفسك»؟",
+    "options": [
+     "الخلاف",
+     "الضعف",
+     "الغياب",
+     "الاتحاد والكفاح"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«بروح كفاحهم هتفوا» تدل على:",
+    "options": [
+     "حزن الشباب",
+     "تعب الشباب",
+     "حماس الشباب",
+     "خوف الشباب"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«لرد عدونا وقفوا» تبين:",
+    "options": [
+     "شجاعة الشباب في الدفاع عن الوطن",
+     "كسل الشباب",
+     "هروب الشباب",
+     "فرح العدو"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "من يقرأ أبيات «إلى الشباب» يشعر بـ:",
+    "options": [
+     "الملل",
+     "الحزن",
+     "الخوف",
+     "الحماس والرغبة في خدمة الوطن"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أنسب لون لرسم «هبة السماء» نهر النيل:",
+    "options": [
+     "البني الجاف",
+     "الرمادي",
+     "الأزرق والأخضر حوله",
+     "الأسود"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لو طلب منك اختيار بيت يعبر عن خيرات وطنك فأنسب بيت:",
+    "options": [
+     "خير الصحائف ...",
+     "قل للذي يبغي الصلاح ...",
+     "فخذوا السبيل ...",
+     "هذي دياركم وذلك نيلكم ... هبة السماء ومنحة الآباد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«وتكاتفًا في رغبة ووداد» يشترط الشاعر أن يكون التعاون:",
+    "options": [
+     "بالإجبار",
+     "عن حب ورغبة",
+     "بالمال",
+     "بالخوف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الكلمة التي تدل على العمل الشاق من أجل الوطن:",
+    "options": [
+     "الكفاح",
+     "الحساد",
+     "الوداد",
+     "المداد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«ماذا بكم من عدة وعتاد» العدة والعتاد هنا:",
+    "options": [
+     "الطعام",
+     "السلاح فقط",
+     "الملابس",
+     "الاستعداد والقدرات"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "من يبغي الصلاح لقومه عليه أن:",
+    "options": [
+     "ينتظر",
+     "يعمل ويكافح بشرف",
+     "يشكو",
+     "يسافر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "عند إلقاء الأبيات يجب:",
+    "options": [
+     "الهمس",
+     "النظر إلى الأرض",
+     "القراءة بسرعة دون توقف",
+     "التحدث بصوت واضح وتنويع التنغيم واستخدام تعبيرات الوجه"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "من مهارات العرض التي تعلمتها في الوحدة:",
+    "options": [
+     "تجاهل الجمهور",
+     "النظر إلى الجمهور والإجابة بوضوح عن أسئلتهم",
+     "الإسراع",
+     "القراءة من الورقة فقط"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«غاية الأمل» في بيت الكناني تعني:",
+    "options": [
+     "الحزن",
+     "بداية العمل",
+     "أقصى ما نتمناه",
+     "الخوف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«رائدنا الإخلاص» تعبير جميل صور فيه الإخلاص بـ:",
+    "options": [
+     "قائد يرشدنا",
+     "سيف",
+     "شمس",
+     "نهر"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "القافية في أبيات «قيم نفسك» تنتهي بـ:",
+    "options": [
+     "ـمل",
+     "ـار",
+     "ـفوا",
+     "ـاد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "القافية في أبيات «إلى الشباب» تنتهي بـ:",
+    "options": [
+     "ـادِ",
+     "ـمل",
+     "ـفوا",
+     "ـار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا جاء النص بعنوان «إلى الشباب»؟",
+    "options": [
+     "لأنه عن الطبيعة",
+     "لأنه يتحدث عن الشيوخ",
+     "لأن الشاعر يوجه رسالته إلى شباب الوطن",
+     "لأنه عن الأطفال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«وما ضعفوا» نفي الضعف عن الشباب يدل على:",
+    "options": [
+     "قوتهم وثباتهم",
+     "خوفهم",
+     "غيابهم",
+     "ترددهم"
+    ],
+    "ans": 0
+   }
+  ]
+ }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+                <p style="margin-top:8px;font-size:.9rem;color:#0f766e;">${QUESTIONS_PER_PLAY} سؤالًا عشوائيًّا في كل مرة</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة لقائمة الألعاب</button>
+            </div>
+        `;
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_PLAY);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #059669)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.55 + Math.random() * 0.45; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>بناة المجد - الصف السادس الابتدائي - شريف الديب</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;      
+            --primary-light: #14b8a6; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #effcf9;
+            background-image: radial-gradient(#a7dcd4 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(2.5rem, 10vw, 4.5rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #fde047, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.1;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(20, 184, 166, 0.3); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #0f766e; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #14b8a6; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #0f766e;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #0f766e);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(204,251,241,0.9));
+            color: #0f766e;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23fff7ed" width="100%" height="100%"/><circle fill="%23fed7aa" cx="20%" cy="30%" r="50"/><circle fill="%23fed7aa" cx="80%" cy="60%" r="70"/><circle fill="%23fed7aa" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #14b8a6; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #fffbeb; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #431407, #9a3412, #ea580c);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #fdba74; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(234,88,12,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #fde047, #f59e0b, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #fb923c, #ea580c);
+            border-bottom: 3px solid #7c2d12; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(253, 224, 71, 0.15); color: #fde047;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        .lesson-name { font-size: clamp(1.4rem, 5vw, 2rem) !important; color: #fde047 !important; font-weight: 900 !important; margin-top: 4px; }
+        .extra-line { font-size: .9em; color: #ccfbf1; }
+        @media (max-width: 600px) {
+            .teacher-photo { width: 170px !important; height: 170px !important; }
+            .header-main { padding: 20px 14px 70px 14px; }
+            #home-screen { padding: 14px; }
+            .grid-menu { grid-template-columns: 1fr; gap: 16px; }
+            .game-container { padding: 0 12px 30px 12px; }
+            .game-nav { padding: 10px 12px; gap: 8px; }
+            .bubble { font-size: 0.78rem; padding: 8px 3px; }
+            .target-bird { white-space: normal; max-width: 78vw; font-size: 0.95rem; padding: 8px 14px; }
+            .tf-grid .btn { min-width: 130px !important; font-size: 1.6rem !important; padding: 22px !important; }
+            .modal { padding: 26px; }
+            #feedback-title { font-size: 1.8rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img class="teacher-photo" src="../teacher.jpg" alt="الأستاذ شريف الديب" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fde047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">شريف الديب</h1>
+                    <h2>الصَّفُّ السَّادِسُ الابْتِدَائِيُّ - الوحدة الثانية: أنا مسؤول</h2>
+                    <h2 class="lesson-name">بناة المجد</h2>
+                    <p style="margin-top: 10px;">الدرس الرابع: النص الشعري</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#effcf9" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 20</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | الأستاذ / شريف الديب</p>
+    </footer>
+
+<script>
+    const LESSON_NAME = "بناة المجد";
+    const QUESTIONS_PER_PLAY = 20;
+    const allGamesData = [
+ {
+  "id": "g1",
+  "title": "فهم الأبيات",
+  "type": "mcq",
+  "desc": "أسئلة على معاني أبيات «بناة المجد»",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg>",
+  "questions": [
+   {
+    "q": "بم يفخر الشاعر في الأبيات؟",
+    "options": [
+     "بجمال الطبيعة فقط",
+     "بالحروب",
+     "بالأغنياء",
+     "بكل إنسان يتحمل مسؤولية إعمار الأرض"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«بأيدينا جعلنا الأرض روضًا» المعنى:",
+    "options": [
+     "الأرض صحراء",
+     "الأيدي متعبة",
+     "الروض بعيد",
+     "بجهودنا تحولت الأرض إلى جنة خضراء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«وألبسنا معالمها جمالًا» المعنى:",
+    "options": [
+     "لبسنا الثياب",
+     "هدمنا معالمها",
+     "زينّا الأرض بالجمال",
+     "خلعنا عنها الجمال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«وكنا في الحياة بناة مجد» يفخر الشاعر بأننا:",
+    "options": [
+     "صنعنا المجد بجهودنا",
+     "هدمنا المجد",
+     "نسينا المجد",
+     "انتظرنا المجد"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«وقضينا معيشتنا نضالًا» المعنى:",
+    "options": [
+     "عشنا في خوف",
+     "عشنا في لهو",
+     "عشنا حياتنا في كفاح وجهاد",
+     "عشنا في راحة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«فمنا من يقيم بها قصورًا» يشير إلى:",
+    "options": [
+     "بناء المنشآت الشامخة",
+     "صيد الأسماك",
+     "صناعة السفن",
+     "زراعة الحقول"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "القصور التي بناها الإنسان تفوق رواسي الأرض:",
+    "options": [
+     "ضعفًا",
+     "احتمالًا وثباتًا",
+     "جمالًا فقط",
+     "لونًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "البيت الذي يدل على أن الإنسان بنى أبنية كالجبال في ثباتها:",
+    "options": [
+     "بأيدينا جعلنا الأرض روضًا ...",
+     "فمنا من يقيم بها قصورًا ... تفوق رواسي الأرض احتمالا",
+     "فعاش الناس منا في نعيم ...",
+     "وسخرنا الفضاء لسابحات ..."
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«وأرسينا على الماء الجواري» يشير إلى:",
+    "options": [
+     "بناء القصور",
+     "الزراعة",
+     "صناعة السفن العملاقة",
+     "الطيران"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "شبه الشاعر السفن في سيرها فوق الماء بـ:",
+    "options": [
+     "النجوم",
+     "الطيور",
+     "الجبال",
+     "الزهور"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«وسخرنا الفضاء لسابحات» المقصود بالسابحات:",
+    "options": [
+     "الأسماك",
+     "السفن",
+     "الطائرات والمركبات الفضائية",
+     "الطيور"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "البيت الذي يدل على وصول الإنجازات البشرية حدود الفضاء:",
+    "options": [
+     "وسخرنا الفضاء لسابحات ... علون على السحاب وقد تعالى",
+     "فمنا من يقيم بها قصورًا ...",
+     "بأيدينا جعلنا الأرض روضًا ...",
+     "وكنا في الحياة بناة مجد ..."
+    ],
+    "ans": 0
+   },
+   {
+    "q": "البيت الذي يدل على تحول الأرض إلى جنة خضراء بجهودنا:",
+    "options": [
+     "فعاش الناس منا في نعيم ...",
+     "وأرسينا على الماء الجواري ...",
+     "وسخرنا الفضاء لسابحات ...",
+     "بأيدينا جعلنا الأرض روضًا ... وألبسنا معالمها جمالا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "علت الطائرات على السحاب:",
+    "options": [
+     "وقد اختفى السحاب",
+     "وقد أمطر السحاب",
+     "وقد تعالى السحاب",
+     "وقد نزل السحاب"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "نتيجة هذه الإبداعات كما في البيت الأخير:",
+    "options": [
+     "عاش الناس في نعيم",
+     "هدمت الحضارة",
+     "توقف التقدم",
+     "عاش الناس في شقاء"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«وكان مناله قبلًا محالًا» المعنى:",
+    "options": [
+     "ما كان مستحيلًا أصبح ممكنًا",
+     "أصبح الممكن مستحيلًا",
+     "لم يتغير شيء",
+     "ما زال مستحيلًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لم تقتصر إنجازات الإنسان على البر والبحر بل امتدت إلى:",
+    "options": [
+     "الكهوف",
+     "الغابات",
+     "السماء",
+     "الصحراء فقط"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بفضل جهود الإنسان وكفاحه قامت:",
+    "options": [
+     "المشكلات",
+     "الفوضى",
+     "الحروب",
+     "الحضارة وشهدت تطورًا عظيمًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تنعم البشرية اليوم بـ:",
+    "options": [
+     "خوف",
+     "فقر شديد",
+     "حزن",
+     "رفاهية غير مسبوقة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "أصبحت الأحلام بعيدة المنال:",
+    "options": [
+     "مستحيلة",
+     "منسية",
+     "خيالًا فقط",
+     "واقعًا ملموسًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "الإنسان المسؤول هو الذي:",
+    "options": [
+     "يهمل الأرض",
+     "يهدم الأرض",
+     "يترك الأرض",
+     "يجعل الأرض مكانًا عامرًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "بم تبنى الحضارات كما فهمت من الأبيات؟",
+    "options": [
+     "بالحظ",
+     "بالعلم والعمل الجاد والكفاح المستمر",
+     "بالمال فقط",
+     "بالراحة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "هل وقفت إنجازات البشرية عند حدود البر والبحر؟",
+    "options": [
+     "وقفت عند البر",
+     "نعم وقفت",
+     "لا، امتدت إلى الفضاء",
+     "وقفت عند البحر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "من الإنجازات التي ساهم بها الإنسان في بناء الحضارة:",
+    "options": [
+     "هدم المباني",
+     "بناء القصور وصناعة السفن والطائرات",
+     "تلويث البيئة",
+     "الحروب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "علام يدل وصول الإنجازات البشرية إلى الفضاء؟",
+    "options": [
+     "على ضعف الإنسان",
+     "على تقدم العلم وطموح الإنسان",
+     "على الكسل",
+     "على الخوف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "كيف يحقق العلم الإنجازات المختلفة كما فهمت من النص؟",
+    "options": [
+     "بالجهد والكفاح والتعاون",
+     "بالراحة",
+     "بالصدفة",
+     "بالانتظار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الفكرة العامة للأبيات:",
+    "options": [
+     "الحديث عن الحرب",
+     "وصف الطبيعة",
+     "الفخر بالإنسان الذي يعمر الأرض ويصنع المجد",
+     "الحزن على الماضي"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "عنوان آخر مناسب:",
+    "options": [
+     "البحر الهائج",
+     "الليل",
+     "الإنسان يعمر الأرض",
+     "الصحراء"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "التشبيه طريقة في التعبير نعبر بها عن:",
+    "options": [
+     "سؤال",
+     "أمر",
+     "اشتراك شيئين مذكورين في صفة أو أكثر",
+     "اختلاف شيئين"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«البنت كالزهرة في الجمال» الصفة المشتركة:",
+    "options": [
+     "الشجاعة",
+     "السرعة",
+     "الضخامة",
+     "الجمال"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الوقت يمر بسرعة كالبرق» الصفة المشتركة:",
+    "options": [
+     "الضخامة",
+     "الجمال",
+     "السرعة",
+     "الذكاء"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«السفينة ضخمة كالجبل» الصفة المشتركة:",
+    "options": [
+     "الجمال",
+     "الضخامة",
+     "الذكاء",
+     "السرعة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الفكرة المشتركة بين بيت عبد العزيز عتيق «وكنا في الحياة بناة مجد» وبيت حافظ إبراهيم «وبناة الأهرام في سالف الدهر»:",
+    "options": [
+     "الهجرة",
+     "الحزن",
+     "الفخر ببناء المجد والحضارة",
+     "وصف الطبيعة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "التعبير الدال على مسؤوليتنا تجاه الأرض في بيت عتيق:",
+    "options": [
+     "كنا",
+     "الحياة",
+     "معيشتنا",
+     "بناة مجد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «قيم نفسك»: بم وصف الشاعر قلب الشباب؟",
+    "options": [
+     "بقلب الأسود",
+     "بقلب الحجر",
+     "بقلب الطفل",
+     "بقلب الطير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «قيم نفسك»: كيف سيفدي الشباب البلاد؟",
+    "options": [
+     "بالكلام",
+     "بعزم الرجال",
+     "بالهروب",
+     "بالمال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «قيم نفسك»: ماذا سيبني الشباب؟",
+    "options": [
+     "صروحًا كأعلى الرواسي",
+     "سفنًا",
+     "أكواخًا",
+     "خيامًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «قيم نفسك»: ماذا سيهزم الشباب؟",
+    "options": [
+     "الأصدقاء",
+     "كل المحال",
+     "الطبيعة",
+     "الوطن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «قيم نفسك»: «فنحن شبابك يا مصر دومًا» يدل على:",
+    "options": [
+     "الحزن",
+     "الخوف",
+     "الانتماء الدائم لمصر",
+     "الرحيل عن مصر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «قيم نفسك»: هل يتحدث الشاعر عن الطبيعة الساحرة في مصر؟",
+    "options": [
+     "يتحدث عن النيل",
+     "يتحدث عن البحر",
+     "لا، يتحدث عن عزم الشباب",
+     "نعم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «قيم نفسك»: للشباب دور كبير في:",
+    "options": [
+     "تنمية الأوطان",
+     "نسيان الأوطان",
+     "هدم الأوطان",
+     "ترك الأوطان"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "في «قيم نفسك»: يفدي المصريون وطنهم بـ:",
+    "options": [
+     "أموالهم فقط",
+     "صمتهم",
+     "روحهم ودمائهم",
+     "كلامهم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بم تصف شباب مصر كما فهمت من أبيات «قيم نفسك»؟",
+    "options": [
+     "التردد",
+     "الشجاعة والعزم والانتماء",
+     "الكسل",
+     "الضعف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«سنبني صروحًا» معنى صروح:",
+    "options": [
+     "سفن",
+     "حدائق",
+     "طرق",
+     "أبنية عالية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«إليك أتينا بخير المنال» معنى المنال:",
+    "options": [
+     "ما نخافه",
+     "ما نفقده",
+     "ما ننساه",
+     "ما نحصل عليه"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "القيمة التي يدعو إليها نص «بناة المجد»:",
+    "options": [
+     "العمل والكفاح من أجل إعمار الأرض",
+     "الأنانية",
+     "الراحة",
+     "الكسل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "علاقة النص بعنوان الوحدة «أنا مسؤول»:",
+    "options": [
+     "لا علاقة",
+     "يتحدث عن الطعام",
+     "يتحدث عن الرياضة",
+     "الإنسان مسؤول عن إعمار الأرض وبناء الحضارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تكرار الضمير (نا) في الأبيات يدل على:",
+    "options": [
+     "الحزن",
+     "الوحدة",
+     "الضعف",
+     "الفخر والتعاون"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "البيت الذي فيه تصوير السفن بالجبال:",
+    "options": [
+     "وكنا في الحياة بناة مجد ...",
+     "بأيدينا جعلنا الأرض روضًا ...",
+     "فعاش الناس منا في نعيم ...",
+     "وأرسينا على الماء الجواري ... فسارت فوق لجته جبالا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "عاش الناس في نعيم كان مناله قبل ذلك:",
+    "options": [
+     "سهلًا",
+     "محالًا",
+     "قريبًا",
+     "ممكنًا"
+    ],
+    "ans": 1
+   }
+  ]
+ },
+ {
+  "id": "g2",
+  "title": "ثروتي اللغوية",
+  "type": "bubbles",
+  "desc": "معاني كلمات «بناة المجد» ومضاداتها ومفردها",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"8\" cy=\"8\" r=\"5\"></circle><circle cx=\"17\" cy=\"15\" r=\"4\"></circle><circle cx=\"7\" cy=\"18\" r=\"2.5\"></circle></svg>",
+  "questions": [
+   {
+    "q": "معنى «نضالًا»:",
+    "options": [
+     "خوفًا",
+     "جهادًا وكفاحًا",
+     "لهوًا",
+     "راحة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «رواسي»:",
+    "options": [
+     "جبال",
+     "نجوم",
+     "بحار",
+     "أنهار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «رواسي»:",
+    "options": [
+     "راسية",
+     "مرسى",
+     "رسو",
+     "سارية"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «أرسينا»:",
+    "options": [
+     "أغرقنا",
+     "ثبّتنا",
+     "حركنا",
+     "هدمنا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «الجواري»:",
+    "options": [
+     "الأنهار",
+     "القصور",
+     "السفن",
+     "الطائرات"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مفرد «الجواري»:",
+    "options": [
+     "الجار",
+     "الجارية",
+     "الجري",
+     "المجرى"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «لجته»:",
+    "options": [
+     "بروده",
+     "مائه الكثير",
+     "لونه",
+     "أسماكه"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «سابحات»:",
+    "options": [
+     "أسماك",
+     "طائرات ومركبات فضائية",
+     "سفن",
+     "سحب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «مناله»:",
+    "options": [
+     "فقده",
+     "نسيانه",
+     "الحصول عليه",
+     "خوفه"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "معنى «محالًا»:",
+    "options": [
+     "سهلًا",
+     "ممكنًا",
+     "مستحيلًا",
+     "قريبًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مضاد «محالًا»:",
+    "options": [
+     "مستحيلًا",
+     "صعبًا",
+     "بعيدًا",
+     "ممكنًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "حكى لي جدي قصصًا عن «نضال» شعبنا:",
+    "options": [
+     "جهاد",
+     "كرم",
+     "تاريخ",
+     "عظمة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "خلق الله «الرواسي» لتثبت الأرض:",
+    "options": [
+     "الأنهار",
+     "النجوم",
+     "البحار",
+     "الجبال"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«الجواري» في البحر ضخمة كالجبال:",
+    "options": [
+     "الحيتان",
+     "القناديل",
+     "السفن",
+     "القروش"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "نستمتع بالنظر إلى «لجة» البحر:",
+    "options": [
+     "برودته",
+     "مائه الكثير",
+     "أسماكه",
+     "لونه"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "يهزم المجتهد «المحال» بعزيمته:",
+    "options": [
+     "المستحيل",
+     "المشكلة",
+     "الضيق",
+     "العدو"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «روضًا»:",
+    "options": [
+     "بحرًا",
+     "صحراء",
+     "حديقة خضراء",
+     "جبلًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "معنى «معالمها»:",
+    "options": [
+     "أنهارها",
+     "آثارها وعلاماتها",
+     "أعداؤها",
+     "سكانها"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «سخّرنا»:",
+    "options": [
+     "أهملنا",
+     "ذلّلنا واستخدمنا",
+     "خفنا",
+     "تركنا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «تعالى»:",
+    "options": [
+     "سقط",
+     "ارتفع",
+     "انخفض",
+     "اختفى"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «نعيم»:",
+    "options": [
+     "تعب",
+     "فقر",
+     "شقاء",
+     "خير ورفاهية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "معنى «مجد»:",
+    "options": [
+     "ذل",
+     "عز وشرف",
+     "فقر",
+     "ضعف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «احتمالًا»:",
+    "options": [
+     "قدرة على التحمل والثبات",
+     "ضعفًا",
+     "خوفًا",
+     "سقوطًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «صروحًا»:",
+    "options": [
+     "أبنية عالية",
+     "طرقًا",
+     "سفنًا",
+     "حدائق"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «المنال» في «قيم نفسك»:",
+    "options": [
+     "ما نفقده",
+     "ما نكرهه",
+     "ما نحصل عليه",
+     "ما نتركه"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "معنى «النضال» في «قيم نفسك»:",
+    "options": [
+     "التعاون",
+     "التسامح",
+     "الكفاح",
+     "المجد"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مضاد «المحال» في «قيم نفسك»:",
+    "options": [
+     "المهم",
+     "الممكن",
+     "الضروري",
+     "المقبول"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مفرد «الرواسي» في «قيم نفسك»:",
+    "options": [
+     "السرية",
+     "السارية",
+     "المرسى",
+     "الراسية"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «جمالًا»:",
+    "options": [
+     "قبحًا",
+     "بهاءً",
+     "روعة",
+     "حسنًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مضاد «نعيم»:",
+    "options": [
+     "خير",
+     "سعادة",
+     "رفاهية",
+     "شقاء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «علون»:",
+    "options": [
+     "صعدن",
+     "هبطن",
+     "طرن",
+     "ارتفعن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «فوق»:",
+    "options": [
+     "أمام",
+     "خلف",
+     "أعلى",
+     "تحت"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «قبلًا»:",
+    "options": [
+     "قديمًا",
+     "أولًا",
+     "سابقًا",
+     "بعدًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «يقيم»:",
+    "options": [
+     "يرفع",
+     "يشيد",
+     "يبني",
+     "يهدم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مضاد «عاش»:",
+    "options": [
+     "سكن",
+     "مات",
+     "حيي",
+     "بقي"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «مجد»:",
+    "options": [
+     "ذل",
+     "شرف",
+     "فخر",
+     "عز"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «قصر»:",
+    "options": [
+     "أقصار",
+     "قصرات",
+     "قصور",
+     "مقاصر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مفرد «قصورًا»:",
+    "options": [
+     "قاصر",
+     "مقصورة",
+     "قصر",
+     "تقصير"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "جمع «جبل»:",
+    "options": [
+     "أجبال",
+     "جبول",
+     "جبال",
+     "جبلات"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مفرد «جبالًا»:",
+    "options": [
+     "جبل",
+     "مجبول",
+     "جبلة",
+     "جبيل"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «الأرض»:",
+    "options": [
+     "الأروض",
+     "الأرضات",
+     "الأرائض",
+     "الأراضي"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "جمع «سحابة»:",
+    "options": [
+     "سحاب",
+     "سحوب",
+     "أسحاب",
+     "أسحبة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «صروح»:",
+    "options": [
+     "صراحة",
+     "صريح",
+     "صرح",
+     "مصارحة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مفرد «بناة»:",
+    "options": [
+     "مبنى",
+     "بنون",
+     "بانٍ",
+     "بنية"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مفرد «معالم»:",
+    "options": [
+     "معلم",
+     "معلومة",
+     "عالم",
+     "علم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "جمع «صرح»:",
+    "options": [
+     "صرحات",
+     "صروح",
+     "أصراح",
+     "مصارح"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مرادف «رواسي» في البيت:",
+    "options": [
+     "الجواري",
+     "سحاب",
+     "قصورًا",
+     "جبالًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "مرادف «نضالًا»:",
+    "options": [
+     "محالًا",
+     "نعيمًا",
+     "كفاحًا",
+     "جمالًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مرادف «محالًا»:",
+    "options": [
+     "ممكنًا",
+     "مستحيلًا",
+     "سهلًا",
+     "قريبًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مرادف «روضًا»:",
+    "options": [
+     "بستانًا",
+     "صحراء",
+     "سجنًا",
+     "كهفًا"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g3",
+  "title": "أكمل البيت",
+  "type": "shooting",
+  "desc": "اصطد الكلمة الصحيحة لإكمال الأبيات",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+  "questions": [
+   {
+    "q": "بأيدينا جعلنا الأرض ............",
+    "options": [
+     "روضًا",
+     "جبلًا",
+     "قصرًا",
+     "بحرًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "............ جعلنا الأرض روضًا",
+    "options": [
+     "بأيدينا",
+     "بكلامنا",
+     "بأموالنا",
+     "بأحلامنا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بأيدينا جعلنا ............ روضًا",
+    "options": [
+     "السماء",
+     "الفضاء",
+     "الأرض",
+     "البحر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وألبسنا ............ جمالًا",
+    "options": [
+     "بحارها",
+     "معالمها",
+     "سماءها",
+     "جبالها"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وألبسنا معالمها ............",
+    "options": [
+     "جبالًا",
+     "جمالًا",
+     "نضالًا",
+     "احتمالًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وكنا في الحياة ............ مجد",
+    "options": [
+     "دعاة",
+     "بناة",
+     "رماة",
+     "هداة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وكنا في الحياة بناة ............",
+    "options": [
+     "قصر",
+     "بيت",
+     "سفن",
+     "مجد"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "وقضينا ............ نضالًا",
+    "options": [
+     "أيامنا",
+     "أعمارنا",
+     "معيشتنا",
+     "حياتنا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وقضينا معيشتنا ............",
+    "options": [
+     "جبالًا",
+     "نضالًا",
+     "محالًا",
+     "جمالًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "فمنا من يقيم بها ............",
+    "options": [
+     "جبالًا",
+     "سفنًا",
+     "روضًا",
+     "قصورًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تفوق ............ الأرض احتمالًا",
+    "options": [
+     "رواسي",
+     "صحارى",
+     "سهول",
+     "بحار"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تفوق رواسي الأرض ............",
+    "options": [
+     "جمالًا",
+     "محالًا",
+     "احتمالًا",
+     "نضالًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وأرسينا على ............ الجواري",
+    "options": [
+     "الماء",
+     "السحاب",
+     "الرمل",
+     "الأرض"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وأرسينا على الماء ............",
+    "options": [
+     "الجواري",
+     "القصور",
+     "السابحات",
+     "الجبال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "فسارت فوق ............ جبالًا",
+    "options": [
+     "رماله",
+     "أرضه",
+     "لجته",
+     "سمائه"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "فسارت فوق لجته ............",
+    "options": [
+     "قصورًا",
+     "طيورًا",
+     "جبالًا",
+     "نجومًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وسخرنا ............ لسابحات",
+    "options": [
+     "الجبال",
+     "البحار",
+     "الأنهار",
+     "الفضاء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "وسخرنا الفضاء ............",
+    "options": [
+     "لقصور",
+     "لسابحات",
+     "لجوارٍ",
+     "لجبال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "علون على ............ وقد تعالى",
+    "options": [
+     "السحاب",
+     "البحار",
+     "الجبال",
+     "الرمال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "علون على السحاب وقد ............",
+    "options": [
+     "تهاوى",
+     "توارى",
+     "تلاشى",
+     "تعالى"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "فعاش الناس منا في ............",
+    "options": [
+     "تعب",
+     "خوف",
+     "نعيم",
+     "شقاء"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "فعاش ............ منا في نعيم",
+    "options": [
+     "الناس",
+     "الجن",
+     "الأسد",
+     "الطير"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وكان ............ قبلًا محالًا",
+    "options": [
+     "جماله",
+     "مناله",
+     "نضاله",
+     "احتماله"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وكان مناله قبلًا ............",
+    "options": [
+     "جبالًا",
+     "نضالًا",
+     "محالًا",
+     "جمالًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "وكان مناله ............ محالًا",
+    "options": [
+     "قبلًا",
+     "دومًا",
+     "يومًا",
+     "بعدًا"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بقلب ............ وروح النضال",
+    "options": [
+     "البحار",
+     "الطيور",
+     "الأسود",
+     "الجبال"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "بقلب الأسود وروح ............",
+    "options": [
+     "المحال",
+     "النضال",
+     "الجمال",
+     "الرجال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سنفدي البلاد بعزم ............",
+    "options": [
+     "النضال",
+     "الجبال",
+     "المحال",
+     "الرجال"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سنبني صروحًا كأعلى ............",
+    "options": [
+     "الرواسي",
+     "البحار",
+     "السحاب",
+     "القصور"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "سنهزم يا مصر كل ............",
+    "options": [
+     "الرجال",
+     "المحال",
+     "النضال",
+     "الجبال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "فنحن ............ يا مصر دومًا",
+    "options": [
+     "رجالك",
+     "أبناؤك",
+     "جنودك",
+     "شبابك"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "إليك أتينا بخير ............",
+    "options": [
+     "المحال",
+     "المنال",
+     "الرجال",
+     "النضال"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "وبناة الأهرام في سالف ............",
+    "options": [
+     "العمر",
+     "الزمان",
+     "الدهر",
+     "العصر"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "كفوني الكلام عند ............",
+    "options": [
+     "التحدث",
+     "التعدي",
+     "التمني",
+     "التحدي"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "كلمات متماثلة النهاية في الأبيات:",
+    "options": [
+     "جمالًا - نضالًا - احتمالًا",
+     "بأيدينا - وكنا - فمنا",
+     "الأرض - الماء - الفضاء",
+     "روضًا - قصورًا - الجواري"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "كلمتان بينهما ترادف في الأبيات:",
+    "options": [
+     "روضًا - قصورًا",
+     "الماء - الفضاء",
+     "نعيم - محال",
+     "رواسي - جبالًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "تعبير مجازي صور الجمال بالثوب:",
+    "options": [
+     "علون على السحاب",
+     "وألبسنا معالمها جمالًا",
+     "فعاش الناس",
+     "بناة مجد"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تعبير مجازي صور المجد بشيء يبنى:",
+    "options": [
+     "بناة مجد",
+     "روضًا",
+     "لسابحات",
+     "نعيم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تعبير مجازي صور السفن بالجبال:",
+    "options": [
+     "في نعيم",
+     "فسارت فوق لجته جبالًا",
+     "بناة مجد",
+     "جعلنا الأرض روضًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الضمير المكرر في الأبيات للدلالة على الفخر والتعاون:",
+    "options": [
+     "نا",
+     "هو",
+     "أنت",
+     "هم"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تشبيه في «قيم نفسك»:",
+    "options": [
+     "فنحن شبابك يا مصر دومًا",
+     "سنهزم يا مصر كل المحال",
+     "إليك أتينا",
+     "سنبني صروحًا كأعلى الرواسي"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "كلمتان متماثلتان النهاية في «قيم نفسك»:",
+    "options": [
+     "صروحًا - دومًا",
+     "النضال - الرجال",
+     "الأسود - البلاد",
+     "مصر - شبابك"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تعبير يدل على مسؤوليتنا تجاه الأرض:",
+    "options": [
+     "وكان مناله",
+     "فسارت فوق لجته",
+     "بأيدينا جعلنا الأرض روضًا",
+     "علون على السحاب"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "تشبيه من أمثلة الدرس:",
+    "options": [
+     "وقضينا معيشتنا",
+     "البنت كالزهرة في الجمال",
+     "بأيدينا جعلنا الأرض",
+     "علون على السحاب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تشبيه من أمثلة الدرس:",
+    "options": [
+     "صنعنا السفينة",
+     "السفينة ضخمة كالجبل",
+     "ركبت السفينة",
+     "السفينة في البحر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "تشبيه من أمثلة الدرس:",
+    "options": [
+     "نظم وقتك",
+     "الوقت من ذهبٍ",
+     "الوقت يمر بسرعة كالبرق",
+     "الوقت مهم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "السابحات علون على ............",
+    "options": [
+     "الماء",
+     "الرمال",
+     "السحاب",
+     "الأرض"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "الجواري أرسيت على ............",
+    "options": [
+     "الفضاء",
+     "الماء",
+     "الجبال",
+     "السحاب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "القصور تفوق ............ احتمالًا",
+    "options": [
+     "السحاب",
+     "الرواسي",
+     "الروض",
+     "الجواري"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "السفن سارت فوق لجة الماء ............",
+    "options": [
+     "جبالًا",
+     "روضًا",
+     "قصورًا",
+     "سحابًا"
+    ],
+    "ans": 0
+   }
+  ]
+ },
+ {
+  "id": "g4",
+  "title": "صح أم خطأ",
+  "type": "true_false",
+  "desc": "حدد صحة العبارة وفق الأبيات",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+  "questions": [
+   {
+    "q": "الإنسان المسؤول هو الذي يجعل الأرض مكانًا عامرًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بالعلم والعمل الجاد والكفاح المستمر تبنى الحضارات.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "وقفت إنجازات البشرية عند حدود البر والبحر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "بالعمل والجد أصبح المستحيل ممكنًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يفخر الشاعر بكل إنسان يتحمل مسؤولية إعمار الأرض.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يرى الشاعر أن الإنسان جعل الأرض صحراء جرداء.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«الجواري» في الأبيات هي السفن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«السابحات» في الأبيات هي الأسماك.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «رواسي»: جبال.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «رواسي»: راسية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «أرسينا»: ثبتنا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «لجته»: ماؤه الكثير.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «مناله»: فقده.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "مضاد «محالًا»: ممكنًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «نضالًا»: جهادًا وكفاحًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مفرد «الجواري»: الجارية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "شبه الشاعر السفن بالجبال للدلالة على ضخامتها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«جمالًا - نضالًا - احتمالًا» كلمات متماثلة النهاية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بين «رواسي» و«جبالًا» علاقة تضاد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«وألبسنا معالمها جمالًا» صور فيه الجمال بالثوب.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«بناة مجد» صور فيه المجد بشيء يبنى.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تكرار الضمير (نا) يدل على فخر الشاعر وعلى التعاون.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«البنت كالزهرة في الجمال» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«السفينة ضخمة كالجبل» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الوقت يمر بسرعة كالبرق» الصفة المشتركة فيها الجمال.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "عاش الناس في نعيم بفضل إنجازات الإنسان.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما وصل إليه الإنسان كان مناله قبل ذلك سهلًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الطائرات في الأبيات علت فوق السحاب.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "بنى الإنسان بجهده أبنية كالجبال في ثباتها.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«بأيدينا جعلنا الأرض روضًا» تعني أن جهودنا حولت الأرض إلى جنة خضراء.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "تنعم البشرية اليوم برفاهية غير مسبوقة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أصبحت الأحلام بعيدة المنال واقعًا ملموسًا.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ابتكر الإنسان السفن العملاقة التي تجوب البحار.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يحزن الشاعر في الأبيات على ضياع المجد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الفكرة المشتركة بين بيتي عتيق وحافظ إبراهيم الفخر ببناء المجد.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يتحدث الشاعر في أبيات «قيم نفسك» عن الطبيعة الساحرة في مصر.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "للشباب دور كبير في تنمية الأوطان.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "يفدي المصريون وطنهم بروحهم ودمائهم.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «صروحًا»: أبنية عالية.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "معنى «المنال»: ما نحصل عليه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "مضاد «المحال»: الممكن.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«بقلب الأسود» تشبيه للشباب بالأسود في الشجاعة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«سنبني صروحًا كأعلى الرواسي» فيها تشبيه.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "القصور التي بناها الإنسان ضعيفة لا تحتمل.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«وسخرنا الفضاء لسابحات» تدل على وصول الإنسان إلى الفضاء.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«بناة المجد» نص يدعو إلى الكسل والراحة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "عند إلقاء النص يجب التنويع في تنغيمات الصوت بما يناسب المعنى.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الحضارة قامت بفضل جهود الإنسان وكفاحه في مختلف المجالات.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "السفن في الأبيات تسير فوق الرمال.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "معنى «معيشتنا نضالًا» أننا قضينا حياتنا في الراحة.",
+    "options": [
+     "صح",
+     "خطأ"
+    ],
+    "ans": 1
+   }
+  ]
+ },
+ {
+  "id": "g5",
+  "title": "تحدي العباقرة",
+  "type": "genius",
+  "desc": "تذوق أبيات «بناة المجد»",
+  "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path><path d=\"M10 21h4\"></path></svg>",
+  "questions": [
+   {
+    "q": "سر جمال «وألبسنا معالمها جمالًا»:",
+    "options": [
+     "تشبيه الأرض بالبحر",
+     "سؤال",
+     "أمر",
+     "تصوير الجمال بثوب والأرض بمن يلبس الثياب"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "سر جمال «فسارت فوق لجته جبالًا»:",
+    "options": [
+     "سؤال",
+     "تصوير السفن بالجبال للدلالة على ضخامتها",
+     "تكرار",
+     "تصوير البحر بالسماء"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "سر جمال «بناة مجد»:",
+    "options": [
+     "تصوير المجد بشيء يبنى",
+     "تشبيه بالأسد",
+     "تصوير المجد بإنسان",
+     "سؤال"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ما دلالة تكرار الضمير (نا) في «بأيدينا - جعلنا - ألبسنا - كنا»؟",
+    "options": [
+     "الشك",
+     "الضعف",
+     "الفخر والتعاون في صنع المجد",
+     "الحزن"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "العلاقة بين «رواسي» و«جبالًا»:",
+    "options": [
+     "تضاد",
+     "سبب ونتيجة",
+     "ترادف يؤكد المعنى ويوضحه",
+     "تشبيه"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "مصدر الجرس الموسيقي في الأبيات:",
+    "options": [
+     "كثرة الأسئلة",
+     "طول الكلمات",
+     "كثرة الأفعال",
+     "الكلمات متماثلة النهاية (جمالًا - نضالًا - احتمالًا)"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما الشعور المسيطر على الشاعر؟",
+    "options": [
+     "الفخر والاعتزاز بالإنسان",
+     "اليأس",
+     "الحزن",
+     "الخوف"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "لماذا ذكر الشاعر البر والبحر والفضاء؟",
+    "options": [
+     "ليصف الطبيعة",
+     "ليتحدث عن السفر",
+     "ليذكر الحيوانات",
+     "ليبين أن إنجازات الإنسان شملت كل مكان"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«تفوق رواسي الأرض احتمالًا» تدل على:",
+    "options": [
+     "صغر المباني",
+     "قوة المباني وثباتها ودقة صناعتها",
+     "ضعف المباني",
+     "جمالها فقط"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«علون على السحاب وقد تعالى» تدل على:",
+    "options": [
+     "البرق",
+     "المطر",
+     "سقوط الطائرات",
+     "ارتفاع الطائرات فوق السحاب العالي"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "النتيجة التي ختم بها الشاعر أبياته:",
+    "options": [
+     "الهزيمة",
+     "الحزن",
+     "الفقر",
+     "عيش الناس في نعيم وتحقق المستحيل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«وكان مناله قبلًا محالًا» يبين الفرق بين:",
+    "options": [
+     "الصيف والشتاء",
+     "الماضي الصعب والحاضر الممكن",
+     "الليل والنهار",
+     "البر والبحر"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي البيوت يدل على بناء الإنسان القصور الثابتة؟",
+    "options": [
+     "وكنا في الحياة ...",
+     "فعاش الناس منا ...",
+     "فمنا من يقيم بها قصورًا ...",
+     "وسخرنا الفضاء ..."
+    ],
+    "ans": 2
+   },
+   {
+    "q": "لماذا اختار الشاعر كلمة «روضًا»؟",
+    "options": [
+     "لأنها تدل على الصحراء",
+     "لأنها تدل على الجبال",
+     "لأنها تدل على البحر",
+     "لأنها تدل على الخضرة والجمال"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما القيمة المستفادة من الأبيات؟",
+    "options": [
+     "المال وحده يصنع الحضارة",
+     "الراحة تصنع الحضارة",
+     "الحظ يصنع الحضارة",
+     "العمل والتعاون يصنعان الحضارة"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «البنت كالزهرة في الجمال» المشبه:",
+    "options": [
+     "الجمال",
+     "الزهرة",
+     "البنت",
+     "الكاف"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «البنت كالزهرة في الجمال» المشبه به:",
+    "options": [
+     "البنت",
+     "الجمال",
+     "الزهرة",
+     "في"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "في «السفينة ضخمة كالجبل» المشبه به:",
+    "options": [
+     "الكاف",
+     "السفينة",
+     "ضخمة",
+     "الجبل"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «الوقت يمر بسرعة كالبرق» أداة التشبيه:",
+    "options": [
+     "بسرعة",
+     "الكاف",
+     "يمر",
+     "الوقت"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «سنبني صروحًا كأعلى الرواسي» شبهت الصروح بـ:",
+    "options": [
+     "الأسود",
+     "أعلى الجبال",
+     "السحاب",
+     "البحار"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "في «بقلب الأسود» شبه الشاعر قلوب الشباب بقلوب الأسود في:",
+    "options": [
+     "السرعة",
+     "الجمال",
+     "الشجاعة",
+     "الضخامة"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما الذي يجمع بين «بناة المجد» و«إلى الشباب»؟",
+    "options": [
+     "الحزن",
+     "الدعوة إلى العمل والكفاح من أجل الوطن والحضارة",
+     "الهجرة",
+     "وصف الطبيعة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«وبناة الأهرام في سالف الدهر كفوني الكلام عند التحدي» يفخر حافظ إبراهيم بـ:",
+    "options": [
+     "الملوك فقط",
+     "الشعراء",
+     "الأطفال",
+     "بناة الأهرام"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لو رسمت لوحة لبيت «وأرسينا على الماء الجواري» فماذا ترسم؟",
+    "options": [
+     "طائرات",
+     "سفنًا ضخمة فوق البحر",
+     "حدائق",
+     "قصورًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لو رسمت لوحة لبيت «وسخرنا الفضاء لسابحات» فماذا ترسم؟",
+    "options": [
+     "قصورًا",
+     "طائرات ومركبات فوق السحاب",
+     "حدائق",
+     "سفنًا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لو رسمت لوحة لبيت «بأيدينا جعلنا الأرض روضًا» فماذا ترسم؟",
+    "options": [
+     "طائرات",
+     "صحراء",
+     "سفنًا",
+     "أيادي تزرع حديقة خضراء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "البيت الذي يعبر عن مسؤوليتنا تجاه الأرض:",
+    "options": [
+     "وكان مناله قبلًا محالًا",
+     "بأيدينا جعلنا الأرض روضًا ...",
+     "علون على السحاب ...",
+     "فسارت فوق لجته ..."
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا يحتاج بناء الحضارة إلى «نضال»؟",
+    "options": [
+     "لأنه يأتي بالصدفة",
+     "لأنه لا يحتاج عملًا",
+     "لأنه سهل",
+     "لأنه يحتاج جهدًا وكفاحًا مستمرًا"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "ما الذي يدل على أن الشاعر يتحدث بلسان الجماعة؟",
+    "options": [
+     "استخدام ضمير (نا)",
+     "استخدام ضمير (هو)",
+     "استخدام ضمير (أنت)",
+     "استخدام ضمير (أنا)"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«وأرسينا» الفاعل فيها ضمير يعود على:",
+    "options": [
+     "المتكلمين (نحن)",
+     "المخاطب",
+     "السفن",
+     "الغائب"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«الجواري» سميت بذلك لأنها:",
+    "options": [
+     "تطير",
+     "تجري على الماء",
+     "تقف على الأرض",
+     "تغوص"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«سابحات» سميت الطائرات بذلك لأنها:",
+    "options": [
+     "تسبح في الفضاء كما يسبح السابح في الماء",
+     "تسبح في البحر",
+     "تقفز",
+     "تمشي"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "الرفاهية غير المسبوقة تعني:",
+    "options": [
+     "تعب كبير",
+     "فقر شديد",
+     "رخاء لم يحدث من قبل",
+     "حزن دائم"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما أثر الكفاح المستمر على الحضارة؟",
+    "options": [
+     "توقفت",
+     "تراجعت",
+     "تطورت تطورًا عظيمًا",
+     "اختفت"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "«فعاش الناس منا في نعيم» كلمة (منا) تعني:",
+    "options": [
+     "بدوننا",
+     "بسبب جهودنا",
+     "ضدنا",
+     "من غيرنا"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي مما يلي ليس من إنجازات الإنسان في الأبيات؟",
+    "options": [
+     "تلويث البيئة",
+     "صناعة السفن",
+     "الطيران",
+     "بناء القصور"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "أنسب وصف لشباب مصر في «قيم نفسك»:",
+    "options": [
+     "ضعفاء",
+     "مترددون",
+     "كسالى",
+     "شجعان أوفياء أصحاب عزم"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "«سنهزم يا مصر كل المحال» تدل على:",
+    "options": [
+     "اليأس",
+     "الثقة والعزيمة",
+     "الحزن",
+     "الخوف"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أسلوب «يا مصر» في «قيم نفسك»:",
+    "options": [
+     "استفهام",
+     "نهي",
+     "تعجب",
+     "نداء"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "لماذا يفخر الشاعر بالإنسان لا بالطبيعة؟",
+    "options": [
+     "لأن الإنسان صنع الحضارة بجهده",
+     "لأنه يكره الطبيعة",
+     "لأنه لا يعرف الطبيعة",
+     "لأن الطبيعة قبيحة"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "ماذا تتعلم من النص؟",
+    "options": [
+     "أن أترك العمل",
+     "أن أهتم بنفسي فقط",
+     "أن أنتظر غيري",
+     "أن أتحمل مسؤوليتي في إعمار وطني والأرض"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "عند إلقاء الأبيات يجب:",
+    "options": [
+     "تنويع التنغيم بما يناسب الفخر واستخدام لغة الجسد",
+     "القراءة بصوت منخفض",
+     "الإسراع",
+     "النظر للأرض"
+    ],
+    "ans": 0
+   },
+   {
+    "q": "«احتمالًا» في البيت الثالث تعني:",
+    "options": [
+     "شكًّا",
+     "احتمال حدوث شيء",
+     "قدرة على التحمل والصمود",
+     "خوفًا"
+    ],
+    "ans": 2
+   },
+   {
+    "q": "ما وجه الشبه بين السفن والجبال؟",
+    "options": [
+     "الجمال",
+     "الضخامة",
+     "اللون",
+     "السرعة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«علون على السحاب» الفاعل فيها:",
+    "options": [
+     "الناس",
+     "السابحات (نون النسوة)",
+     "الفضاء",
+     "السحاب"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "الفكرة الرئيسة للبيت الأخير:",
+    "options": [
+     "وصف السفن",
+     "ثمرة الجهود نعيم يعيش فيه الناس",
+     "بداية الكفاح",
+     "وصف القصور"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "لماذا وصف الشاعر الناس بأنهم عاشوا «منا» في نعيم؟",
+    "options": [
+     "ليسخر",
+     "ليؤكد أن الإنجاز كان بجهدنا",
+     "ليذم الناس",
+     "ليعبر عن الحزن"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "أي العبارات تلخص شرح الأبيات؟",
+    "options": [
+     "الطبيعة أجمل من الإنسان",
+     "جهود الإنسان في البر والبحر والجو صنعت الحضارة والرفاهية",
+     "الإنسان عاجز أمام الطبيعة",
+     "الحضارة صدفة"
+    ],
+    "ans": 1
+   },
+   {
+    "q": "«ألبسنا» و«أرسينا» و«سخرنا» أفعال تدل على:",
+    "options": [
+     "حزن الإنسان",
+     "خوف الإنسان",
+     "عجز الإنسان",
+     "قدرة الإنسان وعمله"
+    ],
+    "ans": 3
+   },
+   {
+    "q": "في «قيم نفسك»: «إليك أتينا بخير المنال» يعني أن الشباب:",
+    "options": [
+     "يقدمون لمصر أفضل ما يحققونه",
+     "يتركون مصر",
+     "يأخذون من مصر",
+     "يخافون على أنفسهم"
+    ],
+    "ans": 0
+   }
+  ]
+ }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+                <p style="margin-top:8px;font-size:.9rem;color:#0f766e;">${QUESTIONS_PER_PLAY} سؤالًا عشوائيًّا في كل مرة</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة لقائمة الألعاب</button>
+            </div>
+        `;
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_PLAY);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #059669)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.55 + Math.random() * 0.45; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>
